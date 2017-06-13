@@ -19,8 +19,13 @@ public class Hello{
 			if (i == number) { factors.Add(i); break; }
         }
 
-		var aaa = Enumerable.Range(2, number + 1).Where(x => number % x == 0);
-//        aaa.Where(x=>Enumerable.Range(2, x).Where(y=>x%y==0)
+		var num = 24;
+        var list = Enumerable.Range(2, num - 2).Where(x => num % x == 0);
+        MessageBox.Show(list.Min().ToString());
+        MessageBox.Show(list.Max().ToString());
+        var fib = Enumerable.Repeat(new[] { 2, num }, 2).Select(x => x[1] = x[1] / (x[0] = Enumerable.Range(2, x[1] - 2).Where(_ => x[1] % _ == 0).Min()));
+        MessageBox.Show(fib.Select(x => x.ToString()).Aggregate((a, b) => a + "," + b));
+
         Console.WriteLine(string.Join(",", factors));
     }
 }
