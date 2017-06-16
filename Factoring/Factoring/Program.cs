@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +12,8 @@ namespace Factoring
             {
                 // 標準入力
                 Console.Write("Enter number (x ≧ 2) => ");
-                var number = int.Parse(Console.ReadLine());
+                int number;
+                if (!int.TryParse(Console.ReadLine(), out number)) { Console.WriteLine("整数を入力して下さい。"); continue; }
 
                 // 入力数字のルート
                 var sqrt = (int)Math.Ceiling(Math.Sqrt(number));

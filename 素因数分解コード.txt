@@ -1,0 +1,85 @@
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.Write("Enter number (2 ≦ x ≦ 65535) => ");
+                var s = Console.ReadLine();
+                if (!int.TryParse(s, out int n)) return;
+                if (n < 2 || n > 65535) continue;
+                Console.WriteLine("list: {0}",
+                    PrimeFactorization(n).Select(x => x.ToString()).Aggregate((x, y) => x + "," + y));
+                Console.WriteLine("list: {0}",
+                    PF(n).Select(x => x.ToString()).Aggregate((x, y) => x + "," + y));
+            }
+        }
+
+        // 最小呼び出し回数
+        static IEnumerable<int> PrimeFactorization(int n)
+        {
+            //return Enumerable.Range(2, n)
+            //    .Where(x => n % x == 0)
+            //    .Except(Enumerable.Range(2, n)
+            //        .Where(x => n % x == 0)
+            //        .SelectMany(x => Enumerable.Range(2, n)
+            //        .Where(y => n % y == 0), (a, b) => new { a, b })
+            //        .Where(x => x.a != x.b && x.a % x.b == 0)
+            //        .Select(x => x.a)
+            //        .Distinct())
+            //    .SelectMany(x => Enumerable.Repeat(n, n)
+            //        .Select((y, i) => y / (int)Math.Pow(x, i))
+            //        .TakeWhile(y => y % x == 0)
+            //        .Select(y => x));
+
+            // 上はワンライナーですが、バラしてどういうステップで動いているか説明します。
+            // 1.まず対象数値の約数のリストを求める。
+            // 2. 1.で求めた約数のリスト中、素因数でないものを求める。
+            // （素因数であるものを求めるよりも簡単なので）
+            // 3. 1.のリストから2.で求めた要素を削除する。
+            // 4.対象数値を3.のリストの要素で約分した数列を求める。
+            // 5.約分された数列の各要素を約分した数値に射影する。
+            // 6. 4.～5.を3.のリスト要素すべてで行う。
+
+            // 1.まず対象数値の約数のリストを求める。
+            var s1 = Enumerable.Range(2, n).Where(x => n % x == 0);
+
+            // 2. 1.で求めた約数のリスト中、素因数でないものを求める。
+            // （s1の要素中、同じ値の要素以外で割り切れる要素のリストを作っている）
+            var s2 = s1.SelectMany(x => Enumerable.Range(2, n)
+                    .Where(y => n % y == 0), (a, b) => new { a, b })
+                    .Where(x => x.a != x.b && x.a % x.b == 0)
+                    .Select(x => x.a).Distinct();
+
+            // 3. 1.のリストから2.で求めた要素を削除する。
+            // 残ったものは素数である。
+            var s3 = s1.Except(s2);
+
+            // 4.対象数値を3.のリストの要素で約分した数列を求める。
+            // 5.約分された数列の各要素を約分した数値に射影する。
+            // 6. 4.～5.を3.のリスト要素すべてで行う。
+            var s4 = s3.SelectMany(x => Enumerable.Repeat(n, n)
+                    .Select((y, i) => y / (int)Math.Pow(x, i))
+                    .TakeWhile(y => y % x == 0)
+                    .Select(y => x));       // ← ここで素因数リストに作り替えている。（射影）
+
+            return s4;
+        }
+
+		// 青木くんのコード
+        static IEnumerable<int> PF(int number)
+        {
+            // 入力数字のルート
+            var sqrt = (int)Math.Ceiling(Math.Sqrt(number));
+
+            // 入力数字の約数かつ素数を求める
+            var primeDivisor = Enumerable.Range(2, number)
+                .Where(x => Enumerable.Range(2, x)
+                .Where(y => x % y == 0).Count() <= 1)
+                .Where(x => number % x == 0).ToList();
+
+            // それぞれの素約数の指数を求め、その回数分並べる
+            return primeDivisor
+                .SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrt).Where(y => number % Math.Pow(x, y) == 0).Max()));
+        }
+    }
