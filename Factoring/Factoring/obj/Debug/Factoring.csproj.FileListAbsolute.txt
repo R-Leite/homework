@@ -10,3 +10,9 @@ G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Factoring\Factoring\ob
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Factoring\Factoring\bin\Debug\Factoring.exe
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Factoring\Factoring\bin\Debug\Factoring.pdb
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Factoring\Factoring\obj\Debug\Factoring.csprojResolveAssemblyReference.cache
+D:\90_Work\2_SPE\3_勉強会\6_宿題\Factoring\Factoring\bin\Debug\Factoring.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_宿題\Factoring\Factoring\obj\Debug\Factoring.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\Factoring\Factoring\obj\Debug\Factoring.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\Factoring\Factoring\bin\Debug\Factoring.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\Factoring\Factoring\bin\Debug\Factoring.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\Factoring\Factoring\obj\Debug\Factoring.csprojResolveAssemblyReference.cache
