@@ -6,6 +6,8 @@ namespace Factoring
 {
     class Program
     {
+        static int recursionCount = 0;
+
         static void Main(string[] args)
         {
             while (true)
@@ -15,21 +17,53 @@ namespace Factoring
                 int number;
                 if (!int.TryParse(Console.ReadLine(), out number)) { Console.WriteLine("整数を入力して下さい。"); continue; }
 
-                // 入力数字のルート
-                var sqrt = (int)Math.Ceiling(Math.Sqrt(number));
+                // LINQ版
+                Console.WriteLine("LINQ版");
+                Console.WriteLine(FactoringLinq(number).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
 
-                // 入力数字の約数かつ素数を求める
-                var primeDivisor = Enumerable.Range(2, number).Where(x => Enumerable.Range(2, x).Where(y => x % y == 0).Count() <= 1).Where(x => number % x == 0).ToList();
+                // 再帰版
+                Console.WriteLine("再帰版");
+                Console.WriteLine(FactoringRecursion(number, 2, new List<int>()).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+                Console.WriteLine("呼び出し回数:" + recursionCount);
 
-                // それぞれの素約数の指数を求め、その回数分並べる
-                var primeFactors = primeDivisor.SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrt).Where(y => number % Math.Pow(x, y) == 0).Max()));
-
-                // 表示
-                Console.WriteLine(primeFactors.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
 
                 // 通常
-                Console.WriteLine("通常方法での答え");
+                Console.WriteLine("通常版");
                 Console.WriteLine(FactoringNormal(number).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+            }
+        }
+
+        // LINQ版
+        static IEnumerable<int> FactoringLinq(int number)
+        {
+            // ルート
+            var sqrtNumber = (int)Math.Ceiling(Math.Sqrt(number));
+
+            // 入力数字の約数かつ素数を求める
+            var primeDivisor = Enumerable.Range(2, number).Where(x => number % x == 0).Where(x => Enumerable.Range(2, x).Where(y => x % y == 0).Count() <= 1);
+
+            // それぞれの素約数の指数を求め、その回数分並べる
+            var primeFactors = primeDivisor.SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrtNumber).Where(y => number % Math.Pow(x, y) == 0).Max()));
+
+            return primeFactors;
+        }
+
+        // 再帰版
+        static IEnumerable<int> FactoringRecursion(int number, int factor, IEnumerable<int> factorList)
+        {
+            recursionCount++;
+
+            if (number < factor * factor)
+            {
+                return number != 1 ? factorList.Concat(Enumerable.Repeat(number, 1)) : factorList;
+            }
+            if(number % factor == 0)
+            {
+                return FactoringRecursion(number / factor, factor, factorList.Concat(Enumerable.Repeat(factor, 1)));
+            }
+            else
+            {
+                return FactoringRecursion(number, factor + 1, factorList);
             }
         }
 
