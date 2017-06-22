@@ -6,7 +6,8 @@ namespace Factoring
 {
     class Program
     {
-        static int recursionCount;
+        static int improveCount;
+        static int normalCount;
 
         static void Main(string[] args)
         {
@@ -21,20 +22,26 @@ namespace Factoring
                 // LINQ版
                 Console.WriteLine("LINQ版");
                 Console.WriteLine(FactoringLinq(number).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+                Console.Write(Environment.NewLine);
 
+                // 通常再帰版
+                normalCount = 0;
+                Console.WriteLine("通常再帰");
+                Console.WriteLine(FactoringRecursionNormal(number, 2, new List<int>()).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+                Console.WriteLine("呼び出し回数:" + normalCount);
+                Console.Write(Environment.NewLine);
 
                 // 再帰版
-                recursionCount = 0;
-                var divisor = MakeDivisor(number);
-                Console.WriteLine(divisor.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
-                Console.WriteLine("再帰版");
-                Console.WriteLine(FactoringRecursion(number, divisor.FirstOrDefault(), new List<int>(), divisor).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
-                Console.WriteLine("呼び出し回数:" + recursionCount);
-
+                improveCount = 0;
+                Console.WriteLine("改善再帰版");
+                Console.WriteLine(FactoringRecursion(number, new List<int>()).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+                Console.WriteLine("呼び出し回数:" + improveCount);
+                Console.Write(Environment.NewLine);
 
                 // 通常
                 Console.WriteLine("通常版");
                 Console.WriteLine(FactoringNormal(number).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+                Console.Write(Environment.NewLine);
             }
         }
 
@@ -53,31 +60,55 @@ namespace Factoring
             return primeFactors;
         }
 
-        // 再帰版
-        static IEnumerable<int> FactoringRecursion(int number, int factor, IEnumerable<int> factorList, IEnumerable<int> divisorList)
+        // 通常再帰版
+        static IEnumerable<int> FactoringRecursionNormal(int number, int factor, IEnumerable<int> factorList)
         {
-            recursionCount++;
+            normalCount++;
 
             if (number < factor * factor)
             {
                 return number != 1 ? factorList.Concat(Enumerable.Repeat(number, 1)) : factorList;
             }
-            if(number % factor == 0)
+            if (number % factor == 0)
             {
-                return FactoringRecursion(number / factor, factor, factorList.Concat(Enumerable.Repeat(factor, 1)), divisorList);
+                return FactoringRecursionNormal(number / factor, factor, factorList.Concat(Enumerable.Repeat(factor, 1)));
             }
             else
             {
-                return FactoringRecursion(number, divisorList.Skip(1).FirstOrDefault(), factorList, divisorList.Skip(1));
+                return FactoringRecursionNormal(number, factor + 1, factorList);
             }
         }
 
-        // 素因数リストを作成
-        static IEnumerable<int> MakeDivisor(int number)
-        {
-            recursionCount++;
 
-            return Enumerable.Range(2, number).Where(x => number % x == 0).Where(x => Enumerable.Range(2, x).Where(y => x % y == 0).Count() <= 1);
+        // 改善再帰版
+        static IEnumerable<int> FactoringRecursion(int number, IEnumerable<int> factorList)
+        {
+            improveCount++;
+
+            // 約数の最小値を取得
+            var factor = Enumerable.Range(2, number).Where(x => number % x == 0).FirstOrDefault();
+
+            // 母数が2未満なら素因数リストを返して終了
+            if (factor <= 0)
+            {
+                return factorList;
+            }
+
+            // 母数が最小約数以下なら素因数リストを返して終了
+            if (number <= factor)
+            {
+                return number != 1 ? factorList.Concat(Enumerable.Repeat(number, 1)) : factorList;
+            }
+            if(number % factor == 0)
+            {
+                var index = Enumerable.Range(1, number).Where(x => number % Math.Pow(factor, x) == 0).Last();
+                return FactoringRecursion(number / (int)Math.Pow(factor, index), factorList.Concat(Enumerable.Repeat(factor, index)));
+            }
+            // 入らない
+            else
+            {
+                return FactoringRecursion(number, factorList);
+            }
         }
 
         // 通常方法
