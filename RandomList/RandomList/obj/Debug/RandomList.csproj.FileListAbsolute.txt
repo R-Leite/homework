@@ -1,0 +1,12 @@
+C:\Users\aoki-hid\Desktop\RandomList\RandomList\bin\Debug\RandomList.exe.config
+C:\Users\aoki-hid\Desktop\RandomList\RandomList\bin\Debug\RandomList.exe
+C:\Users\aoki-hid\Desktop\RandomList\RandomList\bin\Debug\RandomList.pdb
+C:\Users\aoki-hid\Desktop\RandomList\RandomList\obj\Debug\RandomList.csprojResolveAssemblyReference.cache
+C:\Users\aoki-hid\Desktop\RandomList\RandomList\obj\Debug\RandomList.exe
+C:\Users\aoki-hid\Desktop\RandomList\RandomList\obj\Debug\RandomList.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\RandomList\RandomList\bin\Debug\RandomList.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_宿題\RandomList\RandomList\obj\Debug\RandomList.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\RandomList\RandomList\obj\Debug\RandomList.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\RandomList\RandomList\bin\Debug\RandomList.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\RandomList\RandomList\bin\Debug\RandomList.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\RandomList\RandomList\obj\Debug\RandomList.csprojResolveAssemblyReference.cache

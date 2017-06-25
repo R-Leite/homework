@@ -72,8 +72,15 @@ namespace Factoring
             // ルート
             var sqrtNumber = (int)Math.Sqrt(number);
 
+            // 約数作成
+            var divisor = Enumerable.Range(2, number).Where(x => number % x == 0);
+
+            // 約数の中から素数でないものを削除する
+            var primeDivisor = divisor.Except(divisor.Where(x => Enumerable.Range(2, x-1).Any(y => x % y == 0)));
+
+
             // 素因数を作成
-            var primeDivisor = Enumerable.Range(2, number).Where(x => number % x == 0).Where(x => Enumerable.Range(2, x).Where(y => x % y == 0).Count() <= 1);
+//            var primeDivisor = Enumerable.Range(2, number).Where(x => number % x == 0).Where(x => Enumerable.Range(2, x - 2).Any(y => x % y == 0));
 
             // 指数回分リストに格納
             var primeFactors = primeDivisor.SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrtNumber).Where(y => number % Math.Pow(x, y) == 0).Last()));
