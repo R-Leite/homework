@@ -8,14 +8,16 @@ namespace RandomList
     {
         static void Main(string[] args)
         {
-            //
+            // 1行
+            PrintAnswer(Linq(), "1行");
+
+            // yield
             PrintAnswer(Yield(), "yield");
 
-            //
-            var random = new Random();
+            // 再帰
             PrintAnswer(Recursive(), "再帰");
 
-            //
+            // 通常
             PrintAnswer(Normal(), "通常");
 
             while (true) { }
@@ -29,6 +31,13 @@ namespace RandomList
             Console.WriteLine();
         }
 
+        // 1行版
+        static IEnumerable<int> Linq()
+        {
+            var random = new Random();
+            return Enumerable.r().Next(10), new Random(3).Next(10)).Select(x => x);
+        }
+
         // yield
         static IEnumerable<int> Yield()
         {
@@ -38,7 +47,7 @@ namespace RandomList
         static IEnumerable<int> YieldLoop()
         {
             var random = new Random();
-
+            　
             while (true)
             {
                 yield return random.Next(10);
@@ -55,7 +64,7 @@ namespace RandomList
         static IEnumerable<int> RecursiveLoop(IEnumerable<int> rlist, Random random)
         {
             var value = random.Next(10);
-            if (value == 9) { Console.Write(Environment.NewLine); return rlist; }
+            if (value == 9) { return rlist; }
 
             return RecursiveLoop(rlist.Concat(Enumerable.Repeat(value, 1)), random);
         }
@@ -69,7 +78,7 @@ namespace RandomList
             while(true)
             {
                 var value = random.Next(10);
-                if (value == 9) { Console.Write(Environment.NewLine); break; }
+                if (value == 9) { break; }
                 list.Add(value);
             }
 
