@@ -29,7 +29,7 @@ namespace RandomList
         static void PrintAnswer(IEnumerable<int> list, string str)
         {
             Console.WriteLine(str);
-            if (!list.Any()) { Console.WriteLine("リストなし"); }
+            if (list.Count() < 1) { Console.WriteLine("最初に9が取得されました。"); }
             else { Console.WriteLine(list.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b)); }
             Console.WriteLine();
         }
@@ -38,7 +38,7 @@ namespace RandomList
         static IEnumerable<int> Linq()
         {
             var random = new Random();
-            return Enumerable.Repeat(0, int.MaxValue).Select(x => x + random.Next(Range)).TakeWhile(x=>x!=EndValue);
+            return Enumerable.Repeat(0, int.MaxValue).Select(x => x + random.Next(Range)).TakeWhile(x => x != EndValue);
         }
 
         // yield
