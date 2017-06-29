@@ -6,6 +6,9 @@ namespace RandomList
 {
     class Program
     {
+        const int Range = 10;
+        const int EndValue = 9;
+
         static void Main(string[] args)
         {
             // 1行
@@ -26,7 +29,7 @@ namespace RandomList
         static void PrintAnswer(IEnumerable<int> list, string str)
         {
             Console.WriteLine(str);
-            if (list.Count() < 1) { Console.WriteLine("リストなし"); }
+            if (!list.Any()) { Console.WriteLine("リストなし"); }
             else { Console.WriteLine(list.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b)); }
             Console.WriteLine();
         }
@@ -35,13 +38,13 @@ namespace RandomList
         static IEnumerable<int> Linq()
         {
             var random = new Random();
-            return Enumerable.r().Next(10), new Random(3).Next(10)).Select(x => x);
+            return Enumerable.Repeat(0, int.MaxValue).Select(x => x + random.Next(Range)).TakeWhile(x=>x!=EndValue);
         }
 
         // yield
         static IEnumerable<int> Yield()
         {
-            return YieldLoop().TakeWhile(x => x != 9);
+            return YieldLoop().TakeWhile(x => x != EndValue);
         }
 
         static IEnumerable<int> YieldLoop()
@@ -50,7 +53,7 @@ namespace RandomList
             　
             while (true)
             {
-                yield return random.Next(10);
+                yield return random.Next(Range);
             }
         }
 
@@ -63,10 +66,8 @@ namespace RandomList
 
         static IEnumerable<int> RecursiveLoop(IEnumerable<int> rlist, Random random)
         {
-            var value = random.Next(10);
-            if (value == 9) { return rlist; }
-
-            return RecursiveLoop(rlist.Concat(Enumerable.Repeat(value, 1)), random);
+            var value = random.Next(Range);
+            return (value == EndValue) ? rlist : RecursiveLoop(rlist.Concat(Enumerable.Repeat(value, 1)), random);
         }
 
         // immutableじゃない通常
@@ -77,8 +78,8 @@ namespace RandomList
 
             while(true)
             {
-                var value = random.Next(10);
-                if (value == 9) { break; }
+                var value = random.Next(Range);
+                if (value == EndValue) { break; }
                 list.Add(value);
             }
 
