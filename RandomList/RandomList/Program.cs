@@ -37,8 +37,7 @@ namespace RandomList
         // 1行版
         static IEnumerable<int> Linq()
         {
-            var random = new Random();
-            return Enumerable.Repeat(0, int.MaxValue).Select(x => x + random.Next(Range)).TakeWhile(x => x != EndValue);
+            return Enumerable.Repeat(new Random(), int.MaxValue).Select(x => x.Next(Range)).TakeWhile(x => x != EndValue);
         }
 
         // yield
