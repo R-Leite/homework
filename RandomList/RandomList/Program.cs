@@ -28,10 +28,18 @@ namespace RandomList
 
         static void PrintAnswer(IEnumerable<int> list, string str)
         {
-            Console.WriteLine(str);
-            if (list.Count() < 1) { Console.WriteLine("最初に9が取得されました。"); }
-            else { Console.WriteLine(list.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b)); }
-            Console.WriteLine();
+            try
+            {
+                Console.WriteLine(str);
+                if (list.Count() < 1) { Console.WriteLine("最初に9が取得されました。"); }
+                else { Console.WriteLine(list.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b)); }
+                Console.WriteLine();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(list.Count());
+            }
         }
 
         // 1行版
