@@ -4,3 +4,9 @@ C:\Users\aoki-hid\Desktop\AlphabetCount\AlphabetCount\bin\Debug\AlphabetCount.pd
 C:\Users\aoki-hid\Desktop\AlphabetCount\AlphabetCount\obj\Debug\AlphabetCount.csprojResolveAssemblyReference.cache
 C:\Users\aoki-hid\Desktop\AlphabetCount\AlphabetCount\obj\Debug\AlphabetCount.exe
 C:\Users\aoki-hid\Desktop\AlphabetCount\AlphabetCount\obj\Debug\AlphabetCount.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AlphabetCount\AlphabetCount\bin\Debug\AlphabetCount.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AlphabetCount\AlphabetCount\obj\Debug\AlphabetCount.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AlphabetCount\AlphabetCount\obj\Debug\AlphabetCount.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AlphabetCount\AlphabetCount\bin\Debug\AlphabetCount.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AlphabetCount\AlphabetCount\bin\Debug\AlphabetCount.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AlphabetCount\AlphabetCount\obj\Debug\AlphabetCount.csprojResolveAssemblyReference.cache
