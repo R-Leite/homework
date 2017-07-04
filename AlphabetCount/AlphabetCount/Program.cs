@@ -23,10 +23,18 @@ namespace AlphabetCount
         // LINQ
         static void CountLinq(string str)
         {
-            // 文章から空白を削除
-            IEnumerable<char> s1 = Regex.Replace(str, @"\s", "");
+            var s1 = str.Where(x => x != ' ').GroupBy(x => x);
+//            var s1 = str.Where(x => x != ' ').Distinct().ToDictionary(x => x, x => str.Count(y => y == x)).OrderBy(x=>x.Key);
             Console.WriteLine("LINQ");
-            Console.WriteLine(s1.OrderBy(x => x).Distinct().Select(x => x.ToString() + ":" + s1.Count(y => y == x)).Aggregate((a, b) => a + ", " + b));
+            //            Console.WriteLine(s1.Aggregate((a, b) => a + ", " + b));
+            foreach (var i in s1)
+            {
+                Console.WriteLine(i);
+                foreach(var j in i)
+                {
+                    Console.WriteLine(j);
+                }
+            }
         }
 
         // Normal
