@@ -12,24 +12,29 @@ namespace AlphabetCount
             string Pangram = "the quick brown fox jumps over the lazy dog";
 
             // Linq
-            CountLinq(Pangram);
+            PrintAnswer(CountLinq(Pangram), "LINQ");
 
             // Normal
-            CountNormal(Pangram);
+            PrintAnswer(CountNormal(Pangram), "Normal");
 
             while (true) { }
         }
 
-        // LINQ
-        static void CountLinq(string str)
+        // 表示
+        static void PrintAnswer(Dictionary<char, int> dict, string str)
         {
-            var s1 = str.Where(x => x != ' ').GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
-            Console.WriteLine("LINQ");
-            Console.WriteLine(s1.OrderBy(x => x.Key).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+            Console.WriteLine(str);
+            Console.WriteLine(dict.OrderBy(x => x.Key).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b) + Environment.NewLine);
+        }
+
+        // LINQ
+        static Dictionary<char, int> CountLinq(string str)
+        {
+            return str.Where(x => x != ' ').GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
         }
 
         // Normal
-        static void CountNormal(string str)
+        static Dictionary<char, int> CountNormal(string str)
         {
             var dic = new Dictionary<char, int>();
 
@@ -39,8 +44,7 @@ namespace AlphabetCount
                 else { dic.Add(i, 1); }
             }
 
-            Console.WriteLine("Normal");
-            Console.WriteLine(dic.OrderBy(x => x.Key).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+            return dic;
         }
     }
 }
