@@ -23,18 +23,9 @@ namespace AlphabetCount
         // LINQ
         static void CountLinq(string str)
         {
-            var s1 = str.Where(x => x != ' ').GroupBy(x => x);
-//            var s1 = str.Where(x => x != ' ').Distinct().ToDictionary(x => x, x => str.Count(y => y == x)).OrderBy(x=>x.Key);
+            var s1 = str.Where(x => x != ' ').GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
             Console.WriteLine("LINQ");
-            //            Console.WriteLine(s1.Aggregate((a, b) => a + ", " + b));
-            foreach (var i in s1)
-            {
-                Console.WriteLine(i);
-                foreach(var j in i)
-                {
-                    Console.WriteLine(j);
-                }
-            }
+            Console.WriteLine(s1.OrderBy(x => x.Key).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
         }
 
         // Normal
