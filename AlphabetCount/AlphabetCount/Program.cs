@@ -24,13 +24,13 @@ namespace AlphabetCount
         static void PrintAnswer(Dictionary<char, int> dict, string str)
         {
             Console.WriteLine(str);
-            Console.WriteLine(dict.OrderBy(x => x.Key).Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b) + Environment.NewLine);
+            Console.WriteLine(dict.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b) + Environment.NewLine);
         }
 
         // LINQ
         static Dictionary<char, int> CountLinq(string str)
         {
-            return str.Where(x => x != ' ').GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+            return str.Where(x => x != ' ').OrderBy(x => x).GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
         }
 
         // Normal
