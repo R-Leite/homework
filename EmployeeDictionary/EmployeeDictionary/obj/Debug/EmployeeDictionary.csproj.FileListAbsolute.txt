@@ -1,0 +1,6 @@
+C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe.config
+C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe
+C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.pdb
+C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.csprojResolveAssemblyReference.cache
+C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.exe
+C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.pdb
