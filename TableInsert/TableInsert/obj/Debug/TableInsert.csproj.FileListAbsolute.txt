@@ -1,0 +1,6 @@
+C:\Users\aoki-hid\Desktop\TableInsert\TableInsert\bin\Debug\TableInsert.exe.config
+C:\Users\aoki-hid\Desktop\TableInsert\TableInsert\bin\Debug\TableInsert.exe
+C:\Users\aoki-hid\Desktop\TableInsert\TableInsert\bin\Debug\TableInsert.pdb
+C:\Users\aoki-hid\Desktop\TableInsert\TableInsert\obj\Debug\TableInsert.csprojResolveAssemblyReference.cache
+C:\Users\aoki-hid\Desktop\TableInsert\TableInsert\obj\Debug\TableInsert.exe
+C:\Users\aoki-hid\Desktop\TableInsert\TableInsert\obj\Debug\TableInsert.pdb

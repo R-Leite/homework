@@ -4,3 +4,9 @@ C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\bin\Debug\Employ
 C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.csprojResolveAssemblyReference.cache
 C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.exe
 C:\Users\aoki-hid\Desktop\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.csprojResolveAssemblyReference.cache
