@@ -10,11 +10,11 @@ namespace EmployeeDictionary
         {
             var employeeData = new List<string>() { "19336", "青木秀樹", "19337", "岩本康宏", "69210", "メーカインウー", "69281", "宇賀勇太" };
 
-            Console.WriteLine(employeeData.Aggregate((a, b) => a + ", " + b));
+            PrintAnswer(OneLiner(employeeData));
 
-            PrintAnswer(CreateEmployeeDictionary(employeeData));
+            PrintAnswer(UseZip(employeeData));
 
-            PrintAnswer(Linq(employeeData));
+            PrintAnswer(UseExtensions(employeeData));
 
             while (true) { }
         }
@@ -24,17 +24,38 @@ namespace EmployeeDictionary
             Console.WriteLine(dictionary.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
         }
 
-        static Dictionary<string, string> CreateEmployeeDictionary(List<string> employeeData)
+
+        // ワンライナー
+        static Dictionary<string, string> OneLiner(List<string> employeeData)
         {
             return employeeData.Select((val, idx) => new { val, idx }).GroupBy(x => (int)(x.idx / 2), x => x.val).ToDictionary(x => x.FirstOrDefault(), x => x.LastOrDefault());
         }
 
-        static Dictionary<string, string> Linq(List<string> employeeData)
+        // 奇数リスト、偶数リストに分けてZIP
+        static Dictionary<string, string> UseZip(List<string> employeeData)
         {
             var k = employeeData.Where((val, idx) => (idx % 2 == 0));
             var v = employeeData.Where((val, idx) => (idx % 2 == 1));
 
             return k.Zip(v, (key, val) => new { key, val }).ToDictionary(x => x.key, x => x.val);
+        }
+
+        // 指定個数ずつ取得する拡張メソッド使用
+        static Dictionary<string, string> UseExtensions(List<string> employeeData)
+        {
+            return employeeData.Chunks(2).ToDictionary(x => x.FirstOrDefault(), x => x.LastOrDefault());
+        }
+    }
+
+    public static class Extensions
+    {
+        public static IEnumerable<IEnumerable<T>> Chunks<T>(this IEnumerable<T> list, int size)
+        {
+            while(list.Any())
+            {
+                yield return list.Take(size);
+                list = list.Skip(size);
+            }
         }
     }
 }
