@@ -10,3 +10,9 @@ D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\obj\
 D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe
 D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.pdb
 D:\90_Work\2_SPE\3_勉強会\6_宿題\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.csprojResolveAssemblyReference.cache
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\EmployeeDictionary\EmployeeDictionary\obj\Debug\EmployeeDictionary.csprojResolveAssemblyReference.cache
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\EmployeeDictionary\EmployeeDictionary\bin\Debug\EmployeeDictionary.pdb
