@@ -1,0 +1,7 @@
+C:\Users\aoki-hid\Desktop\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.csprojResolveAssemblyReference.cache
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.pdb
