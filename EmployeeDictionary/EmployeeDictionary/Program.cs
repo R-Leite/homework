@@ -10,6 +10,8 @@ namespace EmployeeDictionary
         {
             var employeeData = new List<string>() { "19336", "青木秀樹", "19337", "岩本康宏", "69210", "メーカインウー", "69281", "宇賀勇太" };
 
+            PrintAnswer(ZipOneLiner(employeeData));
+
             PrintAnswer(OneLiner(employeeData));
 
             PrintAnswer(UseZip(employeeData));
@@ -24,6 +26,12 @@ namespace EmployeeDictionary
             Console.WriteLine(dictionary.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
         }
 
+
+        // ZIPワンライナー
+        static Dictionary<string, string> ZipOneLiner(List<string> employeeData)
+        {
+            return employeeData.Zip(employeeData.Skip(1), (key, val) => new { key, val }).Where((x, idx) => idx % 2 == 0).ToDictionary(x => x.key, x => x.val);
+        }
 
         // ワンライナー
         static Dictionary<string, string> OneLiner(List<string> employeeData)

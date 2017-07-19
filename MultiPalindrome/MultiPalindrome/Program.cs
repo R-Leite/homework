@@ -10,7 +10,14 @@ namespace MultiPalindrome
     {
         static void Main(string[] args)
         {
+            var sw = new System.Diagnostics.Stopwatch();
+
+            sw.Start();
             GetMax(2);
+            sw.Stop();
+
+            Console.WriteLine(sw.Elapsed);
+
 
             while (true) { }
         }
@@ -22,11 +29,7 @@ namespace MultiPalindrome
             {
 
             }
-            var aa = "abcde";
-            Console.WriteLine(aa);
-            string bb = aa.Reverse().ToString();
-            Console.WriteLine(bb);
-            var list = Enumerable.Range(10, 90).SelectMany(x => Enumerable.Range(10, 90).Select(y => x * y)).Where(x=>x.ToString()==x.ToString().Reverse().ToString());
+            var list = Enumerable.Range(10, 90).SelectMany(x => Enumerable.Range(10, 90).Select(y => x * y)).Where(x => x.ToString() == String.Join("", x.ToString().Reverse())).Max();
 
             foreach(var i in list)
             {

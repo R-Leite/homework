@@ -5,3 +5,9 @@ G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiP
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.csprojResolveAssemblyReference.cache
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.exe
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_宿題\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\MultiPalindrome\MultiPalindrome\bin\Debug\MultiPalindrome.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\MultiPalindrome\MultiPalindrome\obj\Debug\MultiPalindrome.csprojResolveAssemblyReference.cache
