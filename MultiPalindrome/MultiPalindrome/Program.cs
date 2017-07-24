@@ -10,32 +10,47 @@ namespace MultiPalindrome
     {
         static void Main(string[] args)
         {
-            var sw = new System.Diagnostics.Stopwatch();
+            System.Diagnostics.Stopwatch sw;
+            var digits = new List<int>() { 2, 3 };
 
-            sw.Start();
-            GetMax(2);
-            sw.Stop();
+            foreach (var digit in digits)
+            {
+                sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+                Console.WriteLine(GetMax(digit));
+                sw.Stop();
+                Console.WriteLine(sw.Elapsed);
+            }
 
-            Console.WriteLine(sw.Elapsed);
-
+            foreach(var digit in digits)
+            { 
+                sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+                Console.WriteLine(GetOrderByDescendingFirst(digit));
+                sw.Stop();
+                Console.WriteLine(sw.Elapsed);
+            }
 
             while (true) { }
         }
 
+        static void hoge(object aaa)
+        {
+            Console.WriteLine(aaa);
+        }
+
+        static int GetOrderByDescendingFirst(int digit)
+        {
+            var numList = (digit == 2) ? Enumerable.Range(10, 90) : Enumerable.Range(100, 900);
+
+            return numList.SelectMany(x => numList.Select(y => x * y)).OrderByDescending(x => x).Where(x => x.ToString() == x.ToString().Reverse().Aggregate("", (a, b) => a + b)).FirstOrDefault();
+        }
+
         static int GetMax(int digit)
         {
-            var maxnum = (digit == 2) ? 99 : 999;
-            if(digit==2)
-            {
+            var numList = (digit == 2) ? Enumerable.Range(10, 90) : Enumerable.Range(100, 900);
 
-            }
-            var list = Enumerable.Range(10, 90).SelectMany(x => Enumerable.Range(10, 90).Select(y => x * y)).Where(x => x.ToString() == String.Join("", x.ToString().Reverse())).Max();
-
-            foreach(var i in list)
-            {
-                Console.WriteLine(i);
-            }
-            return 1;
+            return numList.SelectMany(x => numList.Select(y => x * y)).Where(x => x.ToString() == x.ToString().Reverse().Aggregate("", (a, b) => a + b)).Max();
         }
     }
 }

@@ -1,0 +1,6 @@
+C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\bin\Debug\BeDivisible.exe.config
+C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\bin\Debug\BeDivisible.exe
+C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\bin\Debug\BeDivisible.pdb
+C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\obj\Debug\BeDivisible.csprojResolveAssemblyReference.cache
+C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\obj\Debug\BeDivisible.exe
+C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\obj\Debug\BeDivisible.pdb
