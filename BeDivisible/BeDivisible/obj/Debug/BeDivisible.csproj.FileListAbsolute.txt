@@ -4,3 +4,9 @@ C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\bin\Debug\BeDivisible.pdb
 C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\obj\Debug\BeDivisible.csprojResolveAssemblyReference.cache
 C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\obj\Debug\BeDivisible.exe
 C:\Users\aoki-hid\Desktop\BeDivisible\BeDivisible\obj\Debug\BeDivisible.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\BeDivisible\BeDivisible\bin\Debug\BeDivisible.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\BeDivisible\BeDivisible\obj\Debug\BeDivisible.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\BeDivisible\BeDivisible\obj\Debug\BeDivisible.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\BeDivisible\BeDivisible\bin\Debug\BeDivisible.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\BeDivisible\BeDivisible\bin\Debug\BeDivisible.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\BeDivisible\BeDivisible\obj\Debug\BeDivisible.csprojResolveAssemblyReference.cache

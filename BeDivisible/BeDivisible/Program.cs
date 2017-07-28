@@ -12,36 +12,33 @@ namespace BeDivisible
 
             for (var i = 10; i <= 20; i++)
             {
-                Console.WriteLine("n=" + i);
                 sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
-                Console.WriteLine("答え:" + GetMin(i));
+                var answer = LeastCommonMultiple(i).ToString().PadLeft(10, ' ');
                 sw.Stop();
-                Console.WriteLine("経過時間:" + sw.Elapsed + Environment.NewLine);
+                Console.WriteLine("1-" + i + " : 答え = " + answer + " : 処理時間 = " + sw.Elapsed);
             }
 
             for (var i = 10; i <= 20; i++)
             {
-                Console.WriteLine("n=" + i);
                 sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
-                Console.WriteLine("答え:" + GetLeastCommonMultiple(i));
+                var answer = AllDivisible(i).ToString().PadLeft(10, ' ');
                 sw.Stop();
-                Console.WriteLine("経過時間:" + sw.Elapsed + Environment.NewLine);
+                Console.WriteLine("1-" + i + " : 答え = " + answer + " : 処理時間 = " + sw.Elapsed);
             }
-
 
             while (true) { }
         }
 
-        static int GetMin(int n)
+        static int AllDivisible(int n)
         {
-            return Enumerable.Range(1, int.MaxValue).Where(x=>Enumerable.Range(1, n).All(y=>x%y==0)).FirstOrDefault();
+            return Enumerable.Range(1, int.MaxValue).Where(x => Enumerable.Range(1, n).All(y => x % y == 0)).FirstOrDefault();
         }
 
-        static int GetLeastCommonMultiple(int n)
+        static int LeastCommonMultiple(int n)
         {
-            return Enumerable.Range(1, int.MaxValue).Except(Enumerable.Range(1, int.MaxValue).Where(x => Enumerable.Range(1, n).Any(y => x % y != 0))).FirstOrDefault();
+            return Enumerable.Range(1, n).Aggregate((lcm, next) => Enumerable.Range(1, next).Select(x => x * lcm).Where(mul => mul % next == 0).FirstOrDefault());
         }
     }
 }
