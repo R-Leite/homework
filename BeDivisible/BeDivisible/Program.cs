@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BeDivisible
@@ -33,7 +34,7 @@ namespace BeDivisible
 
         static int AllDivisible(int n)
         {
-            return Enumerable.Range(1, int.MaxValue).Where(x => Enumerable.Range(1, n).All(y => x % y == 0)).FirstOrDefault();
+            return Enumerable.Range(1, int.MaxValue).Where(x => x % n == 0).Where(x => Enumerable.Range(1, n).All(y => x % y == 0)).FirstOrDefault();
         }
 
         static int LeastCommonMultiple(int n)
