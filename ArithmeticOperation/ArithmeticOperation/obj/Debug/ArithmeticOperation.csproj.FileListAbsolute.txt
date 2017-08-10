@@ -1,1 +1,7 @@
 C:\Users\aoki-hid\Desktop\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.csprojResolveAssemblyReference.cache
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.pdb
