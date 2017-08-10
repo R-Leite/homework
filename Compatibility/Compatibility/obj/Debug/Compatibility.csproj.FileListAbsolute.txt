@@ -4,3 +4,9 @@ C:\Users\aoki-hid\Desktop\Compatibility\Compatibility\bin\Debug\Compatibility.pd
 C:\Users\aoki-hid\Desktop\Compatibility\Compatibility\obj\Debug\Compatibility.csprojResolveAssemblyReference.cache
 C:\Users\aoki-hid\Desktop\Compatibility\Compatibility\obj\Debug\Compatibility.exe
 C:\Users\aoki-hid\Desktop\Compatibility\Compatibility\obj\Debug\Compatibility.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Compatibility\Compatibility\bin\Debug\Compatibility.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Compatibility\Compatibility\obj\Debug\Compatibility.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Compatibility\Compatibility\obj\Debug\Compatibility.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Compatibility\Compatibility\bin\Debug\Compatibility.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Compatibility\Compatibility\bin\Debug\Compatibility.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\Compatibility\Compatibility\obj\Debug\Compatibility.csprojResolveAssemblyReference.cache
