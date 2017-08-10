@@ -42,7 +42,7 @@ namespace ArithmeticOperation
         // 四則演算の計算結果を返す
         static double Calculate(string operater, double a, double b)
         {
-           return _calcDict[operater](a, b);
+            return _calcDict[operater](a, b);
         }
     }
 }
