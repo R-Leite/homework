@@ -1,0 +1,6 @@
+C:\Users\aoki-hid\Desktop\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe.config
+C:\Users\aoki-hid\Desktop\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
+C:\Users\aoki-hid\Desktop\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
+C:\Users\aoki-hid\Desktop\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache
+C:\Users\aoki-hid\Desktop\AokiQuest\AokiQuest\obj\Debug\AokiQuest.exe
+C:\Users\aoki-hid\Desktop\AokiQuest\AokiQuest\obj\Debug\AokiQuest.pdb
