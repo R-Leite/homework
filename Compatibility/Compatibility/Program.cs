@@ -13,20 +13,27 @@ namespace Compatibility
             var first = "5,1,4,5";
             var second = "1,6,9,6";
 
+            // それぞれの画数をカンマで区切って連結
             var strokeConcat = first.Split(',').Concat(second.Split(',')).Select(x => int.Parse(x));
 
-            Console.WriteLine(Environment.NewLine + "相性:" + int.Parse(FortuneTelling(strokeConcat).Select(x => x.ToString()).Aggregate((a, b) => a + b)) + "%");
+            Console.WriteLine(Environment.NewLine + "相性:" + FortuneTelling(strokeConcat) + "%");
 
-            while (true) { }
+            // 入力があったら終了
+            Console.ReadLine();
         }
 
-        // 相性を計算する関数
-        static IEnumerable<int> FortuneTelling(IEnumerable<int> StrokeCount)
+        // 相性を計算する再帰関数
+        static int FortuneTelling(IEnumerable<int> StrokeCount)
         {
-            //Console.Write(_space += " ");
-            //Console.WriteLine(StrokeCount.Select(x => x.ToString()).Aggregate((a, b) => a + " " + b));
-            if (long.Parse(StrokeCount.Select(x => x.ToString()).Aggregate((a, b) => a + b)) <= 100) { return StrokeCount; }
-            return FortuneTelling(StrokeCount.Zip(StrokeCount.Skip(1), Tuple.Create).Select(x => (x.Item1 + x.Item2) % 10));
+            Console.Write(_space += " ");
+            Console.WriteLine(StrokeCount.Select(x => x.ToString()).Aggregate((a, b) => a + " " + b));
+
+            if (StrokeCount.Count() < 4)
+            {
+                var compatible = StrokeCount.Aggregate((x, y) => x * 10 + y);
+                if (compatible <= 100) { return compatible; }
+            }
+            return FortuneTelling(StrokeCount.Zip(StrokeCount.Skip(1), (first, second) => (first + second) % 10));
         }
     }
 }
