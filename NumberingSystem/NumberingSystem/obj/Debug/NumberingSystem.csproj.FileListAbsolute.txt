@@ -1,18 +1,17 @@
 C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.exe.config
-<<<<<<< HEAD
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.exe.config
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.exe
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.pdb
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.csprojResolveAssemblyReference.cache
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\MainWindow.g.cs
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\App.g.cs
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem_MarkupCompile.cache
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem_MarkupCompile.lref
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\MainWindow.baml
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.g.resources
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.Properties.Resources.resources
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.csproj.GenerateResource.Cache
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.exe
-G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.pdb
-=======
->>>>>>> d5c52a6b0b5a778621fd75d3499ffd2795657b10
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.exe
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.pdb
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.csprojResolveAssemblyReference.cache
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\MainWindow.g.cs
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\App.g.cs
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem_MarkupCompile.cache
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem_MarkupCompile.lref
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\MainWindow.baml
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.g.resources
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.Properties.Resources.resources
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.csproj.GenerateResource.Cache
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.exe
+C:\Users\aoki-hid\Desktop\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\bin\Debug\NumberingSystem.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Debug\NumberingSystem.pdb

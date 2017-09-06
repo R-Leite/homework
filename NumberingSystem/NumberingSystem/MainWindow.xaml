@@ -7,12 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-<<<<<<< HEAD
         <Button x:Name="button" Content="番号取得" HorizontalAlignment="Left" Margin="221,102,0,0" VerticalAlignment="Top" Width="75"/>
         <Label x:Name="label" Content="{Binding Label}" HorizontalAlignment="Left" Margin="221,135,0,0" VerticalAlignment="Top" Width="75"/>
-
-=======
-        
->>>>>>> d5c52a6b0b5a778621fd75d3499ffd2795657b10
     </Grid>
 </Window>
