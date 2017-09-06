@@ -20,6 +20,7 @@ namespace NumberingSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+<<<<<<< HEAD
         #region インスタンス変数
         private ViewModel.MainViewModel _bindingSource;
         #endregion
@@ -30,6 +31,11 @@ namespace NumberingSystem
 
             _bindingSource = new ViewModel.MainViewModel();
             this.DataContext = _bindingSource;
+=======
+        public MainWindow()
+        {
+            InitializeComponent();
+>>>>>>> d5c52a6b0b5a778621fd75d3499ffd2795657b10
         }
     }
 }
