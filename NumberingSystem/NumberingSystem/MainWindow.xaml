@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberingSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="170" Width="380">
     <Grid>
-        <Button x:Name="button" Content="番号取得" Command="{Binding GetNumberCommand}" HorizontalAlignment="Left" Margin="221,102,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label" Content="{Binding Label}" HorizontalAlignment="Left" Margin="221,135,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button" Content="採番" Command="{Binding GetNumberCommand}" HorizontalAlignment="Left" Margin="18,73,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="label" Content="採番システム" HorizontalAlignment="Left" Margin="18,20,0,0" VerticalAlignment="Top" FontFamily="Meiryo" FontSize="22" FontWeight="Bold"/>
+        <Label x:Name="label1" Content="番号は" HorizontalAlignment="Left" Margin="108,73,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="159,74,0,0" TextWrapping="Wrap" Text="{Binding Number}" Width="120" IsReadOnly="True" Height="23" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="です。" HorizontalAlignment="Left" Margin="284,74,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

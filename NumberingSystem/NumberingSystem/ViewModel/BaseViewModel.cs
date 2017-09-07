@@ -14,6 +14,12 @@ namespace NumberingSystem.ViewModel
         /// プロパティに紐づいたエラーメッセージ格納用の辞書 
         /// </summary> 
         protected Dictionary<string, string> _errors = new Dictionary<string, string>();
+
+        // データ保存クラスのインスタンス化
+        protected SaveData _dataStore;
+
+        // 設定を保存するXMLファイル名
+        protected string _xmlFileName = @"NumberingSystem_SaveData.xml";
         #endregion
 
         #region プロパティ
@@ -72,6 +78,47 @@ namespace NumberingSystem.ViewModel
                 this._errors.Remove(propertyName);
             }
             this.RaisePropertyChanged(propertyName);
+        }
+        #endregion
+
+        #region デシリアライズ
+        /// <summary>
+        /// アプリケーションの設定をXMLファイルから取り込む
+        /// </summary>
+        protected bool LoadData()
+        {
+            // ファイルが存在しているかどうか確認し、なければデフォルト値で作成する
+            if (!System.IO.File.Exists(_xmlFileName))
+            {
+                _dataStore = new SaveData();
+                return false;
+            }
+
+            // XmlSerializerオブジェクトの作成
+            System.Xml.Serialization.XmlSerializer serializer =
+                new System.Xml.Serialization.XmlSerializer(typeof(SaveData));
+            System.IO.StreamReader sr = new System.IO.StreamReader(
+                _xmlFileName, new System.Text.UTF8Encoding(false));
+            _dataStore = (SaveData)serializer.Deserialize(sr);
+            sr.Close();
+
+            return true;
+        }
+        #endregion
+
+        #region シリアライズ
+        /// <summary>
+        /// アプリケーションの設定をXMLファイルに保存する
+        /// </summary>
+        protected void StoreData()
+        {
+            //XmlSerializerオブジェクトを作成
+            System.Xml.Serialization.XmlSerializer serializer =
+                new System.Xml.Serialization.XmlSerializer(typeof(SaveData));
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(
+                _xmlFileName, false, new System.Text.UTF8Encoding(false));
+            serializer.Serialize(sw, _dataStore);
+            sw.Close();
         }
         #endregion
     }

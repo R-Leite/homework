@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Debug\
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\
 NumberingSystem
 none
 false
-DEBUG;TRACE
+TRACE
 D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\App.xaml
 11151548125
 
-13-1643497801
+9-1611554864
 14-1001767708
 MainWindow.xaml;
 
-True
+False
 

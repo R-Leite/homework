@@ -1,0 +1,13 @@
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\bin\Release\NumberingSystem.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\bin\Release\NumberingSystem.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\bin\Release\NumberingSystem.pdb
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\MainWindow.g.cs
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\App.g.cs
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem_MarkupCompile.cache
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem_MarkupCompile.lref
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\MainWindow.baml
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem.g.resources
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem.Properties.Resources.resources
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem.csproj.GenerateResource.Cache
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem.exe
+D:\90_Work\2_SPE\3_勉強会\6_宿題\NumberingSystem\NumberingSystem\obj\Release\NumberingSystem.pdb
