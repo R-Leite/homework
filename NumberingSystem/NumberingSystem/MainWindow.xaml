@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="button" Content="番号取得" HorizontalAlignment="Left" Margin="221,102,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button" Content="番号取得" Command="{Binding GetNumberCommand}" HorizontalAlignment="Left" Margin="221,102,0,0" VerticalAlignment="Top" Width="75"/>
         <Label x:Name="label" Content="{Binding Label}" HorizontalAlignment="Left" Margin="221,135,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
