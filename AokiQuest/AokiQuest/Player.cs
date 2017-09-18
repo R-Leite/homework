@@ -11,6 +11,7 @@ namespace AokiQuest
         private int _x;
         private int _y;
         private string _icon = "^";
+        private Dictionary<string, int> move;
 
         public Player(int x, int y)
         {
