@@ -10,3 +10,9 @@ G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AokiQuest\AokiQuest\ob
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache
