@@ -10,16 +10,27 @@ namespace AokiQuest
     {
         static void Main(string[] args)
         {
-            //var map = new Map();
-            //map.Render();
             // 全てのプロセスを列挙する
-            foreach (var p in System.Diagnostics.Process.GetProcessesByName("MftHmi"))
+            //foreach (var p in System.Diagnostics.Process.GetProcessesByName("MftHmi"))
+            //{
+            //    Console.WriteLine(p.Id + ":" + p.ProcessName);
+            //    var app = p;
+            //    Console.WriteLine(app.Handle);
+            //}
+            //Console.ReadLine();
+
+            var player = new Player(0, 0);
+
+            while(true)
             {
-                Console.WriteLine(p.Id + ":" + p.ProcessName);
-                var app = p;
-                Console.WriteLine(app.Handle);
+                Console.Write("入力：");
+                var input = Console.ReadLine();
+
+                player.Walk(input);
+
+                Console.WriteLine(player._point.X);
+
             }
-            Console.ReadLine();
         }
     }
 }

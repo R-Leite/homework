@@ -9,35 +9,23 @@ namespace AokiQuest
 {
     public class Player
     {
-        Point point;
-        private int _x;
-        private int _y;
-        private string _icon = "^";
-        private Dictionary<string, Point> moveMap = new Dictionary<string, Point>
+        public readonly int hoge;
+        public readonly Point _point;
+        private Dictionary<string, Point> _moveMap = new Dictionary<string, Point>
         {
-            {"7", new Point(-1, 1) }
+            { "7", new Point(-1, 1) }, { "8", new Point(0, 1) }, { "9", new Point(1, 1) },
+            { "4", new Point(-1, 0) }, { "5", new Point(0, 0) }, { "6", new Point(1, 0) },
+            { "1", new Point(-1, -1) }, { "2", new Point(0, -1) }, { "3", new Point(1, -1) }
         };
 
         public Player(int x, int y)
         {
-            _x = x;
-            _y = y;
+            _point = new Point(x, y);
         }
 
-        public void Walk(int direction)
+        public void Walk(string direction)
         {
-        }
-    }
-
-    public class Point
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public Point(int x, int y)
-        {
-            X = x;
-            Y = y;
+            _point.Add(_moveMap[direction]);
         }
     }
 }

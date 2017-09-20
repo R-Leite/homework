@@ -16,3 +16,9 @@ G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\De
 G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
 G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
 G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache
+D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe.config
+D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.exe
+D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.pdb
+D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache
+D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
+D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
