@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AokiQuest
 {
@@ -10,26 +6,22 @@ namespace AokiQuest
     {
         static void Main(string[] args)
         {
-            // 全てのプロセスを列挙する
-            //foreach (var p in System.Diagnostics.Process.GetProcessesByName("MftHmi"))
-            //{
-            //    Console.WriteLine(p.Id + ":" + p.ProcessName);
-            //    var app = p;
-            //    Console.WriteLine(app.Handle);
-            //}
-            //Console.ReadLine();
+            int input;
 
             var player = new Player(0, 0);
 
             while(true)
             {
                 Console.Write("入力：");
-                var input = Console.ReadLine();
-
-                player.Walk(input);
-
-                Console.WriteLine(player._point.X);
-
+                if (int.TryParse(Console.ReadLine(), out input))
+                {
+                    var p = player.Walk(input);
+                    Console.WriteLine("プレイヤー位置:({0}, {1})", p.X, p.Y);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
