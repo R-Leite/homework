@@ -22,3 +22,9 @@ D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\Aoki
 D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache
 D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
 D:\90_Work\2_SPE\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
+\\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe.config
+\\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\obj\Debug\AokiQuest.exe
+\\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\obj\Debug\AokiQuest.pdb
+\\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\bin\Debug\AokiQuest.exe
+\\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\bin\Debug\AokiQuest.pdb
+\\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\obj\Debug\AokiQuest.csprojResolveAssemblyReference.cache

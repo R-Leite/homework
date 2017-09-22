@@ -9,8 +9,8 @@ namespace AokiQuest
     public class Point
     {
         #region プロパティ
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
         #endregion
 
         public Point(int x, int y)
@@ -19,10 +19,19 @@ namespace AokiQuest
             Y = y;
         }
 
-        public void Add(Point p)
+        public override string ToString()
         {
-            X += p.X;
-            Y += p.Y;
+            return "(" + X.ToString() + ", " + Y.ToString() + ")";
+        }
+
+        public static Point operator +(Point a, Point b)
+        {
+            return new Point(a.X + b.X, a.Y + b.Y);
+        }
+
+        public static Point operator -(Point a, Point b)
+        {
+            return new Point(a.X - b.X, a.Y - b.Y);
         }
     }
 }

@@ -6,22 +6,16 @@ namespace AokiQuest
     {
         static void Main(string[] args)
         {
-            int input;
-
-            var player = new Player(0, 0);
+            var player = new Player(Player.origin.X, Player.origin.Y);
 
             while(true)
             {
+                int input;
                 Console.Write("入力：");
-                if (int.TryParse(Console.ReadLine(), out input))
-                {
-                    var p = player.Walk(input);
-                    Console.WriteLine("プレイヤー位置:({0}, {1})", p.X, p.Y);
-                }
-                else
-                {
-                    break;
-                }
+                if (!int.TryParse(Console.ReadLine(), out input)) { break; }
+
+                var p = player.Walk((Player.Direction)input);
+                Console.WriteLine("プレイヤー位置:({0}, {1})", p.X, p.Y);
             }
         }
     }

@@ -1,24 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AokiQuest
 {
     public class Player
     {
+        #region 定数
+        public static readonly Point origin = new Point(0, 0);
+        #endregion
+
+        #region Direction
+        public enum Direction
+        {
+            DOWN_LEFT  = 1,
+            DOWN       = 2,
+            DOWN_LIGHT = 3,
+            LEFT       = 4,
+            STAY       = 5,
+            RIGHT      = 6,
+            UP_LEFT    = 7,
+            UP         = 8,
+            UP_RIGHT   = 9
+        }
+        #endregion
+
         #region インスタンス変数
         private Point _point;
 
         private Map _map;
 
-        private Dictionary<int, Point> _moveMap = new Dictionary<int, Point>
+        private Dictionary<Direction, Point> _moveMap = new Dictionary<Direction, Point>
         {
-            { 1, new Point(-1, -1) },
-            { 2, new Point( 0, -1) },
-            { 3, new Point( 1, -1) },
-            { 4, new Point(-1,  0) },
-            { 6, new Point( 1,  0) },
-            { 7, new Point(-1,  1) },
-            { 8, new Point( 0,  1) },
-            { 9, new Point( 1,  1) }
+            { Direction.DOWN_LEFT , new Point(-1, -1) },
+            { Direction.DOWN      , new Point( 0, -1) },
+            { Direction.DOWN_LIGHT, new Point( 1, -1) },
+            { Direction.LEFT      , new Point(-1,  0) },
+            { Direction.STAY      , new Point( 0,  0) },
+            { Direction.RIGHT     , new Point( 1,  0) },
+            { Direction.UP_LEFT   , new Point(-1,  1) },
+            { Direction.UP        , new Point( 0,  1) },
+            { Direction.UP_RIGHT  , new Point( 1,  1) }
         };
         #endregion
 
@@ -31,25 +52,18 @@ namespace AokiQuest
         #endregion
 
         // 1マス、ななめなら√2移動
-        public Point Walk(int direction)
+        public Point Walk(Direction direction)
         {
-            if (_moveMap.ContainsKey(direction))
-            {
-                _point.Add(_moveMap[direction]);
-            }
-
-            CorrectPoint();
+            _point = CorrectPoint(_point + (_moveMap.TryGetValueEx(direction, new Point(0, 0))));
 
             return _point;
         }
 
         // 現在位置がマップ外の場合マップ内に戻す
-        private void CorrectPoint()
+        private Point CorrectPoint(Point pt)
         {
-            if (_point.X < _map.MinPoint.X) { _point.X = _map.MinPoint.X; }
-            if (_point.Y < _map.MinPoint.Y) { _point.Y = _map.MinPoint.Y; }
-            if (_point.X > _map.MaxPoint.X) { _point.X = _map.MaxPoint.X; }
-            if (_point.Y > _map.MaxPoint.Y) { _point.Y = _map.MaxPoint.Y; }
+            return new Point(Math.Max(_map.MinPoint.X, Math.Min(_map.MaxPoint.X, pt.X)),
+                             Math.Max(_map.MinPoint.Y, Math.Min(_map.MaxPoint.Y, pt.Y)));
         }
     }
 }
