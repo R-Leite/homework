@@ -3,3 +3,9 @@
 \\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\bin\Release\AokiQuest.pdb
 \\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\obj\Release\AokiQuest.exe
 \\gws001\3G\ソフト開発\作業データ\作業中\週次ミーティング\宿題の解答\青木\20170922_プレイヤー移動\AokiQuest\AokiQuest\obj\Release\AokiQuest.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Release\AokiQuest.exe.config
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Release\AokiQuest.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Release\AokiQuest.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Release\AokiQuest.exe
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\bin\Release\AokiQuest.pdb
+G:\Users\aoki-hid\1_Work\3_勉強会\6_WeeklyHomework\AokiQuest\AokiQuest\obj\Release\AokiQuest.csprojResolveAssemblyReference.cache
