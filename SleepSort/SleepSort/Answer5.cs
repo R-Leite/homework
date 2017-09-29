@@ -1,39 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SleepSort
 {
     class Answer5
     {
-        /// <summary>
-        /// これはできてない
-        /// </summary>
         #region 定数
-        private const int Unit = 1000;
+        private const int Unit = 100;
         #endregion
 
         public IEnumerable<int> Sort(IEnumerable<int> valueList)
         {
-            var output = new List<int>();
-            var taskList = new List<Task<int>>();
-            foreach (var i in valueList)
+            var output = new SynchronizedCollection<int>();
+
+            var taskList = valueList.Select(x => Task.Run(async () =>
             {
-                var task = SleepAdd(i);
-                taskList.Add(task);
-            }
+                await Task.Delay(x * Unit);
+                output.Add(x);
+            }));
 
-            // resultで値取得しても順番はそのままなので✕
-            return taskList.Select(x=>x.Result);
-        }
+            Task.WaitAll(taskList.ToArray());
 
-        async private Task<int> SleepAdd(int num)
-        {
-            await Task.Delay(num * Unit);
-            Console.WriteLine(num);
-            return num;
+            return output;
         }
     }
 }

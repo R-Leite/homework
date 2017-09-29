@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SleepSort
 {
     /// <summary>
-    /// SleepAddからの返り値を追加していく
-    /// 全てのタスクが終わるまでWaitAllで待機
-    /// （WaitAllはデッドロックを発生させる要因となるのであまり使用しない）
+    /// WhenAllでタスク完了を待機
+    /// out修飾子を使用
     /// </summary>
     class Answer2
     {
@@ -19,6 +16,15 @@ namespace SleepSort
 
         public IEnumerable<int> Sort(IEnumerable<int> valueList)
         {
+            var output = new List<int>();
+            var task = SortTask(valueList, out output);
+            task.Wait();
+
+            return output;
+        }
+
+        public Task SortTask(IEnumerable<int> valueList, out List<int> output)
+        {
             var ansList = new List<int>();
             var taskList = new List<Task>();
             foreach (var i in valueList)
@@ -27,16 +33,16 @@ namespace SleepSort
                 taskList.Add(task);
             }
 
-            // 全タスクが終了するまで待機
-            Task.WaitAll(taskList.ToArray());
+            output = ansList;
 
-            return ansList;
+            // 全タスクが完了した時に完了扱いになるタスク
+            return Task.WhenAll(taskList);
         }
 
         private int SleepAdd(int num)
         {
             Thread.Sleep(num * Unit);
-            Console.WriteLine(num);
+//            Console.WriteLine(num);
             return num;
         }
     }

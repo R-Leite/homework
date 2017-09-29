@@ -1,46 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SleepSort
 {
     /// <summary>
-    /// インスタンス変数を使ったやり方
-    /// SleepAddで直接要素を追加
-    /// 最大秒数待機
+    /// SleepAddからの返り値を追加していく
+    /// 全てのタスクが終わるまでWaitAllで待機
+    /// （WaitAllはデッドロックを発生させる要因となるのであまり使用しない）
     /// </summary>
     class Answer1
     {
-        #region インスタンス変数
-        private List<int> _ansList;
-        #endregion
-
+        #region 定数
         private const int Unit = 1000;
-
-        public Answer1()
-        {
-            _ansList = new List<int>();
-        }
+        #endregion
 
         public IEnumerable<int> Sort(IEnumerable<int> valueList)
         {
+            var output = new List<int>();
+            var taskList = new List<Task>();
             foreach (var i in valueList)
             {
-                Task.Run(() => SleepAdd(i));
+                var task = Task.Run(() => output.Add(SleepAdd(i)));
+                taskList.Add(task);
             }
 
-            Thread.Sleep(valueList.Max() * Unit);
+            // 全タスクが終了するまで待機
+            Task.WaitAll(taskList.ToArray());
 
-            return _ansList;
+            return output;
         }
 
-        private void SleepAdd(int num)
+        private int SleepAdd(int num)
         {
             Thread.Sleep(num * Unit);
-            Console.WriteLine(num);
-            _ansList.Add(num);
+//            Console.WriteLine(num);
+            return num;
         }
     }
 }

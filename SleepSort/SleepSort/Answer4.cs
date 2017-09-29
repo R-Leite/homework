@@ -2,36 +2,36 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace SleepSort
 {
     class Answer4
     {
         /// <summary>
-        /// ラムダ式版
+        /// 複数のtaskを1つのtask化して返す
         /// </summary>
         #region 定数
-        private const int Unit = 1000;
+        private const int Unit = 100;
         #endregion
 
         public IEnumerable<int> Sort(IEnumerable<int> valueList)
         {
+            return SleepAdd(valueList).Result;
+        }
+
+        async private Task<IEnumerable<int>> SleepAdd(IEnumerable<int> valueList)
+        {
             var output = new List<int>();
-            var tasks = new List<Task>();
 
-            foreach (var i in valueList)
+            var taskList = valueList.Select(x => Task.Run(async () =>
             {
-                var task = Task.Run(() =>
-                {
-                    Thread.Sleep(i * Unit);
-                    Console.WriteLine(i);
-                    output.Add(i);
-                });
+                await Task.Delay(x * Unit);
+                output.Add(x);
+            }));
 
-                tasks.Add(task);
-            }
+            await Task.WhenAll(taskList);
 
-            Task.WaitAll(tasks.ToArray());
             return output;
         }
     }

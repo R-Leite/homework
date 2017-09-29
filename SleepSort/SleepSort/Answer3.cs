@@ -1,50 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SleepSort
 {
-    /// <summary>
-    /// WhenAllでタスク完了を待機
-    /// out修飾子を使用
-    /// </summary>
     class Answer3
     {
+        /// <summary>
+        /// ラムダ式版
+        /// </summary>
         #region 定数
-        private const int Unit = 1000;
+        private const int Unit = 100;
         #endregion
 
         public IEnumerable<int> Sort(IEnumerable<int> valueList)
         {
             var output = new List<int>();
-            var task = SortTask(valueList, out output);
-            task.Wait();
+            var tasks = new List<Task>();
 
-            return output;
-        }
-
-        public Task SortTask(IEnumerable<int> valueList, out List<int> output)
-        {
-            var ansList = new List<int>();
-            var taskList = new List<Task>();
-            foreach (var i in valueList)
+            var taskList = valueList.Select(x => Task.Run(() => 
             {
-                var task = Task.Run(() => ansList.Add(SleepAdd(i)));
-                taskList.Add(task);
-            }
+                Thread.Sleep(x * Unit);
+                //Console.WriteLine(x);
+                output.Add(x);
+            }));
 
-            output = ansList;
-
-            // 全タスクが完了した時に完了扱いになるタスク
-            return Task.WhenAll(taskList);
-        }
-
-        private int SleepAdd(int num)
-        {
-            Thread.Sleep(num * Unit);
-            Console.WriteLine(num);
-            return num;
+            Task.WaitAll(taskList.ToArray());
+            return output;
         }
     }
 }
