@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Q1
 {
     class Program
     {
+        const int CUTCOUNT = 40;
+
         static void Main(string[] args)
         {
-            var n = 40;
-            var hoge = Fibonaci(n);
-            Console.WriteLine(hoge);
-
+            var lines = Fibonacci(CUTCOUNT);
+            Console.WriteLine("縦の長さ：" + lines.Item1);
+            Console.WriteLine("横の長さ：" + lines.Item2);
             Console.ReadKey();
         }
 
-        static Tuple<long, long> Fibonaci(int n)
+        static Tuple<long, long> Fibonacci(int n)
         {
-            var fib = Enumerable.Repeat(new[] { 2L, 1L }, n).Select(x => x[1] = (x[0] = x[0] + x[1]) - x[1]).Reverse();
-            Console.WriteLine(fib.Select(x => x.ToString()).Aggregate((a, b) => a + "," + b));
-            return new Tuple<long, long>(fib.FirstOrDefault(), fib.Skip(1).FirstOrDefault());
+            // フィボナッチ数列の作成
+            var fibonacci = Enumerable.Repeat(new[] { 2L, 1L }, n + 1).Select(x => x[1] = (x[0] = x[0] + x[1]) - x[1]).Reverse().ToList();
+            Console.WriteLine(fibonacci.Select(x => x.ToString()).Aggregate((f, s) => f + "," + s));
+            return new Tuple<long, long>(fibonacci.Skip(1).FirstOrDefault(), fibonacci.FirstOrDefault());
         }
     }
 }
