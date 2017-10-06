@@ -9,17 +9,18 @@ namespace Q1
 
         static void Main(string[] args)
         {
-            var lines = Fibonacci(CUTCOUNT);
+            var lines = GetVerticalHorizontalLines(CUTCOUNT);
+            Console.WriteLine("カット回数：" + CUTCOUNT);
             Console.WriteLine("縦の長さ：" + lines.Item1);
             Console.WriteLine("横の長さ：" + lines.Item2);
             Console.ReadKey();
         }
 
-        static Tuple<long, long> Fibonacci(int n)
+        // 指定カット回数時の縦横の長さを返す
+        static Tuple<long, long> GetVerticalHorizontalLines(int cutCount)
         {
-            // フィボナッチ数列の作成
-            var fibonacci = Enumerable.Repeat(new[] { 2L, 1L }, n + 1).Select(x => x[1] = (x[0] = x[0] + x[1]) - x[1]).Reverse().ToList();
-            Console.WriteLine(fibonacci.Select(x => x.ToString()).Aggregate((f, s) => f + "," + s));
+            // 縦横の長さはフィボナッチ数列的に増えていくので2始まりのフィボナッチ数列を作成
+            var fibonacci = Enumerable.Repeat(new[] { 2L, 1L }, cutCount + 1).Select(x => x[1] = (x[0] = x[0] + x[1]) - x[1]).Reverse().ToList();
             return new Tuple<long, long>(fibonacci.Skip(1).FirstOrDefault(), fibonacci.FirstOrDefault());
         }
     }
