@@ -8,11 +8,21 @@ namespace Q2
 {
     class Program
     {
+        private const int MaxNumber = 10;
+
         static void Main(string[] args)
         {
-            var hoge = Enumerable.Range(1, 10).SelectMany(x => Enumerable.Range(1, x)).Select(x=>x.ToString()).Aggregate((a, b) => a + "," + b);
-            Console.WriteLine(hoge);
+            foreach(var i in GetXyCombination(MaxNumber))
+            {
+                Console.WriteLine($"x={i.Item1},y={i.Item2}");
+            }
+            Console.WriteLine("終了するには何かキーを押してください...");
             Console.ReadKey();
+        }
+
+        static IEnumerable<Tuple<int, int>> GetXyCombination(int maxNumer)
+        {
+            return Enumerable.Range(1, maxNumer).SelectMany(_ => Enumerable.Range(1, _), (x, y) => new Tuple<int, int>(x, y));
         }
     }
 }

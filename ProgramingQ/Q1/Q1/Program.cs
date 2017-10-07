@@ -10,9 +10,9 @@ namespace Q1
         static void Main(string[] args)
         {
             var lines = GetVerticalHorizontalLines(CUTCOUNT);
-            Console.WriteLine("カット回数：" + CUTCOUNT);
-            Console.WriteLine("縦の長さ：" + lines.Item1);
-            Console.WriteLine("横の長さ：" + lines.Item2);
+            Console.WriteLine($"カット回数：{CUTCOUNT}");
+            Console.WriteLine($"縦の長さ：{lines.Item1}");
+            Console.WriteLine($"横の長さ：{lines.Item2}");
             Console.ReadKey();
         }
 
