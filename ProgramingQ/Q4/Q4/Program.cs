@@ -70,7 +70,7 @@ namespace Q4
                     }
                 }
             }
-            permu(list, 3);
+            permu(list, ans, 3);
             Console.WriteLine("終了するには何かキーを押してください。");
             Console.ReadKey();
         }
@@ -87,14 +87,15 @@ namespace Q4
 
         }
 
-        static IEnumerable<int> permu(IEnumerable<int> alr, int n)
+        static IEnumerable<int> permu(IEnumerable<int> alr, IEnumerable<int> ans, int n)
         {
-            if(alr.Count() == 0) { return alr; }
+            if(alr.Count() == 1) { return alr; }
             foreach(var i in alr)
             {
+                ans.Concat(Enumerable.Repeat(i, 1));
                 if (alr.Count() == 1) { Console.WriteLine(i); }
                 else { Console.Write(i); }
-                permu(alr.Except(Enumerable.Repeat(i, 1)), n-1);
+                permu(alr.Except(Enumerable.Repeat(i, 1)), ans, n-1);
             }
             return alr;
         }
