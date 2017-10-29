@@ -14,15 +14,15 @@ namespace Q2
         {
             foreach(var i in GetXyCombination(MaxNumber))
             {
-                Console.WriteLine($"x={i.Item1},y={i.Item2}");
+                Console.WriteLine($"{i}");
             }
             Console.WriteLine("終了するには何かキーを押してください...");
             Console.ReadKey();
         }
 
-        static IEnumerable<Tuple<int, int>> GetXyCombination(int maxNumer)
+        static IEnumerable<object> GetXyCombination(int maxNumer)
         {
-            return Enumerable.Range(1, maxNumer).SelectMany(_ => Enumerable.Range(1, _), (x, y) => new Tuple<int, int>(x, y));
+            return Enumerable.Range(1, maxNumer).SelectMany(_ => Enumerable.Range(1, _), (x, y) => new { x, y });
         }
     }
 }
