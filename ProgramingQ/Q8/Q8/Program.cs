@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Q8
 {
@@ -10,39 +9,65 @@ namespace Q8
     {
         static void Main(string[] args)
         {
-            var input = "CODE O!CDE? A?JM!.";
+            try
+            {
+//                var fileName = @"Q8_small_in.txt";
+                var fileName = @"Q8_large_in.txt";
+                var file = File.ReadLines(fileName);
 
+                var testCaseNumber = int.Parse(file.FirstOrDefault());
+                foreach (var ans in file.Skip(1).Take(testCaseNumber).Select(x => ConvertNumeration(x)).Select((str, idx)=> new { str, idx }))
+                {
+                    Console.WriteLine($"Case #{(ans.idx+1).ToString().PadLeft(3, '0')}: {ans.str}");
+                }
+            }
+            catch(FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("終了するには何かキーを押してください...");
+                Console.ReadKey();
+            }
+        }
+
+        static string ConvertNumeration(string input)
+        {
             var testCase = input.Split(' ');
 
             // 記数法のリスト作成
-            var list = testCase.Skip(1).First();
-            var aflist = testCase.Skip(2).First();
-
-            // 入力文字を文字から数字に変換（Foo ⇒ 100）
-            var hoge = testCase.First().Select(x => list.IndexOf(x));
+            var beforeList = testCase.Skip(1).FirstOrDefault();
+            var afterList = testCase.Skip(2).FirstOrDefault();
 
             // 入力文字を10進数に変換
-            var fuga = hoge.Aggregate((a, b) => a * list.Count() + b);
-            Console.WriteLine(fuga);
+            var decimalNumber = testCase.First().Select(x => beforeList.IndexOf(x)).Aggregate((a, b) => a * beforeList.Count() + b);
 
-            var foo = ConvertTo(fuga, aflist.Count(), new List<int>());
+            // 10進数から与えられた記数法に変換
+#if false
+            var specifyNumber = decimalNumber.ConvertTo(afterList.Count(), new List<int>()).Select(x => afterList[x]);
+#else
+            var specifyNumber = decimalNumber.ConvertTo(afterList.Count()).Select(x => afterList[x]);
+#endif
+            return specifyNumber.Aggregate("", (a, b) => a + b);
+        }
+    }
 
-            // 10⇒与えられた記数法
-            var bar = foo.Select(x => aflist[x]);
-
-            Console.WriteLine(bar.Aggregate("",(a, b) => a + "," + b));
-
-            Console.ReadKey();
+    public static class intExtensions
+    {
+        // 10進数⇒n進数
+        // 再帰版
+        public static IEnumerable<int> ConvertTo(this int number, int dec, IEnumerable<int> convertList)
+        {
+            if (number < dec) return convertList.Concat(Enumerable.Repeat(number, 1)).Reverse();
+            return (number / dec).ConvertTo(dec, convertList.Concat(Enumerable.Repeat((number % dec), 1)));
         }
 
-        static IEnumerable<int> ConvertTo(int number, int dec, IEnumerable<int> convertList)
+        // LINQ版
+        public static IEnumerable<int> ConvertTo(this int number, int dec)
         {
-            if (number < dec)
-            {
-                return convertList.Concat(Enumerable.Repeat(number, 1)).Reverse();
-            }
-
-            return ConvertTo(number / dec, dec, convertList.Concat(Enumerable.Repeat((number % dec), 1)));
+            var list = Enumerable.Range(0, (int)Math.Log(number, dec) + 1).Select(x => (int)Math.Pow(dec, x));
+            return list.Select(x => (int)(list.Reverse().TakeWhile(y => y > x).Aggregate(number, (a, b) => (a < b) ? a : a % b) / x)).Reverse();
         }
     }
 }
