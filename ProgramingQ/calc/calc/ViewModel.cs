@@ -12,7 +12,7 @@ namespace Sample
         public string Text
         {
             get { return _text; }
-            set { _text = value; }
+            set { _text = value; this.RaisePropertyChanged("Text"); }
         }
 
         private IEnumerable<string> _items;
@@ -29,8 +29,16 @@ namespace Sample
             set
             {
                 _check = value;
-                if (_check) _items = new List<string>() { "hoge", "fuga", "foo", "bar" };
-                else _items = new List<string>();
+                if (_check)
+                {
+                    Items = new List<string>() { "hoge", "fuga", "foo", "bar" };
+                    Text = "hoge";
+                }
+                else
+                {
+                    Items = new List<string>();
+                    Text = "";
+                }
                 this.RaisePropertyChanged("Check");
             }
         }
