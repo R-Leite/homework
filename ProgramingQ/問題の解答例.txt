@@ -1,0 +1,221 @@
+問題の解答例（C#）
+
+1 ハサミを使うタイミング
+　・ 「最小の面積の長方形」を求めることから、最後にできる長方形はの辺は1:2であること（四分の一円が2つ）が自明なので、辺が整数であれば、1と2になる
+　・ 長方形を決められた回数分、伸ばしていく
+　・ 出来上がる長方形の面積を最小に保つには、長辺で作られる正方形（四分の一円が1つ）を元の長方形の長辺に積み上げる
+---
+    var sides = new int[] { 2, 1 };
+    int limit = 40; // ハサミを入れる最大回数（長方形を伸ばした回数）
+
+    // 再帰バージョン（immutable）
+    (int x, int y) GetSides(int m, int n, int lmt)
+        => lmt <= 0 ? (m, n) : GetSides(m + n, m, lmt - 1);
+    var result01 = GetSides(sides[0], sides[1], limit);
+    Console.WriteLine($"long = {result01.x}, short = {result01.y}");
+
+    // LINQバージョン（mutable）
+    var r = Enumerable.Repeat(sides, limit + 1)
+        .Select(s => s[1] = (s[0] = s[0] + s[1]) - s[1]).ToArray();
+    Console.WriteLine($"long = {r[limit]}, short = {r[limit - 1]}");
+---
+　フィボナッチ数列ですね！フィボナッチ数列については、テキスト「計算量の話.pdf」の「7 アルゴリズムと計算量の例」で詳しく解説しています。
+
+2 組み合わせ
+　これはサービス問題です。
+---
+    // ループバージョン
+    var result01 = new List<(int x, int y)>();
+    for (int i = 1; i <= 10; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            result01.Add((i, j));
+        }
+    }
+    foreach (var val in result01)
+        Console.WriteLine($"x,y = {val.x},{val.y}");
+
+    // LINQバージョン
+    var result02 = Enumerable.Range(1, 10)
+        .SelectMany(a => Enumerable.Range(1, a), (n, m) => (x: n, y: m));
+    foreach (var val in result02)
+        Console.WriteLine($"x,y = {val.x},{val.y}");
+---
+
+3 曜日を求める
+　これも日付に関するライブラリ関数を使えば簡単です。
+　ですので、ライブラリ関数を使わない解答例を挙げておきます。（immutableではありません）
+---
+    // 2015年2月13日は金曜日なので、これを基準に各年の2月13日が何曜日か？を調べれば答えは出る
+    // 2015年2月を0としたときの各月の曜日オフセット値
+    List<List<int>>[] Offset = new List<List<int>>[] {
+        new List<List<int>> {   // うるう年でない場合
+            new List<int> { 2, 3, 11 },
+            new List<int> { 6 },
+            new List<int> { 9, 12 },
+            new List<int> { 4, 7 },
+            new List<int> { 1, 10 },
+            new List<int> { 5 },
+            new List<int> { 8 }
+        },
+        new List<List<int>> {   // うるう年の場合
+            new List<int> { 2, 8 }, 
+            new List<int> { 3, 11 },
+            new List<int> { 6 },
+            new List<int> { 9, 12 },
+            new List<int> { 1, 4, 7 },
+            new List<int> { 10 },
+            new List<int> { 5 }
+        }
+    };
+
+    // 関数内関数：うるう年かどうか調べる
+    bool IsLeapYear(int year)
+        => year % 400 == 0 || (year % 100 != 0 && year % 4 == 0) ? true : false;
+
+    // 各年の2月13日が何曜日かを求めて、金曜日とのオフセット値を基に解答を得る
+    int a = 0;
+    var result01 = Enumerable.Range(2000, 15).Reverse()
+        .Select(x => (k: x, m: IsLeapYear(x) ? 1 : 0, n: (a += (IsLeapYear(x) ? 366 : 365))))
+        .SelectMany(x => Offset[x.m][x.n % 7], (x, y) => x.k.ToString() + "/" + y.ToString("D2") + "/13")
+        .Where(x => !x.Contains("2014")).ToList();
+    result01.Sort();
+    Console.WriteLine(result01.Aggregate((x, y) => x + "," + y));
+---
+　うるう年の判定はしっかり覚えておきましょう。
+　「4で割り切れる年がうるう年！」というのは誤りですよ。
+　ちなみにライブラリ関数を使ったバージョンは↓こちら。
+---
+    // LINQバージョン
+    var result02 = Enumerable.Repeat(new DateTime(2000, 1, 1), int.MaxValue)
+        .Select((d, i) => d.AddDays(i))
+        .TakeWhile(d => d.Year < 2014)
+        .Where(d => (d.DayOfWeek == DayOfWeek.Friday) && (d.Day == 13))
+        .Select(x => x.ToShortDateString());
+    Console.WriteLine(result02.Aggregate((x, y) => x + "," + y));
+---
+
+4 覆面算
+　これに苦労していた人が多かったのは少し驚き。
+　たぶん、「人が頭で考える解法≠コンピュータが使う解法」の類の問題であるところが苦労の理由かと。
+　ものすごく素直にS≠0,m≠0だけを使った例が↓こちら。
+```CS
+    var digits = Enumerable.Range(0, 10);
+    var solve = from s in digits
+                from e in digits.Except(new[] { s })
+                from n in digits.Except(new[] { s, e })
+                from d in digits.Except(new[] { s, e, n })
+                from m in digits.Except(new[] { s, e, n, d })
+                from o in digits.Except(new[] { s, e, n, d, m })
+                from r in digits.Except(new[] { s, e, n, d, m, o })
+                from y in digits.Except(new[] { s, e, n, d, m, o, r })
+                where s != 0
+                where m != 0
+                let send = int.Parse("" + s + e + n + d)
+                let more = int.Parse("" + m + o + r + e)
+                let money = int.Parse("" + m + o + n + e + y)
+                where send + more == money
+                select new { send, more, money };
+    var result01 = solve.Select(x => (send: x.send, more: x.more, money: x.money)).FirstOrDefault();
+    Console.WriteLine(
+        $"SEND={result01.send}, MORE={result01.more}, MONEY={result01.money}");
+```
+すべての文字がすべての1桁の数値を調べますので、もの凄く時間がかかります。
+で、「人が頭で考える解法」を加味してあげて時間短縮を図ったのが↓こちら。
+```CS
+    // m = 1, s ≠ 0, s ≠ m, s + m => 9 から s > 7 は自明
+    // さらに、s + m = 10m + x かつ、m ≠ o から、x = o = 0 と n ≠ o から s = 9 は自明
+    var s = 9;
+    var o = 0;
+    var m = 1;
+    var digits = Enumerable.Range(2, 7);
+    var solve = from e in digits
+                from n in digits.Except(new[] { s, e, m, o })
+                from d in digits.Except(new[] { s, e, n, m, o })
+                from r in digits.Except(new[] { s, e, n, d, m, o })
+                from y in digits.Except(new[] { s, e, n, d, m, o, r })
+                let send = int.Parse("" + s + e + n + d)
+                let more = int.Parse("" + m + o + r + e)
+                let money = int.Parse("" + m + o + n + e + y)
+                where send + more == money
+                select new { send, more, money };
+    var result01 = solve.Select(x => (send: x.send, more: x.more, money: x.money)).FirstOrDefault();
+```
+これでかなりの時間短縮が達成されます。
+
+5 アパートの住人
+　これは問題4と同じですね。問題4が解けたなら簡単だったはず。
+　時間短縮版は↓下記の通り。
+```CS
+    var q =
+        from A in Enumerable.Range(1, 4)
+        from B in Enumerable.Range(2, 4).Except(new[] { A })
+        from C in Enumerable.Range(2, 3).Except(new[] { A, B })
+        from D in Enumerable.Range(3, 3).Except(new[] { A, B, C })
+        from E in Enumerable.Range(1, 5).Except(new[] { A, B, C, D })
+        where D > B
+        where Math.Abs(E - C) != 1
+        where Math.Abs(C - B) != 1
+        select (A, B, C, D, E);
+    var result = q.FirstOrDefault();
+```
+
+6 2 点間距離の最大値
+　入力した値から、x座標とy座標を持つ組（構造体、クラス、タプル、etc.）のコレクション（配列やリスト）を作って、そのコレクションを操作してやると良いです。
+```CS
+    // ファイルからの読み込みは省略 → linesに全レコードが取り込まれているものとする
+    (double x, double y)[] points = new(double x, double y)[count]; // タプルの作成
+    var q = lines.Skip(1).Take(count).Select((x, i) =>
+    {
+        var sval = x.Split(' ');
+        return points[i] = (double.Parse(sval[0]), double.Parse(sval[1]));
+    });
+    var r = q.SelectMany((x, i) =>
+        q.Skip(i + 1).Select(y => Pow(x.x - y.x, 2) + Pow(x.y - y.y, 2))).Max();
+    var result = Sqrt(r).ToString("F3");
+    Console.WriteLine($" Answer = {result}");
+```
+”距離の大小を比較するときは平方根を計算する必要はない”というのは、以前にも言った通り。
+最大のモノを求めてから平方根を計算すれば良いですね。
+
+7 エアコンの温度設定
+　この問題は単純に数値の大きいボタンから除算、剰余を使うと失敗します。
+　たとえば、20度から28度へと8度温度を上げる場合を考えます。
+　・(28 - 20) / 10 = 0...8
+　・8 / 5 = 1...3
+　・3 / 1 = 3
+　・答え＝4回　←　間違い。正解は、+10, -1, -1 の3回
+　勉強会のチャットで示した田中G長のコードでも良いのですが、探索法を使ってみます。
+　探索法を使うと使用するボタン種を選ばないコードになります。
+　この問題では「最小回数を求める」ですから、使用する探索法は解が早く見つかる幅優先探索を選択します。
+　考え方は以下の通り。
+　1. エアコンの温度初期値（前述の例では20度）をキューに入れます。
+　2. キューの値を取りだして、すべてのボタン種による操作を行います。
+　3. 枝刈りを行います。（枝刈りについては後述）
+　4. 残ったエアコンの状態で目標温度（前述の例では28度）のものがあれば終了。
+　5. 解が得られていない場合は、枝刈りを行って残ったエアコンの状態をキューに入れます。
+　6. キューに値があれば2.に戻ります。
+　7. 枝刈りの結果、新しいエアコンの状態が得られなければ、このボタン種では解が得られないということ。
+　”枝刈り”ですが、下記のものはこれ以上の探索は無意味ですので無視します。
+　・操作の結果得られたエアコンの温度が初見でないもの。（ループしてしまいます）
+　・エアコンの温度設定限界値（たとえば、設定可能温度など）を上方あるいは下方に超えた場合。
+　これらは”必ず解が得られる”場合は必要ありません（速度面では問題有りです）が、解が得られない場合はプログラムが停止しません。　
+　さて、ここで”枝刈り”ですが、この問題のようにボタン種が±10, ±5, ±1である場合は、もっと高速に解が得られる方法があります。
+　それは、”すべてのボタン種で操作を行った後、目標温度との誤差の絶対値が一番小さいものだけを残す”です。
+　たとえば、先ほどの”初期値＝20度、目標温度＝28度”でシミュレートしてみます。
+　1. エアコンの温度初期値（前述の例では20度）をキューに入れます。
+　2. キューの値を取りだして、すべてのボタン種による操作を行います。
+　3. 枝刈りを行います。（例として初回分のみ記載します）
+　　・+10 →　|(20 + 10) - 28| = 2　←　この枝だけが残される
+　　・-10 →　|(20 - 10) - 28| = 18
+　　・+5 →　|(20 + 5) - 28| = 3
+　　・-5 →　|(20 - 5) - 28| = 13
+　　・+1 →　|(20 + 1) - 28| = 7
+　　・-1 →　|(20 - 1) - 28| = 9
+　4. 残ったエアコンの状態で目標温度（前述の例では28度）のものがあれば終了。
+　5. 解が得られていない場合は、枝刈りを行って残ったエアコンの状態をキューに入れます。
+　6. キューに値があれば2.に戻ります。
+　ただし、この場合もエアコンの温度設定限界値は考慮する方が良いでしょう。（計算の途中段階で超えないように）
+　一見、これでも必ず解が得られる場合は他のボタン種でも使えそうに思えますが、実はそういうわけにはいきません。
+　どういう場合にこのアルゴリズムは破綻するでしょうか？
