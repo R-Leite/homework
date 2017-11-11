@@ -12,22 +12,26 @@ namespace Q4
             var value2 = "more";
             var result = "money";
 
-            Console.WriteLine("  " + value1);
-            Console.WriteLine("+ " + value2);
-            Console.WriteLine("------");
-            Console.WriteLine(" " + result);
+            Console.WriteLine($"  {value1}");
+            Console.WriteLine($"+ {value2}");
+            Console.WriteLine($"------");
+            Console.WriteLine($" {result}");
 
+#if true
             var answerDictionary = SolveAlphametic(value1, value2, result);
+#else
+            var answerDictionary = SolveAlphametic();
+#endif
 
             var val1Int = value1.Select(x => answerDictionary[x]).ToInt().ToString();
             var val2Int = value2.Select(x => answerDictionary[x]).ToInt().ToString();
             var resInt = result.Select(x => answerDictionary[x]).ToInt().ToString();
 
             Console.WriteLine();
-            Console.WriteLine("  " + val1Int);
-            Console.WriteLine("+ " + val2Int);
-            Console.WriteLine("------");
-            Console.WriteLine(" " + resInt);
+            Console.WriteLine($"  {val1Int}");
+            Console.WriteLine($"+ {val2Int}");
+            Console.WriteLine($"------");
+            Console.WriteLine($" {resInt}");
 
             Console.WriteLine("終了するには何かキーを押してください。");
             Console.ReadKey();
@@ -44,6 +48,34 @@ namespace Q4
             return Enumerable.Range(0, 10).Permutation(allChars.Count()).Where(x => !x.Take(firstCharsNumber).Contains(0))
                 .Select(x => allChars.Zip(x, (k, v) => new { k, v }).ToDictionary(d => d.k, d => d.v))
                 .Where(dict => result.Select(x => dict[x]).ToInt() == value1.Select(x => dict[x]).ToInt() + value2.Select(x => dict[x]).ToInt()).FirstOrDefault();
+        }
+
+        static Dictionary<char, int> SolveAlphametic()
+        {
+            var digits = Enumerable.Range(0, 10);
+            var solve = from s in digits
+                        from e in digits.Except(new[] { s })
+                        from n in digits.Except(new[] { s, e })
+                        from d in digits.Except(new[] { s, e, n })
+                        from m in digits.Except(new[] { s, e, n, d })
+                        from o in digits.Except(new[] { s, e, n, d, m })
+                        from r in digits.Except(new[] { s, e, n, d, m, o })
+                        from y in digits.Except(new[] { s, e, n, d, m, o, r })
+                        where s != 0
+                        where m != 0
+                        where int.Parse("" + s + e + n + d) + int.Parse("" + m + o + r + e) == int.Parse("" + m + o + n + e + y)
+                        select new Dictionary<char, int>()
+                        {
+                            { 's', s },
+                            { 'e', e },
+                            { 'n', n },
+                            { 'd', d },
+                            { 'm', m },
+                            { 'o', o },
+                            { 'r', r },
+                            { 'y', y }
+                        };
+            return solve.FirstOrDefault();
         }
     }
 
