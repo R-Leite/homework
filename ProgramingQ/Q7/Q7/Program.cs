@@ -19,27 +19,30 @@ namespace Q7
             var min = 15;
             var operate = new List<int>() { -10, 10, -5, 5, -1, 1 };
             var already = new List<int>();
-            var queue = new Queue<Tuple<string, int>>();
-            var count = 0;
+            var queue = new Queue<Tuple<string, int, int>>();
 
-            queue.Enqueue(Tuple.Create<string, int>("", currentTemp));
+            queue.Enqueue(Tuple.Create<string,int, int>("", 0, currentTemp));
 
             while (queue.Count != 0)
             {
                 var currentNode = queue.Dequeue();
-//                Console.WriteLine(currentNode.Item1);
-                var operateTemp = operate.Select(x => Tuple.Create<string, int>(currentNode.Item1 + x.ToString(), x + currentNode.Item2)).Where(x => x.Item2 <= max).Where(x => x.Item2 >= min).Where(x => !already.Contains(x.Item2)).ToList();
-                if (operateTemp.Select(x => x.Item2).Contains(settingTemp))
+                if(currentNode.Item3 == settingTemp)
                 {
                     Console.WriteLine(currentNode.Item1);
+                    Console.WriteLine(currentNode.Item2);
                     break;
                 }
-                already.AddRange(operateTemp.Select(x => x.Item2));
+                var operateTemp = operate.Select(x => Tuple.Create<string, int, int>(currentNode.Item1 + " -> " + x.ToString(), currentNode.Item2 + 1, x + currentNode.Item3)).Where(x => x.Item2 <= max).Where(x => x.Item3 >= min).Where(x => !already.Contains(x.Item3)).ToList();
+                //if (operateTemp.Select(x => x.Item2).Contains(settingTemp))
+                //{
+                //    Console.WriteLine(currentNode.Item1);
+                //    break;
+                //}
+                already.AddRange(operateTemp.Select(x => x.Item3));
 
                 operateTemp.ForEach(x => queue.Enqueue(x));
             }
 
-            Console.WriteLine(count);
             Console.WriteLine("終了するには何かキーを押してください...");
             Console.ReadKey();
         }
