@@ -1,0 +1,52 @@
+@import b3.inline.fieldConstructor
+@(user_id: String, years: String, displayEmpCode: String)(implicit messages:Messages)
+
+@YEARS = @{ CalendarDates.GetNowYear + "/" + CalendarDates.GetNowMonth }
+
+@main("タイムカード編集"){
+    <!--メッセージウィンドウ表示-->
+    @info_window("更新しました。")
+    <!--メイン画面-->
+    @header(user_id)
+    <!--各種ライブラリ-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap-datetimepicker/2.4.2/css/bootstrap-datetimepicker.min.css"))" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap-datetimepicker/2.4.2/js/bootstrap-datetimepicker.min.js"))' type="text/javascript"></script>        
+    <script src="https://npmcdn.com/recharts@@0.22.0/umd/Recharts.min.js"></script>
+    <script src="@routes.Assets.versioned("javascripts/showChart.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/headerContent.js")" type="text/javascript"></script>
+    <!-- -->
+    <div class="container left-approach" style="width: 1500px;">
+        <div class="row">
+            @timecard_sub_menu(user_id)
+            <div class="col-xs-10 col-md-main" id="pills-first">
+                <h3 id="page-title" class="text-left page_title"><img src="/assets/images/ic_person_add_black_18dp.png">&nbsp;タイムカード編集</h3>
+                <div><label>表示させたい年月を選択して下さい</label></div>
+                <div id="content-header"></div>
+                <script>
+                    renderHeaderContent("@routes.TimeCardController.redirectEdit", "@years", "@routes.ManageUserEdit.getList");
+                </script>
+            </div>
+        </div>
+        <div id="id-individual-canvas" style="padding-left: 200px;padding-bottom: 30px;"></div>
+        <script>
+            var postURL = { "updateArrival": "@routes.TimeCardController.updateArrival(displayEmpCode)", "updateLeave": "@routes.TimeCardController.updateLeave(displayEmpCode)" }
+            var headerConfig = {
+                jsonURL: {
+                    getTimeCard: "@routes.TimeCardController.getTimeCard(YEARS)",
+                    postArrival: "@routes.TimeCardController.setArrival",
+                    postLeave: "@routes.TimeCardController.setLeave"
+                }
+            }
+            renderChart("@User.getFullName(user_id)","@years", "@routes.TimeCardController.getDesignatedList(displayEmpCode)", postURL, headerConfig)
+        </script>
+    </div>
+    <script>
+        $(function() {
+            //class付与←submenuをactiveにするため
+            $("#timecard_edit").parent().addClass("active");
+        })
+    </script>
+    @footer()
+}

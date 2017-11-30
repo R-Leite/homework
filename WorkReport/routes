@@ -1,0 +1,228 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /favicon.ico            controllers.Assets.at(path="/public/images", file="notice_mark.png")
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
+
+# Use Bootstrap by WebJars
+GET     /webjars/*file          controllers.WebJarAssets.at(file)
+
+# LogIn
+GET     /                       controllers.LogIn.login
+GET     /Logout                 controllers.LogIn.logout
+POST    /                       controllers.LogIn.authenticate
+
+# Attendance
+GET     /attendance/:employee_number/:year/:month controllers.Attendance.attendance(symbol:String,employee_number:String,year:String,month:String)
+POST    /past_attendance        controllers.Attendance.past_attendance
+POST    /update_attendance      controllers.Attendance.update_attendance
+#POST   /inputSupport           controllers.Attendance.save_default
+POST    /Kinkan/:user_id/:year/:month        controllers.Attendance.upload(user_id:String,year:String,month:String)
+POST    /ImportReport/:user_id/:year/:month  controllers.Attendance.importReport(user_id:String,year:String,month:String)
+POST    /ExportTenDayFile/:year/:month       controllers.Attendance.exportTenDayFile(year:String,month:String)
+POST    /ExportDispatchFile/:year/:month     controllers.Attendance.exportDispatchFile(year:String,month:String)
+POST    /ExportFlexFile/:year/:month         controllers.Attendance.exportFlexTimeFile(year:String,month:String)
+POST    /uploadKinkan/:user_id/:year/:month  controllers.Attendance.uploadKinkan(user_id:String,year:String,month:String)
+
+# VersionInformation
+GET     /Version                  controllers.VersionCheck.versionCheck
+
+# CreateGroup
+#GET     /MyGroup               controllers.Manager.showHolidaySummaries
+
+# SystemSetting
+GET     /:symbol/administrator/:employee_code/system_settings/edit/ controllers.Administrators.systemSettings(symbol: String, employee_code: String)
+
+# JSON
+GET    /json/orders/all/:employee_id/:year/:month controllers.Orders.getAllOrdersInfo(employee_id: Int,year: String,month: String)
+GET    /json/orders/cadidates/:employee_id/:start_date/:end_date  controllers.Orders.getOrderCandidates(employee_id: Int,start_date: String,end_date: String)
+GET    /json/orders/info/:order_id          controllers.Orders.getOrderInfo(order_id: Int)
+GET    /json/orders/allocate/:order_id      controllers.Orders.getOrderAllocate(order_id: Int)
+GET    /json/work_types/all                 controllers.WorkTypes.getAllWorkTypes
+GET    /json/work_types/tooltip             controllers.WorkTypes.getWorkNumberTooltip
+GET    /json/note/candidates/:employee_id   controllers.Note.getNoteCandidates(employee_id: Int)
+
+# Types
+GET     /json/types/role_allocation         controllers.Types.getRoleAllocation
+GET     /json/types/internal_division       controllers.Types.getInternalDivision
+GET     /json/types/employee_type           controllers.Types.getEmployeeType
+GET     /json/types/company_list            controllers.Types.getCompanyList
+GET     /json/types/company_detail          controllers.Types.getCompanyDetail
+GET     /json/types/temporary_list          controllers.Types.getTemporaryList
+
+# AgencyRegistration
+GET     /business/company_edit              controllers.CompanyEdit.show
+GET     /business/company_get               controllers.CompanyEdit.get
+POST    /business/company_edit              controllers.CompanyEdit.submit
+POST    /business/company_edit_new          controllers.CompanyEdit.register
+POST    /json/business/company_update       controllers.CompanyEdit.update
+
+# AgencyEmployeeRegistration
+GET     /business/temporary_edit            controllers.TemporaryEdit.show
+GET     /business/temporary_get             controllers.TemporaryEdit.get
+POST    /business/temporary_edit            controllers.TemporaryEdit.submit
+POST    /json/business/temporary_update     controllers.TemporaryEdit.update
+
+# UserEdit
+GET     /business/user_edit                 controllers.EmployeeUserEdit.show
+GET     /business/user_get_data             controllers.EmployeeUserEdit.getData
+POST    /business/user_edit                 controllers.EmployeeUserEdit.submit
+POST    /business/user_edit_new             controllers.EmployeeUserEdit.register
+POST    /json/business/user_update          controllers.EmployeeUserEdit.update
+GET     /json/business/userlist             controllers.EmployeeUserEdit.get
+
+# GroupCreate
+GET     /manager/manage_user_edit           controllers.ManageUserEdit.read
+POST    /manager/manage_user_edit           controllers.ManageUserEdit.submit
+POST    /json/manager/manage_user_edit      controllers.ManageUserEdit.update
+GET     /json/manager/userlist              controllers.ManageUserEdit.getUserList
+GET     /json/manager/managelist/:user_id   controllers.ManageUserEdit.getManageList(user_id:String)
+GET     /json/manager/managelist            controllers.ManageUserEdit.getList
+
+# OrderCodeRegistration
+GET     /manager/order_code_edit            controllers.OrderCodeEdit.read
+POST    /manager/order_code_edit            controllers.OrderCodeEdit.update
+
+# GroupCreate
+GET     /manager/holiday_summary            controllers.HolidaySummary.show
+
+# HolidayList
+GET     /manager/holiday_summary            controllers.HolidaySummary.show
+POST    /manager/holiday_summary            controllers.HolidaySummary.show
+POST    /manager/Leave/holiday_summary      controllers.HolidaySummary.showLeave
+GET     /json/manager/holiday/:user/:year   controllers.HolidaySummary.get(user:String,year:String)
+GET     /json/manager/holiday/:year         controllers.HolidaySummary.getAll(year:String)
+GET     /json/manager/holiday_leave/:date   controllers.HolidaySummary.getAllLeaves(date:String)
+
+
+# OvertimeList
+GET     /manager/overtime_summary           controllers.OverTimeSummary.show
+POST    /manager/overtime_summary           controllers.OverTimeSummary.show
+GET     /json/manager/exholiday/:from/:to   controllers.OverTimeSummary.getExchangeHoliday(from:String,to:String)
+
+GET     /json/manager/allovertime/:from/:to controllers.OverTimeSummary.getAllOverTime(from:String,to:String)
+
+# SunbathingManagement
+GET     /manager/output_document            controllers.OutputDocument.show
+POST    /manager/output_document            controllers.OutputDocument.show
+GET     /downloads/:file                    controllers.OutputDocument.download(file)
+GET     /json/manager/output_document/:period       controllers.OutputDocument.get(period:String)
+
+# PersonalInformation
+GET     /user/personal_setting              controllers.PersonalSetting.read
+POST    /user/personal_setting              controllers.PersonalSetting.update
+
+# RemarksFieldRegistration
+GET     /user/option_setting                controllers.PersonalOption.read
+GET     /json/user/defaulttime              controllers.PersonalOption.get
+POST    /user/option_setting/time_edit      controllers.PersonalOption.updateTime
+POST    /user/option_setting/note_edit      controllers.PersonalOption.updateNote
+POST    /user/option_setting/note_del       controllers.PersonalOption.deleteNote
+
+# OrderCodeSelect(Personal)
+GET     /user/order_code_select             controllers.OrderCodeSelect.read
+POST    /user/order_code_select             controllers.OrderCodeSelect.submit
+POST    /json/user/order_code_edit          controllers.OrderCodeSelect.update
+GET     /json/user/clientlist               controllers.OrderCodeSelect.getClientList
+GET     /json/user/orderlist                controllers.OrderCodeSelect.getOrderList
+GET     /json/user/myorderlist/:user_id     controllers.OrderCodeSelect.getMyOrderList(user_id: String)
+
+# HolidayList(Personal)
+GET     /user/holiday_setting               controllers.HolidaySetting.show
+POST    /user/holiday_setting               controllers.HolidaySetting.show
+POST    /user/holiday_setting_submit        controllers.HolidaySetting.submit
+POST    /json/user/holiday_edit             controllers.HolidaySetting.update
+GET     /json/user/holiday/:user_id/:year   controllers.HolidaySetting.getHoliday(user_id: String,year:String)
+GET     /json/user/daytype/:user_id/:year   controllers.HolidaySetting.getHolidayType(user_id: String,year:String)
+GET     /json/user/detail/:user_id/:year    controllers.HolidaySetting.getHolidayDatails(user_id: String,year:String)
+
+# SelectHolidayRegistration
+#GET     /:symbol/personal_setting/:employee_number/holiday_schedules/edit/:year controllers.DesignatedHolidays.showHolidays(symbol:String,employee_number:String,year:String)
+#POST    /ChooseFiscalYear                                                       controllers.DesignatedHolidays.selectFiscalYear
+#POST    /SaveHolidays/:year/:start_date/:end_date                               controllers.DesignatedHolidays.chooseRelaxHoliday(year:String,start_date:String,end_date:String)
+
+
+# TotalizationListOutputExcel
+GET     /business/aggregateExcel/:period        controllers.AggregateFile.show(period:String)
+POST    /business/aggregateExcelShow            controllers.AggregateFile.show_data
+POST    /business/aggregateExcel                controllers.AggregateFile.getAggList
+POST    /business/getACOS_aggregateExcel        controllers.AggregateFile.getACOS
+POST    /business/setting_aggregateExcel        controllers.AggregateFile.showSetting
+GET     /json/business/aggregateExcel/:from     controllers.AggregateFile.getFiles(from:String)
+GET     /json/business/category_list            controllers.AggregateFile.get
+POST    /json/business/category_list            controllers.AggregateFile.update
+
+# SortablePluginTest
+GET     /sortable  controllers.Sortable.show
+
+# DepartmentalTotalization
+GET     /aggregate/departments                    controllers.aggregate.Departments.show
+POST    /aggregate/departments                    controllers.aggregate.Departments.show
+
+# JSON of DepartmentalTotalization
+GET     /json/aggregate/departments/:year  controllers.aggregate.Departments.getData(year:String)
+GET     /json/aggregate/orders/:year       controllers.aggregate.Departments.getOrderData(year:String)
+
+# CustomGroup
+GET   /manager/group_edit       controllers.GroupContrller.show
+POST  /manager/group_update     controllers.GroupContrller.update
+GET   /json/manager/group_info  controllers.GroupContrller.getInfo
+
+# WorkNumber
+GET   /json/work_number/usability  controllers.WorkTypes.getUsability
+
+# TimeCard
+GET   /timecard/edit/:employee_number/:year/:month  controllers.TimeCardController.edit(symbol:String,employee_number:String,year:String,month:String)
+GET   /timecard/show/:year/:month                   controllers.TimeCardController.show(symbol:String,year:String,month:String)
+
+POST  /timecard/redirectEdit   controllers.TimeCardController.redirectEdit
+POST  /timecard/redirectShow   controllers.TimeCardController.redirectShow
+
+GET   /json/timecard/info/:date         controllers.TimeCardController.getInfoByDate(date:String)
+GET   /json/timecard/info/:year/:month  controllers.TimeCardController.getGeneralInfo(year:String,month: String)
+
+GET   /timecard/list/:date        controllers.TimeCardController.getTimeCard(date:String)
+POST  /timecard/list              controllers.TimeCardController.getList
+POST  /timecard/list/:empCode     controllers.TimeCardController.getDesignatedList(empCode:String)
+
+POST  /timecard/arrival/set   controllers.TimeCardController.setArrival
+POST  /timecard/leave/set     controllers.TimeCardController.setLeave
+POST  /timecard/arrival/update/:empCode  controllers.TimeCardController.updateArrival(empCode:String)
+POST  /timecard/leave/update/:empCode    controllers.TimeCardController.updateLeave(empCode:String)
+
+#
+GET  /testview/:year/:month        controllers.LockController.testView(symbol: String, year:String, month:String)
+POST  /testview/redirect        controllers.LockController.redirectShow
+GET /testview/lock/:empCode/:from/:to             controllers.LockController.lockAttendance(empCode: String, from: String, to: String)
+
+# MailTest
+GET   /test/mail  controllers.MailerService.show
+GET   /json/work_number/usability     controllers.WorkTypes.getUsability
+
+# FileOutput for SPP
+GET     /manager/file_create                    controllers.VariousFile.show
+POST    /manager/file_create                    controllers.VariousFile.show
+GET     /manager/file_create/summary            controllers.VariousFile.export
+POST    /manager/file_create/summary            controllers.VariousFile.export
+GET     /manager/file_create/summary_work       controllers.VariousFile.exportWork
+POST    /manager/file_create/summary_work       controllers.VariousFile.exportWork
+
+# GetHolidayList(Division)
+GET     /business/salary_leave_summary            controllers.SalaryLeave.show
+POST    /business/salary_leave_summary            controllers.SalaryLeave.show
+GET     /json/business/all_salary_summary/:year   controllers.SalaryLeave.getAllSalaryLeave(year:String)
+GET     /json/business/am_pm_get/:year            controllers.SalaryLeave.getAllAMPM(year:String)
+GET     /json/business/getAll/:year               controllers.SalaryLeave.getAll(year:String)
+
+# AgencyRegistration/Edit/Delete
+GET     /business/dispatch_company               controllers.DispatchCompanyEdit.show
+POST    /business/dispatch_company               controllers.DispatchCompanyEdit.update
+
+# JSON of WorkHour
+GET /json/workingtime/:empID                   controllers.WorkingTimeControllers.getPossibleTime(empID: String)
+
+# ViewTemplate
+GET   /view_template           controllers.TimeCardController.viewTemplate

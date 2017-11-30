@@ -1,0 +1,993 @@
+@import "lib/bootstrap/less/bootstrap.less";
+
+td.overtime-cell {
+        text-align: left;
+        padding: 8px 3px 8px 20px;
+    }
+
+    @table_height_base: 32px;
+
+    @table_width_base1: 60px;
+    @table_width_base2: 90px;
+    @table_width_base3: 95px;
+    @table_width_base4: 130px;
+    @table_width_base5: 200px;
+
+    @table_width_margin: 100px;
+
+    @table_width_base1_element: 6;
+    @table_width_base2_element: 4;
+    @table_width_base3_element: 3;
+    @table_width_base4_element: 1;
+    @table_width_base5_element: 1;
+
+    @table_width_total1 : @table_width_base1 * @table_width_base1_element;
+    @table_width_total2 : @table_width_base2 * @table_width_base2_element;
+    @table_width_total3 : @table_width_base3 * @table_width_base3_element;
+    @table_width_total4 : @table_width_base4 * @table_width_base4_element;
+    @table_width_total5 : @table_width_base5 * @table_width_base5_element;
+
+    @table_width_total : @table_width_total1 + @table_width_total2 + @table_width_total3 + @table_width_total4 + @table_width_total5 + @table_width_margin;
+    @Screen_min_width : @table_width_total + 50;
+
+    @Screen_side_width : 200px;
+    @Screen_main_width : @Screen_min_width - @Screen_side_width;
+
+    /*--- Screen Setting --------------------*/
+
+    .container {
+        overflow: hidden;
+        //min-width: @Screen_min_width;
+        min-width: 1200px;
+        min-height: 1200px;
+    }
+
+    .navbar-collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+
+    .navbar-brand {
+        margin-left: -15px;
+    }
+
+    body{
+        padding-top: 50px;
+        padding-bottom: 50px; 
+    }
+
+    .left-approach{
+        margin-left: 0px;
+        margin-right: auto;
+    }
+
+    .right-approach{
+        margin-left: auto;
+        margin-right: 0px;
+    }
+
+    /*--- Header Bar ------------------------*/
+
+    .container-fluid {
+        background-color: #212121;
+    }
+
+    .navbar > .container .navbar-brand,
+    .navbar > .container-fluid .navbar-brand {
+        color: #FFFFFF;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: #FFFFFF;
+    }
+
+    .navbar-default .navbar-nav > li > a:hover {
+        color: #FF0000;
+    }
+
+    .navbar-footer {
+        height:50px;
+    }
+
+    .navbar-footer > p {
+        padding-top:15px;
+        font-size: 16px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    /*--- Page Title ------------------------*/
+
+    .page_title {
+        color: #424242;
+        position: relative;
+        padding: .25em 0 .5em .75em;
+        border-left: 6px solid #3E9DDD;
+    }
+    
+    .page_title::after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: '';
+        width: 100%;
+        height: 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /*--- Area Setting ----------------------*/
+
+    .col-md-side {
+        width: @Screen_side_width;
+        background-color: #424242;
+        color: #ffffff;
+        font-size: 14px;
+        padding-bottom: 32768px;
+        margin-bottom: -32768px;
+    }
+
+    ul.menu_side_nav {
+        margin: 20px 0px 0px 0px;
+    }
+
+    .menu_side_text{
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    li.menu_side_nav {
+        background-image: url('/assets/images/ic_blur_on_white_18dp.png');
+        background-repeat: no-repeat;
+        background-position:0px 10px;
+    }
+
+    .col-md-side a {
+        color: #ffffff;
+    }
+
+    .col-md-side a:hover {
+        color: #2a6496;
+    }
+
+    .col-md-main {
+        //width: @Screen_main_width;
+        padding: 30px 0px 0px 20px;
+    }
+
+    /*--- Login -----------------------------*/
+
+    table.table-login-info{
+        text-align: center;
+    }
+
+    .login_contents {  
+        margin-top: 100px;
+    }  
+
+    .panel-style {
+        padding: 15px 15px 15px 15px;
+    }
+
+    .panel-info {
+        background-color: #1E88E5;
+        border-radius: 10px;
+    }
+
+    #form-signin{
+       border-radius: 10px;
+       box-shadow: 0 0 2px #ccc;
+       padding: 10px;
+       width: 100%;
+       background-color: #EEEEEE;
+    }
+    
+    .btn-login {
+        background-color: #E91E63;
+        border-color: #C2185B;
+    }
+
+    .infomation-title {
+        text-align:left;
+        font-size: 110%;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .infomation-text {
+        text-align:center;
+        font-weight: 800;
+        color: #ffffff;
+        font-size: 28px;
+    }
+
+    th.login-table-row1, td.login-table-row1{
+        text-align: center;
+        font-weight: 800;
+        width: 100px;
+        color: #ffffff;
+    }
+
+    th.login-table-row2, td.login-table-row2{
+        text-align: center;
+        font-weight: 800;
+        width: 100px;
+        color: #ffffff;
+    }
+
+    /*--- Table Setting ---------------------*/
+
+    .table-bordered > thead > tr > th {
+        background-color: #01579B;
+        color: #E0E0E0;
+        font-size: 13px;
+    }
+
+    .table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+        border-bottom-width: 1px;
+        text-align: center;
+    }
+
+    //カーソル行の色を指定
+    .table-bordered > tbody > tr:hover {
+       background-color: #F5FFFA !important;
+    }
+
+    /*--- Attendance ------------------------*/
+
+    .btn-row-add{
+        width: 35px;
+        height:24px;
+        border-radius: 15px;
+        background-color: #4CAF50;
+        padding: -20px 0px 0px 10px;
+        font-size:10px;
+        color: #FFFFFF;
+    }
+
+    .btn-row-delete{
+        width: 35px;
+        height:24px;
+        border-radius: 15px;
+        background-color: #f44336;
+        padding: -20px 0px 0px 10px;
+        font-size:10px;
+        color: #FFFFFF;
+    }
+
+    div.date-attendance {
+        //padding-top: 20px;
+        //padding-bottom: 10px;
+        padding-top: 15px;
+        padding-bottom: 0px;
+    }
+
+    ul.bottun-attendance {
+        padding:0;
+        font-size:0px;
+    }
+
+    ul.bottun-attendance li {
+        width:130px;
+        height:40px;
+        display: inline-block;
+        padding: -5px 0px 0px 10px;
+        font-size:10px;
+    }
+
+    .btn-attendance-in {
+        width:120px;
+        height:40px;
+        text-align:left;
+        padding-left: 30px;
+        font-size:12px;
+        color: #ffffff;
+        border-radius: 0px;
+        background-color: #424242;
+        background-image: url('/assets/images/ic_file_upload_white_18dp.png');
+        background-repeat: no-repeat;
+        background-position:8px;
+    }
+
+    .btn-attendance-out {
+        width:120px;
+        height:40px;
+        text-align:left;
+        padding-left: 30px;
+        font-size:12px;
+        color: #ffffff;
+        border-radius: 0px;
+        background-color: #424242;
+        background-image: url('/assets/images/ic_file_download_white_18dp.png');
+        background-position:8px;
+        background-repeat: no-repeat;
+    }
+
+    ul.panel-attendance {
+        padding:0;
+        font-size:0px;
+    }
+
+    ul.panel-attendance li {
+        width:140px;
+        height:40px;
+        display: inline-block;
+        //padding: 10px 0px 0px 10px;
+        padding: 15px 0px 0px 10px;
+        color: #ffffff;
+        font-size:20px;
+    }
+
+    ul.parameter-attendance {
+        padding:0;
+    }
+    ul.parameter-attendance li {
+        display: inline-block;
+        font-size:20px;
+    }
+
+    li.panel-kinmu {
+        background-image: url('/assets/images/panel_kinmu.png');
+        background-repeat: no-repeat;
+    }
+
+    li.panel-zangyo {
+        background-image: url('/assets/images/panel_zangyo.png');
+        background-repeat: no-repeat;
+    }
+
+    li.panel-shinya {
+        background-image: url('/assets/images/panel_shinya.png');
+        background-repeat: no-repeat;
+    }
+
+    li.panel-kaigou {
+        background-image: url('/assets/images/panel_kaigou.png');
+        background-repeat: no-repeat;
+    }
+
+    #input-attendance{
+        //padding-top: 5px;
+        padding-top: 0px;
+        width: @table_width_total;
+    }
+
+    .table-attendance > thead > tr > th,
+    .table-attendance > tbody > tr > th,
+    .table-attendance > tfoot > tr > th,
+    .table-attendance > thead > tr > td,
+    .table-attendance > tbody > tr > td,
+    .table-attendance > tfoot > tr > td {
+        padding-top: 1px;
+        padding-bottom: 1px;
+        vertical-align: middle;
+    }
+
+    thead.table-scrollhead,tbody.table-scrollbody{
+        overflow-y:scroll;
+        display:block;
+    }
+
+    @media (min-height: 800px) {
+      tbody.table-scrollbody{
+          height:60vh;
+      }
+    }
+
+    @media (max-height: 800px) {
+      //tbody.table-scrollbody{
+      //    height:40vh;
+      //}
+    }
+
+    th.late_hours, td.late_hours,
+    th.fast_hours, td.fast_hours,
+    th.over_hours, td.over_hours,
+    th.rest_hours, td.rest_hours,
+    th.table_default1, td.table_default1
+    {
+        width: @table_width_base1;
+    }
+
+    th.late_hours, td.late_hours,
+    th.fast_hours, td.fast_hours,
+    th.over_hours, td.over_hours,
+    th.rest_hours, td.rest_hours,
+    {
+        //background-color: #f0f0f0;
+    }
+
+    th.nomal_hours, td.nomal_hours,
+    {
+        width: @table_width_base1;
+        background-color: #FFF9C4;
+    }
+
+    th.action, td.action
+    {
+        width: @table_width_base1;
+    }
+
+    th.date, td.date,
+    th.note_complement, td.note_complement,
+    th.work_number, td.work_number,
+    th.supplemental_number, td.supplemental_number,
+    th.remaining_hours, td.remaining_hours,
+    th.table_default2, td.table_default2
+    {
+        width: @table_width_base2;
+    }
+
+    th.from_worktime, td.from_worktime,
+    th.to_worktime, td.to_worktime,
+    th.work_hour, td.work_hour,
+    th.table_default3, td.table_default3
+    {
+        width: @table_width_base3;
+    }
+
+    th.order_code, td.order_code,
+    th.table_default4, td.table_default4
+    {
+        width: @table_width_base4;
+    }
+
+    th.note, td.note,
+    th.table_default5, td.table_default5
+    {
+        width: @table_width_base5;
+    }
+    .input-ordercode{
+        width: 95px !important;
+        text-align: left;
+    }
+
+    .input-worknumber{
+        width: 60px !important;
+        text-align: left;
+    }
+
+    .input-worknumbercomplement{
+        width: 55px !important;
+        text-align: left;
+    }
+    td.nomal_hours,
+    td.late_hours,
+    td.fast_hours,
+    td.over_hours,
+    td.rest_hours,
+    td.remaining_hours
+    {
+        text-align: right;
+    }
+
+    /*--備考欄改良の追加CSS-------------------------*/
+    //firefoxのみに適用←テーブルの罫線消失対応
+    @-moz-document url-prefix()
+    {
+        .table-attendance
+        {
+            border-collapse: separate;
+            border-spacing:0;
+            empty-cells:show;
+            border-top:1px solid #dddddd;
+            border-right:none;
+            border-bottom:none;
+            border-left:1px solid #dddddd;
+        }
+        .table-attendance > thead > tr > th,
+        .table-attendance > tbody > tr > td
+        {
+            border-top:none;
+            border-right:1px solid #dddddd;
+            border-bottom:1px solid #dddddd;
+            border-left:none;
+        }
+        .table-attendance > thead > tr > th,
+        .table-attendance > tbody > tr > th,
+        .table-attendance > tfoot > tr > th,
+        .table-attendance > thead > tr > td,
+        .table-attendance > tbody > tr > td,
+        .table-attendance > tfoot > tr > td
+        {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+    .note-parent {
+        width: 240px;
+        position: relative;
+    }
+    .note-option{
+        width:245px !important;
+        height:100%;
+        position:absolute;
+        background-image: none;
+    }
+    .note-value{
+        width:225px !important;
+        position:relative;
+    }
+    th.action, td.action,
+    th.late_hours, td.late_hours,
+    th.fast_hours, td.fast_hours,
+    th.over_hours, td.over_hours,
+    th.rest_hours, td.rest_hours
+    {
+        width: 55px !important;
+    }
+    th.date, td.date
+    {
+        width: 85px !important; 
+    }
+    th.from_worktime, td.from_worktime,
+    th.to_worktime, td.to_worktime,
+    th.work_hour, td.work_hour
+    {
+        width: 95px !important;
+    }
+    th.order_code, td.order_code{
+        width: 115px !important;
+    }
+    th.work_number, td.work_number
+    {
+        width: 85px !important;
+    }
+    th.supplemental_number, td.supplemental_number
+    {
+        width: 75px !important;
+    }
+    th.note, td.note
+    {
+        width: 265px !important;
+    }
+    .note_complement_area
+    {
+        width: 85px;
+        text-align: center;
+        white-space: nowrap;
+        //overflow: hidden;
+        //text-overflow: ellipsis;
+    }
+    .font_small
+    {
+        font-size: 12px;
+    }
+    th.note_complement, td.note_complement
+    {
+        width: 105px !important;
+    }
+    th.nomal_hours, td.nomal_hours,
+    th.remaining_hours, td.remaining_hours
+    {
+        width: 65px !important;
+    }
+    /*--ここまで-------------------------*/
+
+    /*--- My Group Table --------------------*/
+
+    th.mygroup-number, td.mygroup-number,
+    {
+        width: @table_width_base1;
+        height: @table_height_base;
+    }
+
+    th.mygroup-leave-days, td.mygroup-leave-days,
+    th.mygroup-action-add, td.mygroup-action-add
+    {
+        width: @table_width_base2;
+        height: @table_height_base;
+    }
+
+    th.mygroup-employee-code, td.mygroup-employee-code,
+    {
+        width: @table_width_base4;
+        height: @table_height_base;
+    }
+
+    th.mygroup-name, td.mygroup-name,
+    {
+        width: @table_width_base5;
+        height: @table_height_base;
+    }
+
+    /*--- Text ------------------------------*/
+
+    .info-notice {
+        background-color: #3c763d;
+        color: #ffffff;
+        padding: 3px;
+    }
+
+    .info-warning {
+        background-color: #2980b9;
+        color: #ffffff;
+        padding: 3px;
+    }
+
+    .info-error {
+        background-color: #a94442;
+        color: #ffffff;
+        padding: 3px;
+    }
+
+    .info-circle {
+        background-color: #42a9a9;
+        color: #ffffff;
+        padding: 3px;
+        border-radius: 10px;
+    }
+
+    .info-padding {
+        margin-left: 5px;
+    }
+
+    .info-none {
+        padding-left: 15px;
+    }
+
+    /*--- User Edit Table -------------------*/
+
+    table#main-table-useredit{
+        text-align: center;
+    }
+
+    /*--- OverTimes Table -------------------*/
+
+    table#main-table-overtime{
+        text-align: center;
+        font-size: 90%;
+    }
+
+    #id-tbody-overtime > tr > td.overtime_data{
+        text-align: right;
+        width: 80px;
+        padding-right: 30px;
+    }
+
+    th.backgrand-gray, td.backgrand-gray{
+        background-color: #f0f0f0;
+    }
+
+    th.backgrand-gray, td.backgrand-gray{
+        background-color: #f0f0f0;
+    }
+
+    .leave{
+         background-color: #7A7A7A;
+     }
+
+    /*--- Leave Table -----------------------*/
+
+    table#main-table-categoryedit{
+        text-align: center;
+    }
+
+    .alignT {
+        text-align: left;
+    }
+
+    .alignR {
+       text-align: right;
+    }
+    table#main-table-holiday{
+        width: 600px;
+    }
+
+    /*--- Leave Table -----------------------*/
+
+    /*--- Leave Table -----------------------*/
+
+    table#main-table-leave{
+        text-align: center;
+    }
+
+    .table-leave > thead > tr > th {
+        background-color: #999;
+    }
+
+    .table-leave > tbody > tr > td {
+        background-color: #fcf8e3;
+    }
+
+    .leave-cancel {
+        width: 22px;
+        height: 22px;
+        border-radius: 22px;
+        background-image: url('/assets/images/ic_cancel_grey600_18dp.png');
+        background-repeat: no-repeat;
+    }
+
+    /*--- Form Style ------------------------*/
+
+    @form_width_base1: 30em;
+    @form_heigth_base1: 40px;
+    @form_heigth_base2: 400px;
+
+    .btn-standard{
+        width:250px;
+        height:50px;
+        text-align:center;
+        margin-top: 10px;
+        font-size:14px;
+        color: #ffffff;
+        border-radius: 0px;
+        background-color: #F57C00;
+    }
+
+    .btn-standard-float{
+        position: absolute;
+        left: 20px;
+        width:250px;
+        height:50px;
+        text-align:center;
+        margin-top: 20px;
+        font-size:14px;
+        color: #ffffff;
+        border-radius: 0px;
+        background-color: #F57C00;
+    }
+
+    #id-select-target,
+    #id-candidates {
+        width: @form_width_base1;
+        height: @form_heigth_base2;
+    }
+
+    #id-select-manage,
+    #id-selections {
+        width: @form_width_base1;
+        height: @form_heigth_base2;
+    }
+
+
+    @btn_left: 125px;
+
+    #id-list-add-btn{
+        position:absolute;
+        top:140px;
+        left:@btn_left; 
+    }
+
+    #id-list-del-btn{
+        position:absolute;
+        top:200px;
+        left:@btn_left;
+    }
+
+    #disp_date, #datepickerFrom, #datepickerTo, #datepickerfrom {
+        width: 80px;
+    }
+
+    .check_worknumber{
+        vertical-align: top;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .no-image{
+        display: inline-block;
+        vertical-align: bottom;
+        width: 20px;
+        height: 20px;
+        float: right;
+    }
+
+    .alert-image{
+        display: inline-block;
+        vertical-align: bottom;
+        width: 20px;
+        height: 20px;
+        background-image: url('/assets/images/alert_mark.png');
+        background-repeat: no-repeat;
+        float: right;
+    }
+    .error-image{
+        display: inline-block;
+        vertical-align: bottom;
+        width: 20px;
+        height: 20px;
+        background-image: url('/assets/images/error_mark.png');
+        background-repeat: no-repeat;
+        float: right;
+    }
+
+    .ok-image{
+        display: inline-block;
+        vertical-align: bottom;
+        width: 20px;
+        height: 20px;
+        background-image: url('/assets/images/ok_mark.png');
+        background-repeat: no-repeat;
+        float: right;
+    }
+    //draw limit line
+    .over-rows{
+        border-top: 3px solid red;
+    }
+
+
+    /*--- File Path -------------------------*/
+
+    #file_path{
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        opacity: 0;
+        filter:alpha(opacity=0);
+    }
+
+    #work_report_path{
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+
+    #file_box{
+        position: relative;
+    }
+
+    .fixed{
+        margin-left: auto;
+        margin-right: auto;
+        position: fixed;            
+    }
+
+    .dialog{
+       border-radius: 10px;
+       box-shadow: 0 0 2px #ccc;
+       padding: 30px;
+       width: 450px;
+       margin-top: 150px;
+       background-color: #fafafa;
+    }
+
+    /*--- Modal -----------------------------*/
+
+    #modal-content {
+        width: 50% ;
+        margin: 0 ;
+        padding: 10px 20px ;
+        border: 2px solid #aaa ;
+        background: #fff ;
+        position: fixed ;
+        display: none ;
+        z-index: 2 ;
+    }
+    #modal-content-innar{
+        margin:0 auto;
+        width:80%;
+    }
+    #modal-overlay {
+        z-index: 1 ;
+        display: none ;
+        position: fixed ;
+        top: 0 ;
+        left: 0 ;
+        width: 100% ;
+        height: 120% ;
+        background-color: rgba( 0,0,0, 0.75 ) ;
+    }
+    #modal-content-confirm {
+        width: 50% ;
+        margin: 0 ;
+        padding: 10px 20px ;
+        border: 2px solid #aaa ;
+        background: #fff ;
+        position: fixed ;
+        display: none ;
+        z-index: 2 ;
+    }
+    #modal-content-inner{
+        margin:0 auto;
+        width:80%;
+    }
+    #modal-overlay-confirm {
+        z-index: 1 ;
+        display: none ;
+        position: fixed ;
+        top: 0 ;
+        left: 0 ;
+        width: 100% ;
+        height: 120% ;
+        background-color: rgba( 0,0,0, 0.75 ) ;
+    }
+
+    #select-kinkan-file {
+        display: none;
+    }
+    #select-kinkan-file1 {
+        display: none;
+    }
+    #select-report-file {
+        display: none;
+    }
+    #select-report-file1 {
+        display: none;
+    }
+/*--- Dispatch Sheet Table -------------------*/
+
+    table#main-table-dispatch{
+        text-align: center;
+        font-size: 90%;
+    }
+
+    .background-blue{
+        background-color: #BFFFFF;
+    }
+    .info-red {
+        color:red;
+    }
+
+    .numeric {
+        text-align: right;
+    }
+
+    #pills-second {
+        padding: 0px 0px 10px 215px;
+    }
+
+    .left-user-classification {
+            background-color: #d6d6d6;
+     }
+
+/*---SPP File Export -------------------*/
+   #filter-fieldset-work{
+     display: block;
+     -webkit-margin-start: 2px;
+     -webkit-margin-end: 2px;
+     -webkit-padding-before: 0.35em;
+     -webkit-padding-start: 0.75em;
+     -webkit-padding-end: 0.75em;
+     -webkit-padding-after: 0.625em;
+     min-width: -webkit-min-content;
+     border-width: 1px;
+     border-style: groove;
+     border-color: threedface;
+     border-image: initial;
+   }
+
+   #filter-group-spp{
+     width: 650px;
+   }
+
+   #filter-legend-2{
+     display: block;
+     width: 125px;
+     -webkit-padding-start: 2px;
+     -webkit-padding-end: 2px;
+     border-width: initial;
+     border-style: none;
+     border-color: initial;
+     border-image: initial;
+     font-size: 17px;
+     margin-bottom: 0px;
+   }
+
+/*---有給休暇チェック表（業務部専用） -------------------*/
+    table#main-table-salary-leave{
+           text-align: center;
+    }
+
+    .font-large{
+        font-size: 1.5em;
+    }
+
+    .font-headline{
+        font-size: 2.0em;
+    }
+
+    .border-bottom{
+        border-bottom: 1px solid;
+        padding-bottom: 5px;
+    }
