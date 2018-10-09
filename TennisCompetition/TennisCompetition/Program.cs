@@ -17,10 +17,14 @@ namespace TennisCompetition
             {
                 Console.WriteLine("テニスの対戦組み合わせ表を出力します");
                 var p1 = new Competition();
-                while(true)
-                {
-                    var list = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
 
+                // 全ペアを作成する
+                for(var i = 0; i < 8; i++)
+                {
+                    for (var j = i+1; j < 8; j++)
+                    {
+                        Console.WriteLine(i.ToString()+","+j.ToString());
+                    }
                 }
             }
             finally
