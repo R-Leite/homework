@@ -16,6 +16,10 @@ namespace TennisCompetition
             try
             {
                 Console.WriteLine("テニスの対戦組み合わせ表を出力します");
+                var input = Console.ReadLine();
+                // プレイヤークラスも必要だとおもう
+
+                // ペアクラス
                 var pairs = new List<Pair>();
 
                 // 全ペアを作成する
@@ -32,14 +36,27 @@ namespace TennisCompetition
                 // ペアを4つ組み合わせて、全ペアがなくなるまで繰り返す
                 var cpairs = pairs.ToList();
                 var answers = new List<Pair>();
-                answers.Add(new Pair(1, 2));
                 while (cpairs.Count() > 0)
                 {
-                    var hoge = cpairs.Where(x => !answers.Any(y => y.contains(x))).First();
+                    // 重複チェックListが4の倍数（0含む）ならそのまま追加
+                    if (answers.Count % 4 == 0)
+                    {
+                        var fuga = cpairs.First();
+                        answers.Add(fuga);
+                        cpairs.Remove(fuga);
+                        continue;
+                    }
+
+//                    Console.WriteLine(answers.Count);
+                    var skip = answers.Count / 4 * 4;
+//                    Console.WriteLine(skip);
+                    var hoge = cpairs.Where(x => !answers.Skip(answers.Count / 4 * 4).Any(y => y.contains(x))).First();
                     Console.WriteLine(hoge._player1.ToString() + "," + hoge._player2.ToString());
                     //                    answers.Add(cpairs.Where(x => answers.Any(y => !y.contains(x))).First());
                     answers.Add(hoge);
                     cpairs.Remove(hoge);
+
+                    // 重複チェック用Listのlengthが4ならclear
                 }
                 Console.WriteLine();
                 answers.ForEach(x => Console.WriteLine(x._player1.ToString() + "," + x._player2.ToString()));
