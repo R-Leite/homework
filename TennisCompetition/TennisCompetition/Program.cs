@@ -31,6 +31,18 @@ namespace TennisCompetition
                     }
                 }
 
+                for (var i = 0; i < pairs.Count; i++)
+                {
+                    for (var j = i + 1; j < pairs.Count; j++)
+                    {
+                        if (!pairs[i].contains(pairs[j]))
+                        {
+                            Console.WriteLine(pairs[i]._player1.ToString() + ", " + pairs[i]._player2.ToString());
+                            Console.WriteLine(pairs[j]._player1.ToString() + ", " + pairs[j]._player2.ToString());
+                            Console.WriteLine();
+                        }
+                    }
+                }
                 //pairs.ForEach(x => Console.WriteLine(x._player1.ToString() +","+x._player2.ToString()));
 
                 // ペアを4つ組み合わせて、全ペアがなくなるまで繰り返す
