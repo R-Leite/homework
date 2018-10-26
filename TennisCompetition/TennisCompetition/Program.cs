@@ -20,19 +20,26 @@ namespace TennisCompetition
                 var playerNumber = int.Parse(Console.ReadLine());
 
                 // プレイヤークラスも必要だとおもう
+                var players = new List<Player>();
+
+                for (var i = 1; i <= playerNumber; i++)
+                {
+                    players.Add(new Player(i));
+                }
 
                 // ペアクラス
                 var pairs = new List<Pair>();
 
                 // 全ペアを作成する
-                for(var i = 1; i <= playerNumber; i++)
+                for(var i = 0; i < playerNumber; i++)
                 {
-                    for (var j = i + 1; j <= playerNumber; j++)
+                    for (var j = i + 1; j < playerNumber; j++)
                     {
-                        pairs.Add(new Pair(i, j));
+                        pairs.Add(new Pair(players[i]._playerNum, players[j]._playerNum));
                     }
                 }
 
+                // 全試合組み合わせを作成する
                 var matches = new List<Match>();
                 for (var i = 0; i < pairs.Count; i++)
                 {
@@ -85,35 +92,6 @@ namespace TennisCompetition
                 ansMatches.ForEach(x => Console.WriteLine(x.Pair1._player1.ToString()+","+x.Pair1._player2.ToString()+","+ x.Pair2._player1.ToString() + "," + x.Pair2._player2.ToString() + "," + x.Pair3._player1.ToString() + "," + x.Pair3._player2.ToString() + "," + x.Pair4._player1.ToString() + "," + x.Pair4._player2.ToString()));
 
                 //pairs.ForEach(x => Console.WriteLine(x._player1.ToString() +","+x._player2.ToString()));
-
-                // ペアを4つ組み合わせて、全ペアがなくなるまで繰り返す
-                var cpairs = pairs.ToList();
-                var answers = new List<Pair>();
-                while (cpairs.Count() > 0)
-                {
-                    // 重複チェックListが4の倍数（0含む）ならそのまま追加
-                    if (answers.Count % 4 == 0)
-                    {
-                        var fuga = cpairs.First();
-                        answers.Add(fuga);
-                        cpairs.Remove(fuga);
-                        continue;
-                    }
-
-//                    Console.WriteLine(answers.Count);
-                    var skip = answers.Count / 4 * 4;
-//                    Console.WriteLine(skip);
-                    var hoge = cpairs.Where(x => !answers.Skip(answers.Count / 4 * 4).Any(y => y.contains(x))).First();
-                    //Console.WriteLine(hoge._player1.ToString() + "," + hoge._player2.ToString());
-                    //                    answers.Add(cpairs.Where(x => answers.Any(y => !y.contains(x))).First());
-                    answers.Add(hoge);
-                    cpairs.Remove(hoge);
-
-                    // 重複チェック用Listのlengthが4ならclear
-                }
-                Console.WriteLine();
-                answers.ForEach(x => Console.WriteLine(x._player1.ToString() + "," + x._player2.ToString()));
-
             }
             finally
             {
