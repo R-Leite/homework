@@ -10,11 +10,13 @@ namespace TennisCompetition
     {
         public int _player1;
         public int _player2;
+        private int _participate;
 
         public Pair(int p1, int p2)
         {
             _player1 = p1;
             _player2 = p2;
+            this._participate = 0;
         }
 
         public bool contains(Pair p)
@@ -24,6 +26,11 @@ namespace TennisCompetition
             if (_player2 == p._player1) { return true; }
             if (_player2 == p._player2) { return true; }
             return false;
+        }
+
+        public void participateUp()
+        {
+            this._participate++;
         }
     }
 }

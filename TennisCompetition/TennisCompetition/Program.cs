@@ -19,7 +19,7 @@ namespace TennisCompetition
                 Console.Write("人数を入力して下さい。：");
                 var playerNumber = int.Parse(Console.ReadLine());
 
-                // プレイヤークラスも必要だとおもう
+                // プレイヤークラス
                 var players = new List<Player>();
 
                 for (var i = 1; i <= playerNumber; i++)
@@ -62,6 +62,12 @@ namespace TennisCompetition
                             }
                         }
                     }
+                }
+
+                // 優先順位をつける
+                for (var i = 0; i < matches.Count; i++)
+                {
+
                 }
 
                 var copyMatches = matches.ToList();

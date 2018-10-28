@@ -9,17 +9,17 @@ namespace TennisCompetition
     class Player
     {
         public int _playerNum;
-        private int _appearance;
+        private int _participate;
 
         public Player(int pn)
         {
             this._playerNum = pn;
-            this._appearance = 0;
+            this._participate = 0;
         }
 
-        public void apperanceCountUp()
+        public void participateCount()
         {
-            this._appearance++;
+            this._participate++;
         }
     }
 }
