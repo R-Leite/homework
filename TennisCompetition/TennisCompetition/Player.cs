@@ -9,7 +9,7 @@ namespace TennisCompetition
     class Player
     {
         public int _playerNum;
-        private int _participate;
+        public int _participate;
 
         public Player(int pn)
         {

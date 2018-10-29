@@ -8,11 +8,11 @@ namespace TennisCompetition
 {
     class Pair
     {
-        public int _player1;
-        public int _player2;
-        private int _participate;
+        public Player _player1;
+        public Player _player2;
+        public int _participate;
 
-        public Pair(int p1, int p2)
+        public Pair(Player p1, Player p2)
         {
             _player1 = p1;
             _player2 = p2;
@@ -28,7 +28,7 @@ namespace TennisCompetition
             return false;
         }
 
-        public void participateUp()
+        public void participateCount()
         {
             this._participate++;
         }

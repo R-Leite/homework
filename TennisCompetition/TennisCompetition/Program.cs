@@ -35,7 +35,7 @@ namespace TennisCompetition
                 {
                     for (var j = i + 1; j < playerNumber; j++)
                     {
-                        pairs.Add(new Pair(players[i]._playerNum, players[j]._playerNum));
+                        pairs.Add(new Pair(players[i], players[j]));
                     }
                 }
 
@@ -64,9 +64,49 @@ namespace TennisCompetition
                     }
                 }
 
-                // 優先順位をつける
-                for (var i = 0; i < matches.Count; i++)
+                var count = 0;
+                while (true)
                 {
+                    if (count++ > 50) { break; }
+                    var priority = int.MaxValue;
+                    var index = 0;
+                    // 優先順位をつける
+                    for (var i = 0; i < matches.Count; i++)
+                    {
+                        var weight = matches[i].Pair1._player1._participate +
+                            matches[i].Pair1._player2._participate +
+                            matches[i].Pair2._player1._participate +
+                            matches[i].Pair2._player2._participate +
+                            matches[i].Pair3._player1._participate +
+                            matches[i].Pair3._player2._participate +
+                            matches[i].Pair4._player1._participate +
+                            matches[i].Pair4._player2._participate +
+                            matches[i].Pair1._participate +
+                            matches[i].Pair2._participate +
+                            matches[i].Pair3._participate +
+                            matches[i].Pair4._participate;
+
+                        if (priority > weight)
+                        {
+                            priority = weight;
+                            index = i;
+                        }
+                     }
+
+                    var x = matches[index];
+                    x.Pair1._player1.participateCount();
+                    x.Pair1._player2.participateCount();
+                    x.Pair2._player1.participateCount();
+                    x.Pair2._player2.participateCount();
+                    x.Pair3._player1.participateCount();
+                    x.Pair3._player2.participateCount();
+                    x.Pair4._player1.participateCount();
+                    x.Pair4._player2.participateCount();
+                    x.Pair1.participateCount();
+                    x.Pair2.participateCount();
+                    x.Pair3.participateCount();
+                    x.Pair4.participateCount();
+                    Console.WriteLine(x.Pair1._player1._playerNum.ToString().PadLeft(2,' ') + "," + x.Pair1._player2._playerNum.ToString().PadLeft(2, ' ') + "," + x.Pair2._player1._playerNum.ToString().PadLeft(2, ' ') + "," + x.Pair2._player2._playerNum.ToString().PadLeft(2, ' ') + "," + x.Pair3._player1._playerNum.ToString().PadLeft(2, ' ') + "," + x.Pair3._player2._playerNum.ToString().PadLeft(2, ' ') + "," + x.Pair4._player1._playerNum.ToString().PadLeft(2, ' ') + "," + x.Pair4._player2._playerNum.ToString().PadLeft(2, ' '));
 
                 }
 
@@ -88,16 +128,14 @@ namespace TennisCompetition
                     {
                         break;
                     }
-                    Console.WriteLine(mm.Pair1._player1.ToString() + "," + mm.Pair1._player2.ToString() + "," + mm.Pair2._player1.ToString() + "," + mm.Pair2._player2.ToString() + "," + mm.Pair3._player1.ToString() + "," + mm.Pair3._player2.ToString() + "," + mm.Pair4._player1.ToString() + "," + mm.Pair4._player2.ToString());
+//                    Console.WriteLine(mm.Pair1._player1.ToString() + "," + mm.Pair1._player2.ToString() + "," + mm.Pair2._player1.ToString() + "," + mm.Pair2._player2.ToString() + "," + mm.Pair3._player1.ToString() + "," + mm.Pair3._player2.ToString() + "," + mm.Pair4._player1.ToString() + "," + mm.Pair4._player2.ToString());
                     
                     ansMatches.Add(mm);
                     copyMatches.Remove(mm);
                 }
 
                 Console.WriteLine();
-                ansMatches.ForEach(x => Console.WriteLine(x.Pair1._player1.ToString()+","+x.Pair1._player2.ToString()+","+ x.Pair2._player1.ToString() + "," + x.Pair2._player2.ToString() + "," + x.Pair3._player1.ToString() + "," + x.Pair3._player2.ToString() + "," + x.Pair4._player1.ToString() + "," + x.Pair4._player2.ToString()));
-
-                //pairs.ForEach(x => Console.WriteLine(x._player1.ToString() +","+x._player2.ToString()));
+                ansMatches.ForEach(x => Console.WriteLine(x.Pair1._player1._playerNum+","+x.Pair1._player2._playerNum+","+ x.Pair2._player1._playerNum+ "," + x.Pair2._player2._playerNum + "," + x.Pair3._player1._playerNum+ "," + x.Pair3._player2._playerNum+ "," + x.Pair4._player1._playerNum+ "," + x.Pair4._player2._playerNum));
             }
             finally
             {
