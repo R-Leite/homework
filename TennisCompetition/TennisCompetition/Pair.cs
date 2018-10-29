@@ -8,29 +8,36 @@ namespace TennisCompetition
 {
     class Pair
     {
-        public Player _player1;
-        public Player _player2;
-        public int _participate;
+        public readonly Player Player1;
+        public readonly Player Player2;
+        public int Participate;
 
         public Pair(Player p1, Player p2)
         {
-            _player1 = p1;
-            _player2 = p2;
-            this._participate = 0;
+            this.Player1 = p1;
+            this.Player2 = p2;
+            this.Participate = 0;
         }
 
-        public bool contains(Pair p)
+        public bool Contains(Pair p)
         {
-            if (_player1 == p._player1) { return true; }
-            if (_player1 == p._player2) { return true; }
-            if (_player2 == p._player1) { return true; }
-            if (_player2 == p._player2) { return true; }
+            if (this.Player1 == p.Player1) { return true; }
+            if (this.Player1 == p.Player2) { return true; }
+            if (this.Player2 == p.Player1) { return true; }
+            if (this.Player2 == p.Player2) { return true; }
             return false;
         }
 
-        public void participateCount()
+        public void ParticipateCount()
         {
-            this._participate++;
+            this.Participate++;
+            this.Player1.participateCount();
+            this.Player2.participateCount();
+        }
+
+        override public String ToString()
+        {
+            return "(" + this.Player1.ToString() + "," + this.Player2.ToString() + ")";
         }
     }
 }

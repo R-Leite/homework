@@ -8,18 +8,23 @@ namespace TennisCompetition
 {
     class Player
     {
-        public int _playerNum;
-        public int _participate;
+        public readonly int Label;
+        public int Participate;
 
         public Player(int pn)
         {
-            this._playerNum = pn;
-            this._participate = 0;
+            this.Label = pn;
+            this.Participate = 0;
         }
 
         public void participateCount()
         {
-            this._participate++;
+            this.Participate++;
+        }
+
+        public override string ToString()
+        {
+            return this.Label.ToString().PadLeft(2, ' ');
         }
     }
 }
