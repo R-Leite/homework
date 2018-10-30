@@ -65,6 +65,7 @@ namespace TennisCompetition
                     }
                 }
 
+                // ソートしてあげることで同組み合わせかどうか調べる
                 var count = 0;
                 while (true)
                 {
@@ -92,12 +93,15 @@ namespace TennisCompetition
                             priority = weight;
                             index = i;
                         }
-                     }
-
+                    }
                     var x = matches[index];
+                    if (x.Pair1.Participate > 0 & x.Pair2.Participate > 0 & x.Pair3.Participate > 0 & x.Pair4.Participate > 0)
+                    {
+                        break;
+                    }
+
                     x.ParticipateCount();
                     Console.WriteLine(x.ToString());
-
                 }
 
             }
