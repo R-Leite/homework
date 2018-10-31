@@ -10,11 +10,14 @@ namespace TennisCompetition
     {
         public readonly Pair Pair1;
         public readonly Pair Pair2;
+        public readonly string Group;
 
         public Match(Pair p1, Pair p2)
         {
             this.Pair1 = p1;
             this.Pair2 = p2;
+            var list = new List<int>() { p1.Player1.Label, p1.Player2.Label, p2.Player1.Label, p2.Player2.Label };
+            Group = list.OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
         }
 
         public bool Contains(Match m)
@@ -28,11 +31,11 @@ namespace TennisCompetition
             return false;
         }
 
-        public void ParticipateCount()
-        {
-            this.Pair1.ParticipateCount();
-            this.Pair2.ParticipateCount();
-        }
+        //public void ParticipateCount()
+        //{
+        //    this.Pair1.ParticipateCount();
+        //    this.Pair2.ParticipateCount();
+        //}
 
         public override string ToString()
         {

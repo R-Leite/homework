@@ -17,11 +17,11 @@ namespace TennisCompetition
             this.Match2 = m2;
         }
 
-        public void ParticipateCount()
-        {
-            this.Match1.ParticipateCount();
-            this.Match2.ParticipateCount();
-        }
+        //public void ParticipateCount()
+        //{
+        //    this.Match1.ParticipateCount();
+        //    this.Match2.ParticipateCount();
+        //}
 
         public override string ToString()
         {

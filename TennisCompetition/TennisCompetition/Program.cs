@@ -65,42 +65,32 @@ namespace TennisCompetition
                     }
                 }
 
-                // ソートしてあげることで同組み合わせかどうか調べる
                 var count = 0;
+                var participateCount = new ParticipateCount(players, pairs, matches);
+
                 while (true)
                 {
                     if (count++ > 50) { break; }
-                    var priority = int.MaxValue;
+                    var minWeight = int.MaxValue;
                     var index = 0;
                     // 優先順位をつける
                     for (var i = 0; i < competitions.Count; i++)
                     {
-                        var weight = competitions[i].Match1.Pair1.Player1.Participate +
-                            competitions[i].Match1.Pair1.Player2.Participate +
-                            competitions[i].Match1.Pair2.Player1.Participate +
-                            competitions[i].Match1.Pair2.Player2.Participate +
-                            competitions[i].Match2.Pair1.Player1.Participate +
-                            competitions[i].Match2.Pair1.Player2.Participate +
-                            competitions[i].Match2.Pair2.Player1.Participate +
-                            competitions[i].Match2.Pair2.Player2.Participate +
-                            competitions[i].Match1.Pair1.Participate +
-                            competitions[i].Match1.Pair2.Participate +
-                            competitions[i].Match2.Pair1.Participate +
-                            competitions[i].Match2.Pair2.Participate;
+                        var weight = participateCount.GetWeight(competitions[i]);
 
-                        if (priority > weight)
+                        if (minWeight > weight)
                         {
-                            priority = weight;
+                            minWeight = weight;
                             index = i;
                         }
                     }
                     var x = competitions[index];
-                    if (x.Match1.Pair1.Participate > 0 & x.Match1.Pair2.Participate > 0 & x.Match2.Pair1.Participate > 0 & x.Match2.Pair2.Participate > 0)
+                    if (participateCount.isAllPair(x))
                     {
                         break;
                     }
 
-                    x.ParticipateCount();
+                    participateCount.Add(x);
                     Console.WriteLine(x.ToString());
                 }
 
