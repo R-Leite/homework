@@ -46,21 +46,21 @@ namespace TennisCompetition
                 {
                     for (var j = i + 1; j < pairs.Count; j++)
                     {
-                        for (var k = j + 1; k < pairs.Count; k++)
+                        if (!pairs[i].Contains(pairs[j]))
                         {
-                            for (var l = k + 1; l < pairs.Count; l++)
-                            {
-                                if (!pairs[i].Contains(pairs[j]) && !pairs[i].Contains(pairs[k]) && !pairs[i].Contains(pairs[l]))
-                                {
-                                    if (!pairs[j].Contains(pairs[k]) && !pairs[j].Contains(pairs[l]))
-                                    {
-                                        if (!pairs[k].Contains(pairs[l]))
-                                        {
-                                            matches.Add(new Match(pairs[i], pairs[j], pairs[k], pairs[l]));
-                                        }
-                                    }
-                                }
-                            }
+                            matches.Add(new Match(pairs[i], pairs[j]));
+                        }
+                    }
+                }
+
+                var competitions = new List<Competition>();
+                for (var i = 0; i < matches.Count; i++)
+                {
+                    for (var j = i + 1; j < matches.Count; j++)
+                    {
+                        if (!matches[i].Contains(matches[j]))
+                        {
+                            competitions.Add(new Competition(matches[i], matches[j]));
                         }
                     }
                 }
@@ -73,20 +73,20 @@ namespace TennisCompetition
                     var priority = int.MaxValue;
                     var index = 0;
                     // 優先順位をつける
-                    for (var i = 0; i < matches.Count; i++)
+                    for (var i = 0; i < competitions.Count; i++)
                     {
-                        var weight = matches[i].Pair1.Player1.Participate +
-                            matches[i].Pair1.Player2.Participate +
-                            matches[i].Pair2.Player1.Participate +
-                            matches[i].Pair2.Player2.Participate +
-                            matches[i].Pair3.Player1.Participate +
-                            matches[i].Pair3.Player2.Participate +
-                            matches[i].Pair4.Player1.Participate +
-                            matches[i].Pair4.Player2.Participate +
-                            matches[i].Pair1.Participate +
-                            matches[i].Pair2.Participate +
-                            matches[i].Pair3.Participate +
-                            matches[i].Pair4.Participate;
+                        var weight = competitions[i].Match1.Pair1.Player1.Participate +
+                            competitions[i].Match1.Pair1.Player2.Participate +
+                            competitions[i].Match1.Pair2.Player1.Participate +
+                            competitions[i].Match1.Pair2.Player2.Participate +
+                            competitions[i].Match2.Pair1.Player1.Participate +
+                            competitions[i].Match2.Pair1.Player2.Participate +
+                            competitions[i].Match2.Pair2.Player1.Participate +
+                            competitions[i].Match2.Pair2.Player2.Participate +
+                            competitions[i].Match1.Pair1.Participate +
+                            competitions[i].Match1.Pair2.Participate +
+                            competitions[i].Match2.Pair1.Participate +
+                            competitions[i].Match2.Pair2.Participate;
 
                         if (priority > weight)
                         {
@@ -94,8 +94,8 @@ namespace TennisCompetition
                             index = i;
                         }
                     }
-                    var x = matches[index];
-                    if (x.Pair1.Participate > 0 & x.Pair2.Participate > 0 & x.Pair3.Participate > 0 & x.Pair4.Participate > 0)
+                    var x = competitions[index];
+                    if (x.Match1.Pair1.Participate > 0 & x.Match1.Pair2.Participate > 0 & x.Match2.Pair1.Participate > 0 & x.Match2.Pair2.Participate > 0)
                     {
                         break;
                     }

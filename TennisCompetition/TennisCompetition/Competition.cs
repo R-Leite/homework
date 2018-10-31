@@ -16,5 +16,16 @@ namespace TennisCompetition
             this.Match1 = m1;
             this.Match2 = m2;
         }
+
+        public void ParticipateCount()
+        {
+            this.Match1.ParticipateCount();
+            this.Match2.ParticipateCount();
+        }
+
+        public override string ToString()
+        {
+            return this.Match1.ToString() + ", " + this.Match2.ToString();
+        }
     }
 }
