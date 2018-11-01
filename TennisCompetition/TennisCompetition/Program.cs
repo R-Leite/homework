@@ -76,15 +76,12 @@ namespace TennisCompetition
                     }
                 }
 
-                var count = 0;
                 var participateCount = new ParticipateCount(players, pairs, matches);
-
                 while (true)
                 {
-                    if (count++ > 50) { break; }
                     var minWeight = int.MaxValue;
                     var index = 0;
-                    // 優先順位をつける
+                    // 出場回数から優先順位をつける
                     for (var i = 0; i < competitions.Count; i++)
                     {
                         var weight = participateCount.GetWeight(competitions[i]);
@@ -102,7 +99,34 @@ namespace TennisCompetition
                     }
 
                     participateCount.Add(x);
-                    Console.WriteLine(x.ToString());
+                    //Console.WriteLine(x.ToString());
+                    Console.WriteLine(
+                        x.Match1.Pair1.Player1.Label.ToString() + "," +
+                        x.Match1.Pair1.Player2.Label.ToString() + "," +
+                        x.Match1.Pair2.Player1.Label.ToString() + "," +
+                        x.Match1.Pair2.Player2.Label.ToString() + "," +
+                        x.Match2.Pair1.Player1.Label.ToString() + "," +
+                        x.Match2.Pair1.Player2.Label.ToString() + "," +
+                        x.Match2.Pair2.Player1.Label.ToString() + "," +
+                        x.Match2.Pair2.Player2.Label.ToString() + ":" +
+                        //
+                        participateCount.Player[x.Match1.Pair1.Player1]+ "," +
+                        participateCount.Player[x.Match1.Pair1.Player2] + "," +
+                        participateCount.Player[x.Match1.Pair2.Player1] + "," +
+                        participateCount.Player[x.Match1.Pair2.Player2] + "," +
+                        participateCount.Player[x.Match2.Pair1.Player1] + "," +
+                        participateCount.Player[x.Match2.Pair1.Player2] + "," +
+                        participateCount.Player[x.Match2.Pair2.Player1] + "," +
+                        participateCount.Player[x.Match2.Pair2.Player2] 
+                    );
+                }
+                foreach(var key in participateCount.Player.Keys)
+                {
+                    Console.WriteLine($"{key}={participateCount.Player[key]}");
+                }
+                foreach (var key in participateCount.Pair.Keys)
+                {
+                    Console.WriteLine($"{key}={participateCount.Pair[key]}");
                 }
 
             }
