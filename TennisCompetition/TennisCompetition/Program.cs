@@ -17,22 +17,32 @@ namespace TennisCompetition
             try
             {
                 Console.WriteLine("テニスの対戦組み合わせ表を出力します。");
-                Console.Write("人数を入力して下さい。：");
-                var playerNumber = int.Parse(Console.ReadLine());
+                Console.Write("人数を入力して下さい。(8以上)：");
+                int playerNumber;
+                while (true)
+                {
+                    if(int.TryParse(Console.ReadLine(), out playerNumber))
+                    {
+                        if (playerNumber >= 8)
+                        {
+                            break;
+                        }
+                    }
+                    Console.Write("8以上の数字を入力して下さい。：");
+                }
 
-                // プレイヤークラス
+                // プレイヤーのリストを作成
                 var players = new List<Player>();
-
+                //Enumerable.Range(1, playerNumber).ToList().ForEach(x => players.Add(new Player(x)));
                 for (var i = 1; i <= playerNumber; i++)
                 {
                     players.Add(new Player(i));
                 }
 
-                // ペアクラス
+                // 存在しうる全ペアを作成
                 var pairs = new List<Pair>();
-
-                // 全ペアを作成する
-                for(var i = 0; i < playerNumber; i++)
+                //Enumerable.Range(0, playerNumber).ToList().ForEach(x => Enumerable.Range(x + 1, playerNumber - x - 1).ToList().ForEach(y => pairs.Add(new Pair(players[x], players[y]))));
+                for (var i = 0; i < playerNumber; i++)
                 {
                     for (var j = i + 1; j < playerNumber; j++)
                     {
@@ -40,7 +50,7 @@ namespace TennisCompetition
                     }
                 }
 
-                // 全試合組み合わせを作成する
+                // 存在し得る全試合を作成
                 var matches = new List<Match>();
                 for (var i = 0; i < pairs.Count; i++)
                 {
@@ -53,6 +63,7 @@ namespace TennisCompetition
                     }
                 }
 
+                // 存在し得る全試合（2面コート）を作成
                 var competitions = new List<Competition>();
                 for (var i = 0; i < matches.Count; i++)
                 {
