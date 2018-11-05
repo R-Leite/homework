@@ -14,13 +14,7 @@ namespace TennisCompetition
         public Player(int pn)
         {
             this.Label = pn;
-            //this.Participate = 0;
         }
-
-        //public void participateCount()
-        //{
-        //    this.Participate++;
-        //}
 
         public override string ToString()
         {

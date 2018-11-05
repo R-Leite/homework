@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TennisCompetition
 {
-    class ParticipateCount
+    class Participation
     {
         public Dictionary<Player, int> Player;
         public Dictionary<Pair, int> Pair;
         public Dictionary<string, int> Trio;
         public Dictionary<string, int> Match;
 
-        public ParticipateCount(List<Player> players, List<Pair> pairs, List<Trio> trios, List<Match> matches)
+        public Participation(List<Player> players, List<Pair> pairs, List<Trio> trios, List<Match> matches)
         {
             this.Player = new Dictionary<Player, int>();
             this.Pair = new Dictionary<Pair, int>();
@@ -22,8 +22,6 @@ namespace TennisCompetition
             players.ForEach(p => this.Player.Add(p, 0));
             pairs.ForEach(p => this.Pair.Add(p, 0));
             trios.ForEach(t => this.Trio.Add(t.Group, 0));
-            trios.ForEach(t => Console.WriteLine(t));
-            //matches.ForEach(m => this.Match.Add(m.Group, 0));
             foreach(var m in matches)
             {
 //                Console.WriteLine(m.ToString());
@@ -38,14 +36,14 @@ namespace TennisCompetition
         {
             return this.Match[c.Match1.Group] +
                 this.Match[c.Match2.Group] +
-                this.Trio[c.Match1.Trios[0].Group] +
-                this.Trio[c.Match1.Trios[1].Group] +
-                this.Trio[c.Match1.Trios[2].Group] +
-                this.Trio[c.Match1.Trios[3].Group] +
-                this.Trio[c.Match2.Trios[0].Group] +
-                this.Trio[c.Match2.Trios[1].Group] +
-                this.Trio[c.Match2.Trios[2].Group] +
-                this.Trio[c.Match2.Trios[3].Group] +
+                //this.Trio[c.Match1.Trios[0].Group] +
+                //this.Trio[c.Match1.Trios[1].Group] +
+                //this.Trio[c.Match1.Trios[2].Group] +
+                //this.Trio[c.Match1.Trios[3].Group] +
+                //this.Trio[c.Match2.Trios[0].Group] +
+                //this.Trio[c.Match2.Trios[1].Group] +
+                //this.Trio[c.Match2.Trios[2].Group] +
+                //this.Trio[c.Match2.Trios[3].Group] +
                 this.Pair[c.Match1.Pair1] +
                 this.Pair[c.Match1.Pair2] +
                 this.Pair[c.Match2.Pair1] +

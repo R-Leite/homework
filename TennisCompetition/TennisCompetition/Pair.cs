@@ -16,7 +16,6 @@ namespace TennisCompetition
         {
             this.Player1 = p1;
             this.Player2 = p2;
-            //this.Participate = 0;
         }
 
         public bool Contains(Pair p)
@@ -27,13 +26,6 @@ namespace TennisCompetition
             if (this.Player2 == p.Player2) { return true; }
             return false;
         }
-
-        //public void ParticipateCount()
-        //{
-        //    this.Participate++;
-        //    this.Player1.participateCount();
-        //    this.Player2.participateCount();
-        //}
 
         override public String ToString()
         {

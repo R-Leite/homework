@@ -10,15 +10,15 @@ namespace TennisCompetition
     {
         public readonly Pair Pair1;
         public readonly Pair Pair2;
-        public readonly string Group;
         public readonly List<Trio> Trios;
+        public readonly string Group;
 
         public Match(Pair p1, Pair p2)
         {
             this.Pair1 = p1;
             this.Pair2 = p2;
-            var list = new List<Player>() { p1.Player1, p1.Player2, p2.Player1, p2.Player2 };
-            Group = list.Select(x=>x.Label.ToString()).Aggregate((a, b) => a + "-" + b);
+            var playerList = new List<Player>() { p1.Player1, p1.Player2, p2.Player1, p2.Player2 };
+            Group = playerList.Select(x=>x.Label.ToString()).Aggregate((a, b) => a + "-" + b);
             this.Trios = new List<Trio>();
             for (var i = 0; i < 4; i++)
             {
@@ -26,7 +26,7 @@ namespace TennisCompetition
                 {
                     for (var k = j + 1; k < 4; k++)
                     {
-                        this.Trios.Add(new TennisCompetition.Trio(list[i], list[j], list[k]));
+                        this.Trios.Add(new TennisCompetition.Trio(playerList[i], playerList[j], playerList[k]));
                     }
                 }
             }
@@ -42,12 +42,6 @@ namespace TennisCompetition
 
             return false;
         }
-
-        //public void ParticipateCount()
-        //{
-        //    this.Pair1.ParticipateCount();
-        //    this.Pair2.ParticipateCount();
-        //}
 
         public override string ToString()
         {
