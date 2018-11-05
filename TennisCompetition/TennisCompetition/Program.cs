@@ -64,10 +64,11 @@ namespace TennisCompetition
 
 
                 // 存在し得る全試合を作成
+                var pairCount = pairs.Count;
                 var matches = new List<Match>();
-                for (var i = 0; i < pairs.Count; i++)
+                for (var i = 0; i < pairCount; i++)
                 {
-                    for (var j = i + 1; j < pairs.Count; j++)
+                    for (var j = i + 1; j < pairCount; j++)
                     {
                         // プレイヤーの重複を除く
                         if (!pairs[i].Contains(pairs[j]))
@@ -78,10 +79,11 @@ namespace TennisCompetition
                 }
 
                 // 存在し得る全試合（2面コート）を作成
+                var matchCount = matches.Count;
                 var competitions = new List<Competition>();
-                for (var i = 0; i < matches.Count; i++)
+                for (var i = 0; i < matchCount; i++)
                 {
-                    for (var j = i + 1; j < matches.Count; j++)
+                    for (var j = i + 1; j < matchCount; j++)
                     {
                         // プレイヤーの重複を除く
                         if (!matches[i].Contains(matches[j]))
