@@ -50,6 +50,19 @@ namespace TennisCompetition
                     }
                 }
 
+                var trios = new List<Trio>();
+                for (var i = 0; i < playerNumber; i++)
+                {
+                    for (var j = i + 1; j < playerNumber; j++)
+                    {
+                        for (var k = j + 1; k < playerNumber; k++)
+                        {
+                            trios.Add(new Trio(players[i], players[j], players[k]));
+                        }
+                    }
+                }
+
+
                 // 存在し得る全試合を作成
                 var matches = new List<Match>();
                 for (var i = 0; i < pairs.Count; i++)
@@ -76,7 +89,7 @@ namespace TennisCompetition
                     }
                 }
 
-                var participateCount = new ParticipateCount(players, pairs, matches);
+                var participateCount = new ParticipateCount(players, pairs, trios, matches);
                 while (true)
                 {
                     var minWeight = int.MaxValue;
@@ -99,7 +112,7 @@ namespace TennisCompetition
                     }
 
                     participateCount.Add(x);
-                    //Console.WriteLine(x.ToString());
+                    Console.WriteLine(x.ToString());
                     Console.WriteLine(
                         x.Match1.Pair1.Player1.Label.ToString() + "," +
                         x.Match1.Pair1.Player2.Label.ToString() + "," +
