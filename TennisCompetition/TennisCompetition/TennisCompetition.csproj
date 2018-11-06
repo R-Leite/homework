@@ -46,7 +46,7 @@
     <Compile Include="Competition.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Pair.cs" />
-    <Compile Include="ParticipateCount.cs" />
+    <Compile Include="Participation.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
