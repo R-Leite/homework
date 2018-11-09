@@ -16,6 +16,7 @@ namespace TennisCompetition
 
             try
             {
+                // 人数入力
                 Console.WriteLine("テニスの対戦組み合わせ表を出力します。");
                 Console.Write("人数を入力して下さい。(8以上)：");
                 int playerNumber;
@@ -50,6 +51,7 @@ namespace TennisCompetition
                     }
                 }
 
+                // 同コートのプレイヤー確認用
                 var trios = new List<Trio>();
                 for (var i = 0; i < playerNumber; i++)
                 {
@@ -121,25 +123,7 @@ namespace TennisCompetition
 
                     participation.Add(x);
                     Console.WriteLine(x.ToString());
-                    Console.WriteLine(
-                        x.Match1.Pair1.Player1.Label.ToString() + "," +
-                        x.Match1.Pair1.Player2.Label.ToString() + "," +
-                        x.Match1.Pair2.Player1.Label.ToString() + "," +
-                        x.Match1.Pair2.Player2.Label.ToString() + "," +
-                        x.Match2.Pair1.Player1.Label.ToString() + "," +
-                        x.Match2.Pair1.Player2.Label.ToString() + "," +
-                        x.Match2.Pair2.Player1.Label.ToString() + "," +
-                        x.Match2.Pair2.Player2.Label.ToString() + ":" +
-                        //
-                        participation.Player[x.Match1.Pair1.Player1]+ "," +
-                        participation.Player[x.Match1.Pair1.Player2] + "," +
-                        participation.Player[x.Match1.Pair2.Player1] + "," +
-                        participation.Player[x.Match1.Pair2.Player2] + "," +
-                        participation.Player[x.Match2.Pair1.Player1] + "," +
-                        participation.Player[x.Match2.Pair1.Player2] + "," +
-                        participation.Player[x.Match2.Pair2.Player1] + "," +
-                        participation.Player[x.Match2.Pair2.Player2] 
-                    );
+                    Console.WriteLine(x.ToAnswer(participation));
                 }
                 foreach(var key in participation.Player.Keys)
                 {
