@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TennisCompetition
 {
     class Participation
     {
-        public Dictionary<Player, int> Player;
-        public Dictionary<Pair, int> Pair;
-        public Dictionary<string, int> Trio;
-        public Dictionary<string, int> Match;
+        public readonly Dictionary<Player, int> Player;
+        public readonly Dictionary<Pair, int> Pair;
+        public readonly Dictionary<string, int> Trio;
+        public readonly Dictionary<string, int> Match;
 
         public Participation(List<Player> players, List<Pair> pairs, List<Trio> trios, List<Match> matches)
         {
@@ -36,14 +33,14 @@ namespace TennisCompetition
         {
             return this.Match[c.Match1.Group] +
                 this.Match[c.Match2.Group] +
-                //this.Trio[c.Match1.Trios[0].Group] +
-                //this.Trio[c.Match1.Trios[1].Group] +
-                //this.Trio[c.Match1.Trios[2].Group] +
-                //this.Trio[c.Match1.Trios[3].Group] +
-                //this.Trio[c.Match2.Trios[0].Group] +
-                //this.Trio[c.Match2.Trios[1].Group] +
-                //this.Trio[c.Match2.Trios[2].Group] +
-                //this.Trio[c.Match2.Trios[3].Group] +
+                this.Trio[c.Match1.Trios[0].Group] +
+                this.Trio[c.Match1.Trios[1].Group] +
+                this.Trio[c.Match1.Trios[2].Group] +
+                this.Trio[c.Match1.Trios[3].Group] +
+                this.Trio[c.Match2.Trios[0].Group] +
+                this.Trio[c.Match2.Trios[1].Group] +
+                this.Trio[c.Match2.Trios[2].Group] +
+                this.Trio[c.Match2.Trios[3].Group] +
                 this.Pair[c.Match1.Pair1] +
                 this.Pair[c.Match1.Pair2] +
                 this.Pair[c.Match2.Pair1] +
@@ -58,7 +55,7 @@ namespace TennisCompetition
                 this.Player[c.Match2.Pair2.Player2];
         }
 
-        public void Add(Competition c)
+        public void CountUp(Competition c)
         {
             this.Match[c.Match1.Group]++;
             this.Match[c.Match2.Group]++;
@@ -93,13 +90,20 @@ namespace TennisCompetition
             return true;
         }
 
-        public void show()
+        public void WriteLinePlayer()
         {
-            //foreach(var d in this.Match.Keys)
-            //{
-            //    var str = d[0].ToString() + ", " + d[1].ToString() + ", " + d[2].ToString() + ", " + d[3].ToString();
-            //    Console.WriteLine($"{str}:{this.Match[d]}");
-            //}
+            foreach (var key in this.Player.Keys)
+            {
+                Console.WriteLine($"{key}={this.Player[key]}");
+            }
+        }
+
+        public void WriteLinePair()
+        {
+            foreach (var key in this.Pair.Keys)
+            {
+                Console.WriteLine($"{key}={this.Pair[key]}");
+            }
         }
     }
 }
