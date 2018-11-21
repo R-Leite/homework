@@ -33,14 +33,14 @@ namespace TennisCompetition
         {
             return this.Match[c.Match1.Group] +
                 this.Match[c.Match2.Group] +
-                this.Trio[c.Match1.Trios[0].Group] +
-                this.Trio[c.Match1.Trios[1].Group] +
-                this.Trio[c.Match1.Trios[2].Group] +
-                this.Trio[c.Match1.Trios[3].Group] +
-                this.Trio[c.Match2.Trios[0].Group] +
-                this.Trio[c.Match2.Trios[1].Group] +
-                this.Trio[c.Match2.Trios[2].Group] +
-                this.Trio[c.Match2.Trios[3].Group] +
+                //this.Trio[c.Match1.Trios[0].Group] +
+                //this.Trio[c.Match1.Trios[1].Group] +
+                //this.Trio[c.Match1.Trios[2].Group] +
+                //this.Trio[c.Match1.Trios[3].Group] +
+                //this.Trio[c.Match2.Trios[0].Group] +
+                //this.Trio[c.Match2.Trios[1].Group] +
+                //this.Trio[c.Match2.Trios[2].Group] +
+                //this.Trio[c.Match2.Trios[3].Group] +
                 this.Pair[c.Match1.Pair1] +
                 this.Pair[c.Match1.Pair2] +
                 this.Pair[c.Match2.Pair1] +

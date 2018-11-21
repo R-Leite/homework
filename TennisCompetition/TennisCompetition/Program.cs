@@ -96,48 +96,13 @@ namespace TennisCompetition
                 }
 
                 // 出場回数の管理
-                var answerCompetions = new List<Competition>();
                 var participation = new Participation(players, pairs, trios, matches);
-                var count = 0;
-                while (true)
-                {
-                    var minWeight = int.MaxValue;
-                    var index = 0;
 
-                    // 出場回数から優先順位をつける
-                    for (var i = 0; i < competitions.Count; i++)
-                    {
-                        var weight = participation.GetWeight(competitions[i]);
+                var ans1 = new Answer1(competitions, participation);
+                ans1.Output();
 
-                        if (minWeight > weight)
-                        {
-                            minWeight = weight;
-                            index = i;
-                        }
-                    }
-
-                    var x = competitions[index];
-
-                    //// 全ペアが出場したら終了
-                    //if (participation.isAllPair(x))
-                    //{
-                    //    break;
-                    //}
-
-                    if (count >= 20)
-                    {
-                        break;
-                    }
-                    count++;
-
-                    participation.CountUp(x);
-                    answerCompetions.Add(x);
-                    Console.WriteLine(x.ToString());
-                    Console.WriteLine(x.ToAnswer(participation));
-                }
-
-                participation.WriteLinePlayer();
-                participation.WriteLinePair();
+                Console.WriteLine("2番の回答へ（何かキーを押してください。)");
+                Console.ReadKey();
             }
             finally
             {
