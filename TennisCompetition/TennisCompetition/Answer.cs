@@ -1,33 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace TennisCompetition
 {
     class Answer
     {
-        private List<TwoCourts> _competitions;
+        const int MaxMatchCount = 25;
+
+        private List<TwoCourts> _twoCourtsList;
         private Participation _participation;
 
-        public Answer(List<TwoCourts> c, Participation p)
+        public Answer(List<TwoCourts> t, Participation p)
         {
-            this._competitions = new List<TwoCourts>(c);
+            this._twoCourtsList = new List<TwoCourts>(t);
             this._participation = p;
         }
 
         public void Output()
         {
-            var competitionCount = this._competitions.Count;
+            var twoCourtsCount = this._twoCourtsList.Count;
             var matchCount = 0;
 
             while (true)
             {
+#if True
+                // 出場回数から対戦組み合わせ決定
+                var twoCourts = this._twoCourtsList
+                    .Select(tc => new { Weight = this._participation.GetWeight(tc), tc })
+                    .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
+#else
                 var minWeight = int.MaxValue;
                 var index = int.MaxValue;
 
                 // 出場回数から優先順位をつける
-                for (var i = 0; i < competitionCount; i++)
+                for (var i = 0; i < twoCourtsCount; i++)
                 {
-                    var weight = this._participation.GetWeight(this._competitions[i]);
+                    var weight = this._participation.GetWeight(this._twoCourtsList[i]);
 
                     if (minWeight > weight)
                     {
@@ -37,15 +47,21 @@ namespace TennisCompetition
                 }
 
                 // 組み合わせ決定
-                var comp = this._competitions[index];
+                var twoCourts = this._twoCourtsList[index];
+#endif
 
                 // 出場回数をカウントアップ
-                this._participation.CountUp(comp);
+                this._participation.CountUp(twoCourts);
 
-                Console.WriteLine(comp.ToString());
+                // 組み合わせを出力
+                Console.WriteLine(twoCourts.ToString());
+                Console.WriteLine(twoCourts.ToAnswer(this._participation));
 
-                // 試合回数が25回以上なら終了
-                if (++matchCount >= 25) { break; }
+                // 試合回数が指定数以上なら終了
+                if (++matchCount >= MaxMatchCount)
+                {
+                    break;
+                }
             }
 
             // 各プレイヤーの出場回数を表示

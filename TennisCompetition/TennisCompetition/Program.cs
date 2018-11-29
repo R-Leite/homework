@@ -78,7 +78,7 @@ namespace TennisCompetition
 
                 // 存在し得る全試合（2面コート）を作成
                 var matchCount = matches.Count;
-                var competitions = new List<TwoCourts>();
+                var twoCourtsList = new List<TwoCourts>();
                 for (var i = 0; i < matchCount; i++)
                 {
                     for (var j = i + 1; j < matchCount; j++)
@@ -86,7 +86,7 @@ namespace TennisCompetition
                         // プレイヤーの重複を除く
                         if (!matches[i].Contains(matches[j]))
                         {
-                            competitions.Add(new TwoCourts(matches[i], matches[j]));
+                            twoCourtsList.Add(new TwoCourts(matches[i], matches[j]));
                         }
                     }
                 }
@@ -95,8 +95,8 @@ namespace TennisCompetition
                 var participation1 = new Participation(players, pairs, trios, matches);
                 
                 // 1の回答出力
-                var ans1 = new Answer1(competitions, participation1);
-                ans1.Output();
+                //var ans1 = new Answer1(twoCourtsList, participation1);
+                //ans1.Output();
 
                 Console.WriteLine("\n2番の回答へ（何かキーを押してください。)");
                 Console.ReadKey();
@@ -106,7 +106,7 @@ namespace TennisCompetition
                 var participation = new Participation(players, pairs, trios, matches);
 
                 // 2以降の回答
-                var ans = new Answer(competitions, participation);
+                var ans = new Answer(twoCourtsList, participation);
                 ans.Output();
             }
             finally

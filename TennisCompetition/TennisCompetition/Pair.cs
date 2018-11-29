@@ -17,7 +17,7 @@ namespace TennisCompetition
         {
             this.Player1 = p1;
             this.Player2 = p2;
-            this.Label = p1.Label + "-" + p2.Label;
+            this.Label = new List<Player>() { p1, p2 }.Select(x => x.Label).OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
         }
 
         public bool Contains(Pair p)

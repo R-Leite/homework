@@ -18,18 +18,14 @@ namespace TennisCompetition
             this.courtPair = new Dictionary<string, int>();
             this.Trio = new Dictionary<string, int>();
             this.Match = new Dictionary<string, int>();
+
             players.ForEach(p => this.Player.Add(p, 0));
             pairs.ForEach(p => this.Pair.Add(p, 0));
             pairs.ForEach(p => this.courtPair.Add(p.Label, 0));
-
-            foreach(var key in this.courtPair.Keys)
-            {
-                Console.WriteLine($"{key}={this.courtPair[key]}");
-            }
             trios.ForEach(t => this.Trio.Add(t.Label, 0));
+
             foreach(var m in matches)
             {
-//                Console.WriteLine(m.ToString());
                 if (!this.Match.ContainsKey(m.Label))
                 {
                     this.Match.Add(m.Label, 0);
@@ -59,67 +55,66 @@ namespace TennisCompetition
         public int GetWeight(TwoCourts c)
         {
             return this.Match[c.Match1.Label] +
-                this.Match[c.Match2.Label] +
-                this.Trio[c.Match1.Trios[0].Label] +
-                this.Trio[c.Match1.Trios[1].Label] +
-                this.Trio[c.Match1.Trios[2].Label] +
-                this.Trio[c.Match1.Trios[3].Label] +
-                this.Trio[c.Match2.Trios[0].Label] +
-                this.Trio[c.Match2.Trios[1].Label] +
-                this.Trio[c.Match2.Trios[2].Label] +
-                this.Trio[c.Match2.Trios[3].Label] +
-                this.courtPair[c.Match1.Pairs[0].Label] +
-                this.courtPair[c.Match1.Pairs[1].Label] +
-                this.courtPair[c.Match1.Pairs[2].Label] +
-                this.courtPair[c.Match1.Pairs[3].Label] +
-                this.courtPair[c.Match1.Pairs[4].Label] +
-                this.courtPair[c.Match1.Pairs[5].Label] +
-                this.courtPair[c.Match2.Pairs[0].Label] +
-                this.courtPair[c.Match2.Pairs[1].Label] +
-                this.courtPair[c.Match2.Pairs[2].Label] +
-                this.courtPair[c.Match2.Pairs[3].Label] +
-                this.courtPair[c.Match2.Pairs[4].Label] +
-                this.courtPair[c.Match2.Pairs[5].Label] +
-                this.Pair[c.Match1.Pair1] +
-                this.Pair[c.Match1.Pair2] +
-                this.Pair[c.Match2.Pair1] +
-                this.Pair[c.Match2.Pair2] +
-                this.Player[c.Match1.Pair1.Player1] +
-                this.Player[c.Match1.Pair1.Player2] +
-                this.Player[c.Match1.Pair2.Player1] +
-                this.Player[c.Match1.Pair2.Player2] +
-                this.Player[c.Match2.Pair1.Player1] +
-                this.Player[c.Match2.Pair1.Player2] +
-                this.Player[c.Match2.Pair2.Player1] +
-                this.Player[c.Match2.Pair2.Player2];
+                   this.Match[c.Match2.Label] +
+                   this.Trio[c.Match1.TriosSameCourt[0].Label] +
+                   this.Trio[c.Match1.TriosSameCourt[1].Label] +
+                   this.Trio[c.Match1.TriosSameCourt[2].Label] +
+                   this.Trio[c.Match1.TriosSameCourt[3].Label] +
+                   this.Trio[c.Match2.TriosSameCourt[0].Label] +
+                   this.Trio[c.Match2.TriosSameCourt[1].Label] +
+                   this.Trio[c.Match2.TriosSameCourt[2].Label] +
+                   this.Trio[c.Match2.TriosSameCourt[3].Label] +
+                   this.courtPair[c.Match1.PairsSameCourt[0].Label] +
+                   this.courtPair[c.Match1.PairsSameCourt[1].Label] +
+                   this.courtPair[c.Match1.PairsSameCourt[2].Label] +
+                   this.courtPair[c.Match1.PairsSameCourt[3].Label] +
+                   this.courtPair[c.Match1.PairsSameCourt[4].Label] +
+                   this.courtPair[c.Match1.PairsSameCourt[5].Label] +
+                   this.courtPair[c.Match2.PairsSameCourt[0].Label] +
+                   this.courtPair[c.Match2.PairsSameCourt[1].Label] +
+                   this.courtPair[c.Match2.PairsSameCourt[2].Label] +
+                   this.courtPair[c.Match2.PairsSameCourt[3].Label] +
+                   this.courtPair[c.Match2.PairsSameCourt[4].Label] +
+                   this.courtPair[c.Match2.PairsSameCourt[5].Label] +
+                   this.Pair[c.Match1.Pair1] +
+                   this.Pair[c.Match1.Pair2] +
+                   this.Pair[c.Match2.Pair1] +
+                   this.Pair[c.Match2.Pair2] +
+                   this.Player[c.Match1.Pair1.Player1] +
+                   this.Player[c.Match1.Pair1.Player2] +
+                   this.Player[c.Match1.Pair2.Player1] +
+                   this.Player[c.Match1.Pair2.Player2] +
+                   this.Player[c.Match2.Pair1.Player1] +
+                   this.Player[c.Match2.Pair1.Player2] +
+                   this.Player[c.Match2.Pair2.Player1] +
+                   this.Player[c.Match2.Pair2.Player2];
         }
 
         // 指定組み合わせの出場回数をカウントアップ
         public void CountUp(TwoCourts c)
         {
-            Console.WriteLine(c.Match1.Pairs[3].Label.ToString());
             this.Match[c.Match1.Label]++;
             this.Match[c.Match2.Label]++;
-            this.Trio[c.Match1.Trios[0].Label]++;
-            this.Trio[c.Match1.Trios[1].Label]++;
-            this.Trio[c.Match1.Trios[2].Label]++;
-            this.Trio[c.Match1.Trios[3].Label]++;
-            this.Trio[c.Match2.Trios[0].Label]++;
-            this.Trio[c.Match2.Trios[1].Label]++;
-            this.Trio[c.Match2.Trios[2].Label]++;
-            this.Trio[c.Match2.Trios[3].Label]++;
-            this.courtPair[c.Match1.Pairs[0].Label]++;
-            this.courtPair[c.Match1.Pairs[1].Label]++;
-            this.courtPair[c.Match1.Pairs[2].Label]++;
-            this.courtPair[c.Match1.Pairs[3].Label]++;
-            this.courtPair[c.Match1.Pairs[4].Label]++;
-            this.courtPair[c.Match1.Pairs[5].Label]++;
-            this.courtPair[c.Match2.Pairs[0].Label]++;
-            this.courtPair[c.Match2.Pairs[1].Label]++;
-            this.courtPair[c.Match2.Pairs[2].Label]++;
-            this.courtPair[c.Match2.Pairs[3].Label]++;
-            this.courtPair[c.Match2.Pairs[4].Label]++;
-            this.courtPair[c.Match2.Pairs[5].Label]++;
+            this.Trio[c.Match1.TriosSameCourt[0].Label]++;
+            this.Trio[c.Match1.TriosSameCourt[1].Label]++;
+            this.Trio[c.Match1.TriosSameCourt[2].Label]++;
+            this.Trio[c.Match1.TriosSameCourt[3].Label]++;
+            this.Trio[c.Match2.TriosSameCourt[0].Label]++;
+            this.Trio[c.Match2.TriosSameCourt[1].Label]++;
+            this.Trio[c.Match2.TriosSameCourt[2].Label]++;
+            this.Trio[c.Match2.TriosSameCourt[3].Label]++;
+            this.courtPair[c.Match1.PairsSameCourt[0].Label]++;
+            this.courtPair[c.Match1.PairsSameCourt[1].Label]++;
+            this.courtPair[c.Match1.PairsSameCourt[2].Label]++;
+            this.courtPair[c.Match1.PairsSameCourt[3].Label]++;
+            this.courtPair[c.Match1.PairsSameCourt[4].Label]++;
+            this.courtPair[c.Match1.PairsSameCourt[5].Label]++;
+            this.courtPair[c.Match2.PairsSameCourt[0].Label]++;
+            this.courtPair[c.Match2.PairsSameCourt[1].Label]++;
+            this.courtPair[c.Match2.PairsSameCourt[2].Label]++;
+            this.courtPair[c.Match2.PairsSameCourt[3].Label]++;
+            this.courtPair[c.Match2.PairsSameCourt[4].Label]++;
+            this.courtPair[c.Match2.PairsSameCourt[5].Label]++;
             this.Pair[c.Match1.Pair1]++;
             this.Pair[c.Match1.Pair2]++;
             this.Pair[c.Match2.Pair1]++;
@@ -136,14 +131,14 @@ namespace TennisCompetition
 
         public bool isExistTwoMore(TwoCourts c)
         {
-            if (this.Trio[c.Match1.Trios[0].Label] > 0) { return true; }
-            if (this.Trio[c.Match1.Trios[1].Label] > 0) { return true; }
-            if (this.Trio[c.Match1.Trios[2].Label] > 0) { return true; }
-            if (this.Trio[c.Match1.Trios[3].Label] > 0) { return true; }
-            if (this.Trio[c.Match2.Trios[0].Label] > 0) { return true; }
-            if (this.Trio[c.Match2.Trios[1].Label] > 0) { return true; }
-            if (this.Trio[c.Match2.Trios[2].Label] > 0) { return true; }
-            if (this.Trio[c.Match2.Trios[3].Label] > 0) { return true; }
+            if (this.Trio[c.Match1.TriosSameCourt[0].Label] > 0) { return true; }
+            if (this.Trio[c.Match1.TriosSameCourt[1].Label] > 0) { return true; }
+            if (this.Trio[c.Match1.TriosSameCourt[2].Label] > 0) { return true; }
+            if (this.Trio[c.Match1.TriosSameCourt[3].Label] > 0) { return true; }
+            if (this.Trio[c.Match2.TriosSameCourt[0].Label] > 0) { return true; }
+            if (this.Trio[c.Match2.TriosSameCourt[1].Label] > 0) { return true; }
+            if (this.Trio[c.Match2.TriosSameCourt[2].Label] > 0) { return true; }
+            if (this.Trio[c.Match2.TriosSameCourt[3].Label] > 0) { return true; }
 
             return false;
         }
@@ -184,14 +179,6 @@ namespace TennisCompetition
             foreach (var key in this.Pair.Keys)
             {
                 Console.WriteLine($"{key}={this.Pair[key]}");
-            }
-        }
-
-        public void WriteLineTrio()
-        {
-            foreach (var key in this.Trio.Keys)
-            {
-                Console.WriteLine($"{key}={this.Trio[key]}");
             }
         }
     }
