@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TennisCompetition
 {
-    class Answer1
+    class Answer
     {
         private List<TwoCourts> _competitions;
         private Participation _participation;
 
-        public Answer1(List<TwoCourts> c, Participation p)
+        public Answer(List<TwoCourts> c, Participation p)
         {
             this._competitions = new List<TwoCourts>(c);
             this._participation = p;
@@ -20,6 +17,7 @@ namespace TennisCompetition
         public void Output()
         {
             var competitionCount = this._competitions.Count;
+            var matchCount = 0;
 
             while (true)
             {
@@ -29,7 +27,7 @@ namespace TennisCompetition
                 // 出場回数から優先順位をつける
                 for (var i = 0; i < competitionCount; i++)
                 {
-                    var weight = this._participation.GetWeightFor1(this._competitions[i]);
+                    var weight = this._participation.GetWeight(this._competitions[i]);
 
                     if (minWeight > weight)
                     {
@@ -41,16 +39,13 @@ namespace TennisCompetition
                 // 組み合わせ決定
                 var comp = this._competitions[index];
 
-                // 全ペアが出場したら終了
-                if (this._participation.isAllPairAtLeastOnce())
-                {
-                    break;
-                }
-
                 // 出場回数をカウントアップ
                 this._participation.CountUp(comp);
 
                 Console.WriteLine(comp.ToString());
+
+                // 試合回数が25回以上なら終了
+                if (++matchCount >= 25) { break; }
             }
 
             // 各プレイヤーの出場回数を表示

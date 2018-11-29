@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TennisCompetition
 {
@@ -64,7 +61,6 @@ namespace TennisCompetition
                     }
                 }
 
-
                 // 存在し得る全試合を作成
                 var pairCount = pairs.Count;
                 var matches = new List<Match>();
@@ -82,7 +78,7 @@ namespace TennisCompetition
 
                 // 存在し得る全試合（2面コート）を作成
                 var matchCount = matches.Count;
-                var competitions = new List<Competition>();
+                var competitions = new List<TwoCourts>();
                 for (var i = 0; i < matchCount; i++)
                 {
                     for (var j = i + 1; j < matchCount; j++)
@@ -90,19 +86,28 @@ namespace TennisCompetition
                         // プレイヤーの重複を除く
                         if (!matches[i].Contains(matches[j]))
                         {
-                            competitions.Add(new Competition(matches[i], matches[j]));
+                            competitions.Add(new TwoCourts(matches[i], matches[j]));
                         }
                     }
                 }
 
                 // 出場回数の管理
-                var participation = new Participation(players, pairs, trios, matches);
-
-                var ans1 = new Answer1(competitions, participation);
+                var participation1 = new Participation(players, pairs, trios, matches);
+                
+                // 1の回答出力
+                var ans1 = new Answer1(competitions, participation1);
                 ans1.Output();
 
-                Console.WriteLine("2番の回答へ（何かキーを押してください。)");
+                Console.WriteLine("\n2番の回答へ（何かキーを押してください。)");
                 Console.ReadKey();
+                Console.WriteLine();
+
+                // 出場回数の管理
+                var participation = new Participation(players, pairs, trios, matches);
+
+                // 2以降の回答
+                var ans = new Answer(competitions, participation);
+                ans.Output();
             }
             finally
             {
