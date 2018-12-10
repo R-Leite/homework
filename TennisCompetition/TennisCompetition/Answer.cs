@@ -25,30 +25,10 @@ namespace TennisCompetition
 
             while (true)
             {
-#if True
                 // 出場回数から対戦組み合わせ決定
                 var twoCourts = this._twoCourtsList
                     .Select(tc => new { Weight = this._participation.GetWeight(tc), tc })
                     .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
-#else
-                var minWeight = int.MaxValue;
-                var index = int.MaxValue;
-
-                // 出場回数から優先順位をつける
-                for (var i = 0; i < twoCourtsCount; i++)
-                {
-                    var weight = this._participation.GetWeight(this._twoCourtsList[i]);
-
-                    if (minWeight > weight)
-                    {
-                        minWeight = weight;
-                        index = i;
-                    }
-                }
-
-                // 組み合わせ決定
-                var twoCourts = this._twoCourtsList[index];
-#endif
 
                 // 出場回数をカウントアップ
                 this._participation.CountUp(twoCourts);

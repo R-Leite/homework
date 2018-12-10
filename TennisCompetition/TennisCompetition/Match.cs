@@ -11,14 +11,15 @@ namespace TennisCompetition
         public readonly List<Trio> TriosSameCourt;
         public readonly string Label;
 
-        public Match(Pair p1, Pair p2)
+        public Match(Pair pair1, Pair pair2)
         {
-            this.Pair1 = p1;
-            this.Pair2 = p2;
-            var playerList = new List<Player>() { p1.Player1, p1.Player2, p2.Player1, p2.Player2 };
+            this.Pair1 = pair1;
+            this.Pair2 = pair2;
+            var playerList = new List<Player>() { pair1.Player1, pair1.Player2, pair2.Player1, pair2.Player2 };
             Label = playerList.Select(x => x.Label).OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
 
             // 同コート内のプレイヤー組み合わせ(2人)
+//            var hoge = Enumerable.Range(0, 4).SelectMany((x, idx) => Enumerable.Range(idx + 1, 3 - idx).Select(y => new Pair(x, y)));
             this.PairsSameCourt = new List<Pair>();
             for (var i = 0; i < 4; i++)
             {
@@ -46,7 +47,6 @@ namespace TennisCompetition
         {
             if (this.Pair1.Contains(m.Pair1)) { return true; }
             if (this.Pair1.Contains(m.Pair2)) { return true; }
-
             if (this.Pair2.Contains(m.Pair1)) { return true; }
             if (this.Pair2.Contains(m.Pair2)) { return true; }
 

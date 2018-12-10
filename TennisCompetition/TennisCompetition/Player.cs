@@ -9,7 +9,6 @@ namespace TennisCompetition
     class Player
     {
         public readonly int Label;
-        //public int Participate;
 
         public Player(int pn)
         {

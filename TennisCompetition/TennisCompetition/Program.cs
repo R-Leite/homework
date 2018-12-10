@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TennisCompetition
 {
@@ -30,66 +31,27 @@ namespace TennisCompetition
                 }
 
                 // プレイヤーのリストを作成
-                var players = new List<Player>();
-                //Enumerable.Range(1, playerNumber).ToList().ForEach(x => players.Add(new Player(x)));
-                for (var i = 1; i <= playerNumber; i++)
-                {
-                    players.Add(new Player(i));
-                }
+                // ex:[1,2,3,...,8]
+                var players = Enumerable.Range(1, playerNumber).Select(x => new Player(x)).ToList();
 
                 // 存在しうる全ペアを作成
-                var pairs = new List<Pair>();
-                //Enumerable.Range(0, playerNumber).ToList().ForEach(x => Enumerable.Range(x + 1, playerNumber - x - 1).ToList().ForEach(y => pairs.Add(new Pair(players[x], players[y]))));
-                for (var i = 0; i < playerNumber; i++)
-                {
-                    for (var j = i + 1; j < playerNumber; j++)
-                    {
-                        pairs.Add(new Pair(players[i], players[j]));
-                    }
-                }
+                // ex:[(1,2),(1,3),...,(1,8),(2,3),(2,4),...,(7,8)]
+                var pairs = players.SelectMany((x, idx) =>
+                players.Skip(idx + 1).Select(y => new Pair(x, y))).ToList();
 
-                // 同コートのプレイヤー確認用
-                var trios = new List<Trio>();
-                for (var i = 0; i < playerNumber; i++)
-                {
-                    for (var j = i + 1; j < playerNumber; j++)
-                    {
-                        for (var k = j + 1; k < playerNumber; k++)
-                        {
-                            trios.Add(new Trio(players[i], players[j], players[k]));
-                        }
-                    }
-                }
+                // 同コート上のプレイヤー確認用
+                // ex:[(1,2,3),(1,2,4),...,(1,7,8),(2,3,4),(2,3,5),...,(6,7,8)]
+                var trios = players.SelectMany((x, idx) =>
+                players.Skip(idx + 1).SelectMany((y, idy) =>
+                players.Skip(idx + idy + 2).Select(z => new Trio(x, y, z)))).ToList();
 
                 // 存在し得る全試合を作成
-                var pairCount = pairs.Count;
-                var matches = new List<Match>();
-                for (var i = 0; i < pairCount; i++)
-                {
-                    for (var j = i + 1; j < pairCount; j++)
-                    {
-                        // プレイヤーの重複を除く
-                        if (!pairs[i].Contains(pairs[j]))
-                        {
-                            matches.Add(new Match(pairs[i], pairs[j]));
-                        }
-                    }
-                }
+                // ex:[(1,2,3,4),(1,2,3,5),...,(2,3,4,5),(2,3,4,6)},...,{(5,6),(7,8)}]
+                var matches = pairs.SelectMany((x, idx) => pairs.Skip(idx + 1).Where(y=>!x.Contains(y)).Select(y => new Match(x, y))).ToList();
 
                 // 存在し得る全試合（2面コート）を作成
-                var matchCount = matches.Count;
-                var twoCourtsList = new List<TwoCourts>();
-                for (var i = 0; i < matchCount; i++)
-                {
-                    for (var j = i + 1; j < matchCount; j++)
-                    {
-                        // プレイヤーの重複を除く
-                        if (!matches[i].Contains(matches[j]))
-                        {
-                            twoCourtsList.Add(new TwoCourts(matches[i], matches[j]));
-                        }
-                    }
-                }
+                // ex:[(1,2,3,4,5,6,7,8),(1,2,3,4,5,6,8),...,(1,8,2,7,3,6,4,5)]
+                var twoCourtMatches = matches.SelectMany((x, idx) => matches.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new TwoCourts(x, y))).ToList();
 
                 // 出場回数の管理
                 var participation1 = new Participation(players, pairs, trios, matches);
@@ -106,7 +68,7 @@ namespace TennisCompetition
                 var participation = new Participation(players, pairs, trios, matches);
 
                 // 2以降の回答
-                var ans = new Answer(twoCourtsList, participation);
+                var ans = new Answer(twoCourtMatches, participation);
                 ans.Output();
             }
             finally

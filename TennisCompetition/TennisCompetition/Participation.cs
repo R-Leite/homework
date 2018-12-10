@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TennisCompetition
 {
+    // 出場回数を管理するクラス
     class Participation
     {
         public readonly Dictionary<Player, int> Player;
@@ -11,26 +13,14 @@ namespace TennisCompetition
         public readonly Dictionary<string, int> Trio;
         public readonly Dictionary<string, int> Match;
 
-        public Participation(List<Player> players, List<Pair> pairs, List<Trio> trios, List<Match> matches)
+        public Participation(IEnumerable<Player> players, IEnumerable<Pair> pairs, IEnumerable<Trio> trios, IEnumerable<Match> matches)
         {
-            this.Player = new Dictionary<Player, int>();
-            this.Pair = new Dictionary<Pair, int>();
-            this.courtPair = new Dictionary<string, int>();
-            this.Trio = new Dictionary<string, int>();
-            this.Match = new Dictionary<string, int>();
-
-            players.ForEach(p => this.Player.Add(p, 0));
-            pairs.ForEach(p => this.Pair.Add(p, 0));
-            pairs.ForEach(p => this.courtPair.Add(p.Label, 0));
-            trios.ForEach(t => this.Trio.Add(t.Label, 0));
-
-            foreach(var m in matches)
-            {
-                if (!this.Match.ContainsKey(m.Label))
-                {
-                    this.Match.Add(m.Label, 0);
-                }
-            }
+            // 出場回数を0に初期化
+            this.Player = players.ToDictionary(x => x, x => 0);
+            this.Pair = pairs.ToDictionary(x => x, x => 0);
+            this.courtPair = pairs.ToDictionary(x =>x.Label, x => 0);
+            this.Trio = trios.ToDictionary(x => x.Label, x => 0);
+            this.Match = matches.Select(m => m.Label).Distinct().ToDictionary(x => x, x => 0);
         }
 
         public int GetWeightFor1(TwoCourts c)

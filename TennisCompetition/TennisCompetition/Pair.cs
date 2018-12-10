@@ -11,7 +11,6 @@ namespace TennisCompetition
         public readonly Player Player1;
         public readonly Player Player2;
         public readonly string Label;
-        //public int Participate;
 
         public Pair(Player p1, Player p2)
         {
