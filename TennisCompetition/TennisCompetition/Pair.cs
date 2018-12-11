@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TennisCompetition
 {
+    // ペアを管理するクラス
     class Pair
     {
         public readonly Player Player1;
@@ -21,10 +22,10 @@ namespace TennisCompetition
 
         public bool Contains(Pair p)
         {
-            if (this.Player1 == p.Player1) { return true; }
-            if (this.Player1 == p.Player2) { return true; }
-            if (this.Player2 == p.Player1) { return true; }
-            if (this.Player2 == p.Player2) { return true; }
+            if (this.Player1.Equals(p.Player1)) { return true; }
+            if (this.Player1.Equals(p.Player2)) { return true; }
+            if (this.Player2.Equals(p.Player1)) { return true; }
+            if (this.Player2.Equals(p.Player2)) { return true; }
             return false;
         }
 

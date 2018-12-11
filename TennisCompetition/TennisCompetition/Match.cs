@@ -3,12 +3,13 @@ using System.Linq;
 
 namespace TennisCompetition
 {
+    // 1面分の試合を管理するクラス
     class Match
     {
         public readonly Pair Pair1;
         public readonly Pair Pair2;
-        public readonly List<Pair> PairsSameCourt;
-        public readonly List<Trio> TriosSameCourt;
+        public readonly IEnumerable<Pair> PairsSameCourt;
+        public readonly IEnumerable<Trio> TriosSameCourt;
         public readonly string Label;
 
         public Match(Pair pair1, Pair pair2)
@@ -16,31 +17,16 @@ namespace TennisCompetition
             this.Pair1 = pair1;
             this.Pair2 = pair2;
             var playerList = new List<Player>() { pair1.Player1, pair1.Player2, pair2.Player1, pair2.Player2 };
-            Label = playerList.Select(x => x.Label).OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
+            this.Label = playerList.Select(x => x.Label).OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
 
             // 同コート内のプレイヤー組み合わせ(2人)
-//            var hoge = Enumerable.Range(0, 4).SelectMany((x, idx) => Enumerable.Range(idx + 1, 3 - idx).Select(y => new Pair(x, y)));
-            this.PairsSameCourt = new List<Pair>();
-            for (var i = 0; i < 4; i++)
-            {
-                for (var j = i + 1; j < 4; j++)
-                {
-                    this.PairsSameCourt.Add(new Pair(playerList[i], playerList[j]));
-                }
-            }
+            this.PairsSameCourt = playerList.SelectMany((x, idx) =>
+            playerList.Skip(idx + 1).Select(y => new Pair(x, y)));
 
             // 同コート内のプレイヤー組み合わせ(3人)
-            this.TriosSameCourt = new List<Trio>();
-            for (var i = 0; i < 4; i++)
-            {
-                for (var j = i + 1; j < 4; j++)
-                {
-                    for (var k = j + 1; k < 4; k++)
-                    {
-                        this.TriosSameCourt.Add(new Trio(playerList[i], playerList[j], playerList[k]));
-                    }
-                }
-            }
+            this.TriosSameCourt = playerList.SelectMany((x, idx) =>
+            playerList.Skip(idx + 1).SelectMany((y, idy) =>
+            playerList.Skip(idx + idy + 2).Select(z => new Trio(x, y, z))));
         }
 
         public bool Contains(Match m)

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace TennisCompetition
 {
-    class TwoCourts
+    // 2面分の試合を管理するクラス
+    class TwoMatch
     {
         public readonly Match Match1;
         public readonly Match Match2;
 
-        public TwoCourts(Match m1, Match m2)
+        public TwoMatch(Match m1, Match m2)
         {
             this.Match1 = m1;
             this.Match2 = m2;
@@ -33,14 +34,14 @@ namespace TennisCompetition
                 this.Match2.Pair2.Player1.Label.ToString() + "," +
                 this.Match2.Pair2.Player2.Label.ToString() + ":" +
                 //
-                participation.Player[this.Match1.Pair1.Player1] + "," +
-                participation.Player[this.Match1.Pair1.Player2] + "," +
-                participation.Player[this.Match1.Pair2.Player1] + "," +
-                participation.Player[this.Match1.Pair2.Player2] + "," +
-                participation.Player[this.Match2.Pair1.Player1] + "," +
-                participation.Player[this.Match2.Pair1.Player2] + "," +
-                participation.Player[this.Match2.Pair2.Player1] + "," +
-                participation.Player[this.Match2.Pair2.Player2];
+                participation.Player[this.Match1.Pair1.Player1.Label] + "," +
+                participation.Player[this.Match1.Pair1.Player2.Label] + "," +
+                participation.Player[this.Match1.Pair2.Player1.Label] + "," +
+                participation.Player[this.Match1.Pair2.Player2.Label] + "," +
+                participation.Player[this.Match2.Pair1.Player1.Label] + "," +
+                participation.Player[this.Match2.Pair1.Player2.Label] + "," +
+                participation.Player[this.Match2.Pair2.Player1.Label] + "," +
+                participation.Player[this.Match2.Pair2.Player2.Label];
         }
     }
 }

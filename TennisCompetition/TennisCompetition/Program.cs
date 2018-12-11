@@ -32,26 +32,28 @@ namespace TennisCompetition
 
                 // プレイヤーのリストを作成
                 // ex:[1,2,3,...,8]
-                var players = Enumerable.Range(1, playerNumber).Select(x => new Player(x)).ToList();
+                var players = Enumerable.Range(1, playerNumber).Select(x => new Player(x));
 
                 // 存在しうる全ペアを作成
                 // ex:[(1,2),(1,3),...,(1,8),(2,3),(2,4),...,(7,8)]
                 var pairs = players.SelectMany((x, idx) =>
-                players.Skip(idx + 1).Select(y => new Pair(x, y))).ToList();
+                players.Skip(idx + 1).Select(y => new Pair(x, y)));
 
                 // 同コート上のプレイヤー確認用
                 // ex:[(1,2,3),(1,2,4),...,(1,7,8),(2,3,4),(2,3,5),...,(6,7,8)]
                 var trios = players.SelectMany((x, idx) =>
                 players.Skip(idx + 1).SelectMany((y, idy) =>
-                players.Skip(idx + idy + 2).Select(z => new Trio(x, y, z)))).ToList();
+                players.Skip(idx + idy + 2).Select(z => new Trio(x, y, z))));
 
                 // 存在し得る全試合を作成
                 // ex:[(1,2,3,4),(1,2,3,5),...,(2,3,4,5),(2,3,4,6)},...,{(5,6),(7,8)}]
-                var matches = pairs.SelectMany((x, idx) => pairs.Skip(idx + 1).Where(y=>!x.Contains(y)).Select(y => new Match(x, y))).ToList();
+                var matches = pairs.SelectMany((x, idx) =>
+                pairs.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new Match(x, y)));
 
                 // 存在し得る全試合（2面コート）を作成
                 // ex:[(1,2,3,4,5,6,7,8),(1,2,3,4,5,6,8),...,(1,8,2,7,3,6,4,5)]
-                var twoCourtMatches = matches.SelectMany((x, idx) => matches.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new TwoCourts(x, y))).ToList();
+                var twoMatches = matches.SelectMany((x, idx) =>
+                matches.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new TwoMatch(x, y)));
 
                 // 出場回数の管理
                 var participation1 = new Participation(players, pairs, trios, matches);
@@ -68,7 +70,7 @@ namespace TennisCompetition
                 var participation = new Participation(players, pairs, trios, matches);
 
                 // 2以降の回答
-                var ans = new Answer(twoCourtMatches, participation);
+                var ans = new Answer(twoMatches, participation);
                 ans.Output();
             }
             finally

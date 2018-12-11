@@ -9,18 +9,17 @@ namespace TennisCompetition
     {
         const int MaxMatchCount = 25;
 
-        private List<TwoCourts> _twoCourtsList;
+        private IEnumerable<TwoMatch> _twoCourtsList;
         private Participation _participation;
 
-        public Answer(List<TwoCourts> t, Participation p)
+        public Answer(IEnumerable<TwoMatch> t, Participation p)
         {
-            this._twoCourtsList = new List<TwoCourts>(t);
+            this._twoCourtsList = new List<TwoMatch>(t);
             this._participation = p;
         }
 
         public void Output()
         {
-            var twoCourtsCount = this._twoCourtsList.Count;
             var matchCount = 0;
 
             while (true)

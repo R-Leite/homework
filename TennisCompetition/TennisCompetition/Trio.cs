@@ -17,7 +17,7 @@ namespace TennisCompetition
 
         public override string ToString()
         {
-            return Label;
+            return "(" + Label + ")";
         }
     }
 }

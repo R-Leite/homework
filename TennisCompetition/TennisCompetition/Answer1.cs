@@ -6,18 +6,18 @@ namespace TennisCompetition
 {
     class Answer1
     {
-        private List<TwoCourts> _twoCourtsList;
+        private IEnumerable<TwoMatch> _twoCourtsList;
         private Participation _participation;
 
-        public Answer1(List<TwoCourts> t, Participation p)
+        public Answer1(List<TwoMatch> t, Participation p)
         {
-            this._twoCourtsList = new List<TwoCourts>(t);
+            this._twoCourtsList = new List<TwoMatch>(t);
             this._participation = p;
         }
 
         public void Output()
         {
-            var twoCourtsCount = this._twoCourtsList.Count;
+            var twoCourtsCount = this._twoCourtsList.Count();
 
             while (true)
             {
