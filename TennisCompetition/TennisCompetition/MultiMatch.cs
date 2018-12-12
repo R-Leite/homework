@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace TennisCompetition
 {
     // 2面分の試合を管理するクラス
-    class TwoMatch
+    class MultiMatch
     {
         public readonly Match Match1;
         public readonly Match Match2;
 
-        public TwoMatch(Match m1, Match m2)
+        public MultiMatch(Match m1, Match m2)
         {
             this.Match1 = m1;
             this.Match2 = m2;

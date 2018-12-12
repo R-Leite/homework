@@ -8,16 +8,20 @@ namespace TennisCompetition
 {
     class Trio
     {
-        public readonly string Label;
+        public readonly Player Player1;
+        public readonly Player Player2;
+        public readonly Player Player3;
 
         public Trio(Player p1, Player p2, Player p3)
         {
-            this.Label = new List<Player>() { p1, p2, p3 }.Select(x => x.Label).OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
+            this.Player1 = p1;
+            this.Player2 = p2;
+            this.Player3 = p3;
         }
 
         public override string ToString()
         {
-            return "(" + Label + ")";
+            return "(" + this.Player1.ToString() + "," + this.Player2.ToString() + "," + this.Player3.ToString() + ")";
         }
     }
 }

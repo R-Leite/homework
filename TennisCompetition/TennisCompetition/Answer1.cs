@@ -6,12 +6,12 @@ namespace TennisCompetition
 {
     class Answer1
     {
-        private IEnumerable<TwoMatch> _twoCourtsList;
+        private IEnumerable<MultiMatch> _twoCourtsList;
         private Participation _participation;
 
-        public Answer1(List<TwoMatch> t, Participation p)
+        public Answer1(IEnumerable<MultiMatch> t, Participation p)
         {
-            this._twoCourtsList = new List<TwoMatch>(t);
+            this._twoCourtsList = new List<MultiMatch>(t);
             this._participation = p;
         }
 

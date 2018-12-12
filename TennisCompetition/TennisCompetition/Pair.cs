@@ -11,13 +11,11 @@ namespace TennisCompetition
     {
         public readonly Player Player1;
         public readonly Player Player2;
-        public readonly string Label;
 
         public Pair(Player p1, Player p2)
         {
             this.Player1 = p1;
             this.Player2 = p2;
-            this.Label = new List<Player>() { p1, p2 }.Select(x => x.Label).OrderBy(x => x).Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b);
         }
 
         public bool Contains(Pair p)

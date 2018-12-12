@@ -53,14 +53,14 @@ namespace TennisCompetition
                 // 存在し得る全試合（2面コート）を作成
                 // ex:[(1,2,3,4,5,6,7,8),(1,2,3,4,5,6,8),...,(1,8,2,7,3,6,4,5)]
                 var twoMatches = matches.SelectMany((x, idx) =>
-                matches.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new TwoMatch(x, y)));
+                matches.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new MultiMatch(x, y)));
 
                 // 出場回数の管理
                 var participation1 = new Participation(players, pairs, trios, matches);
-                
+
                 // 1の回答出力
-                //var ans1 = new Answer1(twoCourtsList, participation1);
-                //ans1.Output();
+                var ans1 = new Answer1(twoMatches, participation1);
+                ans1.Output();
 
                 Console.WriteLine("\n2番の回答へ（何かキーを押してください。)");
                 Console.ReadKey();
