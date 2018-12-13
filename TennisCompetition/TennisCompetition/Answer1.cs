@@ -22,8 +22,8 @@ namespace TennisCompetition
 #if true
                 // 出場回数から対戦組み合わせ決定
                 var matchCombination = this._twoMatches
-                    .Select(tc => new { Weight = this._participation.GetWeightForAnswer1(tc), tc })
-                    .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
+                    .OrderBy(tm => this._participation.GetWeightForAnswer1(tm))
+                    .First();
 #else
                 var twoMatcesCount = _twoMatches.Count();
                 var minWeight = int.MaxValue;

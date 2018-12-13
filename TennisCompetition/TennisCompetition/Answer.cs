@@ -25,13 +25,15 @@ namespace TennisCompetition
             while (true)
             {
                 // 出場回数から対戦組み合わせ決定
-                //var matchCombination = this._twoMatches
-                //    .Select(tc => new { Weight = this._participation.GetWeight(tc), tc })
-                //    .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
-
                 var matchCombination = this._twoMatches
                     .OrderBy(tm => this._participation.GetWeight(tm))
                     .First();
+                this._participation.GeteightPlayer();
+
+                if (this._participation.isExistTwoMore(matchCombination))
+                {
+                    continue;
+                }
 
                 // 出場回数をカウントアップ
                 this._participation.CountUp(matchCombination);
@@ -39,6 +41,11 @@ namespace TennisCompetition
                 // 組み合わせを出力
                 Console.WriteLine(matchCombination.ToString());
                 Console.WriteLine(matchCombination.ToAnswer(this._participation));
+
+                if (this._participation.isAllTrioAtLeastOnce())
+                {
+                    break;
+                }
 
                 // 試合回数が指定数以上なら終了
                 if (++matchCount >= MaxMatchCount)
@@ -52,6 +59,8 @@ namespace TennisCompetition
 
             // 各ペアの出場回数を表示
             this._participation.WriteLinePair();
+
+            this._participation.WriteLineTrio();
         }
     }
 }

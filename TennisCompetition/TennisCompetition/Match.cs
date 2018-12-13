@@ -8,8 +8,8 @@ namespace TennisCompetition
     {
         public readonly Pair Pair1;
         public readonly Pair Pair2;
-        public readonly IEnumerable<Pair> PairsSameCourt;
-        public readonly IEnumerable<Trio> TriosSameCourt;
+        public readonly List<Pair> PairsSameCourt;
+        public readonly List<Trio> TriosSameCourt;
         public readonly string Label;
 
         public Match(Pair pair1, Pair pair2)
@@ -21,12 +21,12 @@ namespace TennisCompetition
 
             // 同コート内のプレイヤー組み合わせ(2人)
             this.PairsSameCourt = playerList.SelectMany((x, idx) =>
-            playerList.Skip(idx + 1).Select(y => new Pair(x, y)));
+            playerList.Skip(idx + 1).Select(y => new Pair(x, y))).ToList();
 
             // 同コート内のプレイヤー組み合わせ(3人)
             this.TriosSameCourt = playerList.SelectMany((x, idx) =>
             playerList.Skip(idx + 1).SelectMany((y, idy) =>
-            playerList.Skip(idx + idy + 2).Select(z => new Trio(x, y, z))));
+            playerList.Skip(idx + idy + 2).Select(z => new Trio(x, y, z)))).ToList();
         }
 
         public bool Contains(Match m)
