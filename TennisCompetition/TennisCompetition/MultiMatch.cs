@@ -23,16 +23,18 @@ namespace TennisCompetition
             return this.Match1.ToString() + ", " + this.Match2.ToString();
         }
 
+        // 出場回数文字列(答え表示用)
         public string ToAnswer(Participation participation)
         {
-            return this.Match1.Pair1.Player1.Label.ToString() + "," +
-                this.Match1.Pair1.Player2.Label.ToString() + "," +
-                this.Match1.Pair2.Player1.Label.ToString() + "," +
-                this.Match1.Pair2.Player2.Label.ToString() + "," +
-                this.Match2.Pair1.Player1.Label.ToString() + "," +
-                this.Match2.Pair1.Player2.Label.ToString() + "," +
-                this.Match2.Pair2.Player1.Label.ToString() + "," +
-                this.Match2.Pair2.Player2.Label.ToString() + ":" +
+            return
+                this.Match1.Pair1.Player1.Label + "," +
+                this.Match1.Pair1.Player2.Label + "," +
+                this.Match1.Pair2.Player1.Label + "," +
+                this.Match1.Pair2.Player2.Label + "," +
+                this.Match2.Pair1.Player1.Label + "," +
+                this.Match2.Pair1.Player2.Label + "," +
+                this.Match2.Pair2.Player1.Label + "," +
+                this.Match2.Pair2.Player2.Label + ":" +
                 //
                 participation.Player[this.Match1.Pair1.Player1.Label] + "," +
                 participation.Player[this.Match1.Pair1.Player2.Label] + "," +

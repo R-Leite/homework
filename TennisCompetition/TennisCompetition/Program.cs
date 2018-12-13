@@ -33,18 +33,18 @@ namespace TennisCompetition
                 // プレイヤーのリストを作成
                 // ex:[1,2,3,...,8]
                 var players = Enumerable.Range(1, playerNumber).Select(x => new Player(x));
-
+                
                 // 存在しうる全ペアを作成
                 // ex:[(1,2),(1,3),...,(1,8),(2,3),(2,4),...,(7,8)]
                 var pairs = players.SelectMany((x, idx) =>
                 players.Skip(idx + 1).Select(y => new Pair(x, y)));
-
+                
                 // 同コート上のプレイヤー確認用
                 // ex:[(1,2,3),(1,2,4),...,(1,7,8),(2,3,4),(2,3,5),...,(6,7,8)]
                 var trios = players.SelectMany((x, idx) =>
                 players.Skip(idx + 1).SelectMany((y, idy) =>
                 players.Skip(idx + idy + 2).Select(z => new Trio(x, y, z))));
-
+                
                 // 存在し得る全試合を作成
                 // ex:[(1,2,3,4),(1,2,3,5),...,(2,3,4,5),(2,3,4,6)},...,{(5,6),(7,8)}]
                 var matches = pairs.SelectMany((x, idx) =>

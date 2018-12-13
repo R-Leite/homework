@@ -9,12 +9,12 @@ namespace TennisCompetition
     {
         const int MaxMatchCount = 25;
 
-        private IEnumerable<MultiMatch> _twoCourtsList;
+        private IEnumerable<MultiMatch> _twoMatches;
         private Participation _participation;
 
-        public Answer(IEnumerable<MultiMatch> t, Participation p)
+        public Answer(IEnumerable<MultiMatch> m, Participation p)
         {
-            this._twoCourtsList = new List<MultiMatch>(t);
+            this._twoMatches = new List<MultiMatch>(m);
             this._participation = p;
         }
 
@@ -25,16 +25,20 @@ namespace TennisCompetition
             while (true)
             {
                 // 出場回数から対戦組み合わせ決定
-                var twoCourts = this._twoCourtsList
-                    .Select(tc => new { Weight = this._participation.GetWeight(tc), tc })
-                    .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
+                //var matchCombination = this._twoMatches
+                //    .Select(tc => new { Weight = this._participation.GetWeight(tc), tc })
+                //    .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
+
+                var matchCombination = this._twoMatches
+                    .OrderBy(tm => this._participation.GetWeight(tm))
+                    .First();
 
                 // 出場回数をカウントアップ
-                this._participation.CountUp(twoCourts);
+                this._participation.CountUp(matchCombination);
 
                 // 組み合わせを出力
-                Console.WriteLine(twoCourts.ToString());
-                Console.WriteLine(twoCourts.ToAnswer(this._participation));
+                Console.WriteLine(matchCombination.ToString());
+                Console.WriteLine(matchCombination.ToAnswer(this._participation));
 
                 // 試合回数が指定数以上なら終了
                 if (++matchCount >= MaxMatchCount)

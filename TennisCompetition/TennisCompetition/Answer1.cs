@@ -6,34 +6,33 @@ namespace TennisCompetition
 {
     class Answer1
     {
-        private IEnumerable<MultiMatch> _twoCourtsList;
+        private IEnumerable<MultiMatch> _twoMatches;
         private Participation _participation;
 
-        public Answer1(IEnumerable<MultiMatch> t, Participation p)
+        public Answer1(IEnumerable<MultiMatch> m, Participation p)
         {
-            this._twoCourtsList = new List<MultiMatch>(t);
+            this._twoMatches = new List<MultiMatch>(m);
             this._participation = p;
         }
 
         public void Output()
         {
-            var twoCourtsCount = this._twoCourtsList.Count();
-
             while (true)
             {
-#if True
+#if true
                 // 出場回数から対戦組み合わせ決定
-                var twoCourts = this._twoCourtsList
-                    .Select(tc => new { Weight = this._participation.GetWeightFor1(tc), tc })
+                var matchCombination = this._twoMatches
+                    .Select(tc => new { Weight = this._participation.GetWeightForAnswer1(tc), tc })
                     .Aggregate((min, next) => (min.Weight > next.Weight) ? next : min).tc;
 #else
+                var twoMatcesCount = _twoMatches.Count();
                 var minWeight = int.MaxValue;
                 var index = int.MaxValue;
 
                 // 出場回数から優先順位をつける
-                for (var i = 0; i < twoCourtsCount; i++)
+                for (var i = 0; i < twoMatcesCount; i++)
                 {
-                    var weight = this._participation.GetWeightFor1(this._twoCourts[i]);
+                    var weight = this._participation.GetWeightFor1(this._twoMatches.Skip(i).First());
 
                     if (minWeight > weight)
                     {
@@ -43,14 +42,15 @@ namespace TennisCompetition
                 }
 
                 // 組み合わせ決定
-                var twoCourts = this._twoCourts[index];
+                var matchCombination = this._twoMatches.Skip(index).First();
 #endif
 
-                // 出場回数をカウントアップ
-                this._participation.CountUp(twoCourts);
 
-                Console.WriteLine(twoCourts.ToString());
-                Console.WriteLine(twoCourts.ToAnswer(this._participation));
+                // 出場回数をカウントアップ
+                this._participation.CountUp(matchCombination);
+
+                Console.WriteLine(matchCombination.ToString());
+                Console.WriteLine(matchCombination.ToAnswer(this._participation));
 
                 // 全ペアが出場したら終了
                 if (this._participation.isAllPairAtLeastOnce())
