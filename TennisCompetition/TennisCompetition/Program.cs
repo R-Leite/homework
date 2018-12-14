@@ -55,6 +55,8 @@ namespace TennisCompetition
                 var twoMatches = matches.SelectMany((x, idx) =>
                 matches.Skip(idx + 1).Where(y => !x.Contains(y)).Select(y => new MultiMatch(x, y))).ToList();
 
+                Console.WriteLine(twoMatches.Count);
+
                 // 出場回数の管理
                 var participation1 = new Participation(players, pairs, trios, matches);
 
