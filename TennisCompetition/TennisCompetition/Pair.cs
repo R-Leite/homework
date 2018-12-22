@@ -29,6 +29,13 @@ namespace TennisCompetition
             return false;
         }
 
+        public bool Contains(int p)
+        {
+            if (this.Player1.Label == p) { return true; }
+            if (this.Player2.Label == p) { return true; }
+            return false;
+        }
+
         override public String ToString()
         {
             return "(" + this.Player1.ToString() + "," + this.Player2.ToString() + ")";
