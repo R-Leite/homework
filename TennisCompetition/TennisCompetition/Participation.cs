@@ -56,7 +56,7 @@ namespace TennisCompetition
         // 出場回数の少ないプレイヤー8人を取得
         public IEnumerable<Player> GetLeastPlayer()
         {
-            var players = this.Player.OrderBy(x => x.Value).Take(8).Select(x => x.Key).Select(x=>new Player(x));
+            var players = this.Player.OrderBy(x => x.Value).Take(8).Select(x => x.Key).Select(x => new Player(x));
             Console.Write(players.Select(x => x.ToString()).Aggregate((a, b) => a + "-" + b));
             Console.WriteLine();
 
@@ -65,15 +65,17 @@ namespace TennisCompetition
             {
                 var keys = x.Key.Split('-');
                 var p = new Pair(new Player(int.Parse(keys[0])), new Player(int.Parse(keys[1])));
-                return !players.Any(y => y.Label == int.Parse(keys[0]) || y.Label == int.Parse(keys[1]));
+                return players.Any(y => y.Label == int.Parse(keys[0])) && players.Any(y => y.Label == int.Parse(keys[1]));
+            })
+            .Select(x =>
+            {
+                var keys = x.Key.Split('-');
+                return new Pair(new Player(int.Parse(keys[0])), new Player(int.Parse(keys[1])));
             });
-            //.Select(x =>
-            //{
-            //    var keys = x.Key.Split('-');
-            //    return new Pair(new Player(int.Parse(keys[0])), new Player(int.Parse(keys[1])));
-            //});
 
             Console.Write(pairs.Select(x => x.ToString()).Aggregate((a, b) => a + ", " + b));
+            Console.WriteLine();
+            Console.WriteLine(pairs.Count());
 
             // 顔を合わせた人数が最小になる組み合わせを作成
 

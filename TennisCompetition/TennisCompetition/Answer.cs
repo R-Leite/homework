@@ -28,7 +28,7 @@ namespace TennisCompetition
                 var matchCombination = this._twoMatches
                     .OrderBy(tm => this._participation.GetWeight(tm))
                     .First();
-                //this._participation.GetLeastPlayer();
+                this._participation.GetLeastPlayer();
 
                 //if (this._participation.isExistTwoMore(matchCombination))
                 //{
