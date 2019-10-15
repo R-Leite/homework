@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NewEmployeePractice10
 {
@@ -32,7 +30,7 @@ namespace NewEmployeePractice10
         /// <returns></returns>
         static IEnumerable<int> GetRandomNaturalNumber(int _number)
         {
-            return Enumerable.Repeat(new Random(), _number).Select(x => x.Next(10, 100));
+            return Enumerable.Repeat(new Random(), _number).Select(x => x.Next(10, 99));
         }
     }
 }
