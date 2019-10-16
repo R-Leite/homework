@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{357209AC-072C-4785-BDCA-69042CCE1126}</ProjectGuid>
+    <ProjectGuid>{19691E75-EB3E-40E3-B541-E4E4AF69FBE5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NewEmployeePractice8</RootNamespace>
-    <AssemblyName>NewEmployeePractice8</AssemblyName>
+    <RootNamespace>NewEmployeePractice</RootNamespace>
+    <AssemblyName>NewEmployeePractice</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
