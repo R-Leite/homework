@@ -31,20 +31,23 @@ namespace NewEmployeePractice
             Console.WriteLine("6. 与えられた正数数値列の要素の重複を無くし、昇順に並び替えて返す関数を作りなさい。");
             Console.Write("自然数数値列(スペース区切り)：");
             inputCollection = Console.ReadLine().Split(' ').Where(x => int.TryParse(x, out int _)).Select(x => int.Parse(x));
-            Console.WriteLine(Q6(inputCollection).Select(x => x.ToString()).Aggregate((a, b) => $"{a}, {b}"));
+            Console.WriteLine(Q6(inputCollection).ToStinrg());
             Console.WriteLine();
 
             // Q8
             Console.WriteLine("8. 与えられた2次元正数数値列をフラットな1次元正数数値列に変換して返す関数を作りなさい。");
             var inputDoubleCollection = new List<List<int>>() { new List<int>() { 1, 2, 3, 4, 5 }, new List<int>() { 11, 12, 13, 14, 15 } };
-            Console.WriteLine(Q8(inputDoubleCollection).Select(x => x.ToString()).Aggregate((a, b) => $"{a}, {b}"));
+            Console.WriteLine($"2次元正数数値列：{inputDoubleCollection.Select(x => x.ToStinrg()).ToStinrg()}");
+            Console.WriteLine(Q8(inputDoubleCollection).ToStinrg());
             Console.WriteLine();
 
             // Q9
             Console.WriteLine("9. 与えられた2つの文字列コレクションから結合・加工したひとつの文字列コレクションを返す関数を作りなさい。2つの文字列は同じ要素番号を持つ者同士をコロンを用いて結合し、結合可能なもののみを返すこと。");
             var stringList1 = new List<String>() { "apple", "orange", "banana" };
             var stringList2 = new List<String>() { "japan", "america", "brazil", "china" };
-            Console.WriteLine(Q9(stringList1, stringList2).Aggregate((a, b) => $"{a}, {b}"));
+            Console.WriteLine($"文字列コレクション1：{stringList1.ToStinrg()}");
+            Console.WriteLine($"文字列コレクション2：{stringList2.ToStinrg()}");
+            Console.WriteLine(Q9(stringList1, stringList2).ToStinrg());
             Console.WriteLine();
 
             // Q10
@@ -54,7 +57,7 @@ namespace NewEmployeePractice
             {
                 if (input > 0)
                 {
-                    Console.WriteLine($"{input}の2桁ランダム値：{Q10(input).Select(x=>x.ToString()).Aggregate((a,b)=>$"{a}, {b}")}");
+                    Console.WriteLine($"{input}の2桁ランダム値：{Q10(input).ToStinrg()}");
                 }
             }
             Console.WriteLine();
@@ -68,9 +71,9 @@ namespace NewEmployeePractice
         /// </summary>
         /// <param name="_num"></param>
         /// <returns></returns>
-        static int Q3(int _num)
+        static ulong Q3(int _num)
         {
-            return Enumerable.Range(1, _num).Aggregate((a, b) => a * b);
+            return Enumerable.Range(1, _num).Select(x => (ulong)x).Aggregate((a, b) => a * b);
         }
 
         /// <summary>
@@ -122,5 +125,21 @@ namespace NewEmployeePractice
         {
             return Enumerable.Repeat(new Random(), _number).Select(x => x.Next(10, 100));
         }
+
+    }
+
+    public static class ExtensionClass
+    {
+        /// <summary>
+        /// IEnumrableの文字列を返す拡張メソッド
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="_collection"></param>
+        /// <returns></returns>
+        public static string ToStinrg<T>(this IEnumerable<T> _collection)
+        {
+            return $"[{_collection.Select(x => x.ToString()).Aggregate((a, b) => $"{a}, {b}")}]";
+        }
+
     }
 }
