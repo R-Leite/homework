@@ -16,27 +16,13 @@ namespace ArithmeticOperation
 
         static void Main(string[] args)
         {
-            var op = "+";
-            var val1 = 5;
-            var val2 = 7;
+            var input = Console.ReadLine().Split(' ');
+            var op = input[1];
+            var val1 = double.Parse(input[0]);
+            var val2 = double.Parse(input[2]);
             Console.WriteLine(val1 + " " + op + " " + val2 + " = " + Calculate(op, val1, val2));
 
-            op = "-";
-            val1 = 2;
-            val2 = 8;
-            Console.WriteLine(val1 + " " + op + " " + val2 + " = " + Calculate(op, val1, val2));
-
-            op = "*";
-            val1 = 7;
-            val2 = 15;
-            Console.WriteLine(val1 + " " + op + " " + val2 + " = " + Calculate(op, val1, val2));
-
-            op = "/";
-            val1 = 12;
-            val2 = 5;
-            Console.WriteLine(val1 + " " + op + " " + val2 + " = " + Calculate(op, val1, val2));
-
-            while (true) { }
+            Console.ReadLine();
         }
 
         // 四則演算の計算結果を返す

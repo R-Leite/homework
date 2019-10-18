@@ -5,3 +5,10 @@ G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\Ar
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.csprojResolveAssemblyReference.cache
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.exe
 G:\Users\aoki-hid\1_Work\3_勉強会\6_勉強会\homework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.pdb
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.csprojAssemblyReference.cache
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.csproj.CoreCompileInputs.cache
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.exe
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\obj\Debug\ArithmeticOperation.pdb
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.exe.config
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.exe
+D:\aoki-hid\Learn\6_WeeklyHomework\ArithmeticOperation\ArithmeticOperation\bin\Debug\ArithmeticOperation.pdb

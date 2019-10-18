@@ -34,6 +34,12 @@ namespace NewEmployeePractice
             Console.WriteLine(Q6(inputCollection).ToStinrg());
             Console.WriteLine();
 
+            // Q7
+            Console.WriteLine("7. 与えられた正数数値列の各数値をキーとし、各数値の個数を値とする辞書、あるいは連想配列を返す関数を作りなさい。");
+            Console.Write("自然数数値列(スペース区切り)：");
+            inputCollection = Console.ReadLine().Split(' ').Where(x => int.TryParse(x, out int _)).Select(x => int.Parse(x));
+            Console.WriteLine(Q7(inputCollection).ToStinrg());
+
             // Q8
             Console.WriteLine("8. 与えられた2次元正数数値列をフラットな1次元正数数値列に変換して返す関数を作りなさい。");
             var inputDoubleCollection = new List<List<int>>() { new List<int>() { 1, 2, 3, 4, 5 }, new List<int>() { 11, 12, 13, 14, 15 } };
@@ -83,7 +89,7 @@ namespace NewEmployeePractice
         /// <returns></returns>
         static int Q5(IEnumerable<int> _collection)
         {
-            return (int?)_collection.FirstOrDefault(x => x % 3 == 0) ?? 0;
+            return _collection.FirstOrDefault(x => x % 3 == 0);
         }
 
         /// <summary>
@@ -94,6 +100,16 @@ namespace NewEmployeePractice
         static IEnumerable<int> Q6(IEnumerable<int> _collection)
         {
             return _collection.Distinct().OrderBy(x => x);
+        }
+
+        /// <summary>
+        /// 7. 与えられた正数数値列の各数値をキーとし、各数値の個数を値とする辞書、あるいは連想配列を返す関数を作りなさい。
+        /// </summary>
+        /// <param name="_collection"></param>
+        /// <returns></returns>
+        static Dictionary<int, int> Q7(IEnumerable<int> _collection)
+        {
+            return _collection.OrderBy(x => x).GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
         }
 
         /// <summary>
