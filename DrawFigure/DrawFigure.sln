@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawFigure", "DrawFigure\DrawFigure.csproj", "{B4B7C0EA-7109-4E7F-BE3A-C91E434255DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4B7C0EA-7109-4E7F-BE3A-C91E434255DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B7C0EA-7109-4E7F-BE3A-C91E434255DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B7C0EA-7109-4E7F-BE3A-C91E434255DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B7C0EA-7109-4E7F-BE3A-C91E434255DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {087E60E3-EDF1-4435-88BA-951D78D6970F}
+	EndGlobalSection
+EndGlobal
