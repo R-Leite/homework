@@ -7,7 +7,7 @@ namespace SleepSort
     class Answer5
     {
         #region 定数
-        private const int Unit = 100;
+        private const int Unit = 1000;
         #endregion
 
         public IEnumerable<int> Sort(IEnumerable<int> valueList)

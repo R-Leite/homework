@@ -20,7 +20,11 @@ namespace Factoring
 
                 // LINQ1行版
                 count = 0;
-                PrintAnswer(FactoringOneLinq(number), "LINQ1行版");
+                //PrintAnswer(FactoringOneLinq(number), "LINQ1行版");
+
+                // LINQほぼ1行版
+                count = 0;
+                PrintAnswer(FactoringOneLinqVer2(number), "LINQほぼ1行版");
 
                 // LINQ版
                 count = 0;
@@ -64,6 +68,14 @@ namespace Factoring
                 .SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, number).Where(y => number % Math.Pow(x, y) == 0).Last()));
         }
 
+        static IEnumerable<int> FactoringOneLinqVer2(int number)
+        {
+            count++;
+
+            var divisor = Enumerable.Range(2, number).Where(x => number % x == 0);
+            return divisor.Except(divisor.Where(x => divisor.Any(y => x != y && x % y == 0))).SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, (int)Math.Sqrt(number)).Last(y => number % Math.Pow(x, y) == 0)));
+        }
+
         // LINQ版
         static IEnumerable<int> FactoringLinq(int number)
         {
@@ -79,7 +91,8 @@ namespace Factoring
             var primeDivisor = divisor.Except(divisor.Where(x => divisor.Any(y => x != y && x % y == 0)));
 
             // 指数回分リストに格納
-            var primeFactors = primeDivisor.SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrtNumber).Where(y => number % Math.Pow(x, y) == 0).Last()));
+            //var primeFactors = primeDivisor.SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrtNumber).Where(y => number % Math.Pow(x, y) == 0).Last()));
+            var primeFactors = primeDivisor.SelectMany(x => Enumerable.Repeat(x, Enumerable.Range(1, sqrtNumber).Last(y => number % Math.Pow(x, y) == 0)));
 
             return primeFactors;
         }

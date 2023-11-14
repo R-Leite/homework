@@ -19,7 +19,7 @@ namespace DrawFigure
             var square2 = new Square(new Point(50, 50), 10.0);
 
             // 図形をコレクションに登録
-            var figureList = new List<Figure>() {circle1, circle2, rectangle1, rectangle2, square1, square2};
+            var figureList = new List<Figure>() { circle1, circle2, rectangle1, rectangle2, square1, square2 };
 
             // 各々の図形を描く
             figureList.ForEach(_ => _.Draw());

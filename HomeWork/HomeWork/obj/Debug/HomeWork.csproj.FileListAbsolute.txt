@@ -1,7 +1,0 @@
-D:\C#テスト\HomeWork\HomeWork\bin\Debug\HomeWork.exe.config
-D:\C#テスト\HomeWork\HomeWork\bin\Debug\HomeWork.exe
-D:\C#テスト\HomeWork\HomeWork\bin\Debug\HomeWork.pdb
-D:\C#テスト\HomeWork\HomeWork\obj\Debug\HomeWork.csprojResolveAssemblyReference.cache
-D:\C#テスト\HomeWork\HomeWork\obj\Debug\HomeWork.exe
-D:\C#テスト\HomeWork\HomeWork\obj\Debug\HomeWork.pdb
-D:\C#テスト\HomeWork\HomeWork\obj\Debug\HomeWork.csproj.CoreCompileInputs.cache

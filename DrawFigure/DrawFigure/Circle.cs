@@ -10,12 +10,12 @@ namespace DrawFigure
     class Circle : Figure
     {
         #region インスタンス変数
-        public double Radius {get;}
+        public double Radius { get; }
         #endregion
 
         public Circle(Point _drawOrigin, double _radius) : base(_drawOrigin, _radius * _radius * Math.PI, "円")
         {
-            this.Radius =  _radius;
+            this.Radius = _radius;
         }
 
         public override void Draw()

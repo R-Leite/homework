@@ -10,7 +10,7 @@ namespace DrawFigure
     class Square : Figure
     {
         #region インスタンス変数
-        public double Side {get;}
+        public double Side { get; }
         #endregion
 
         public Square(Point _drawOrigin, double _side) : base(_drawOrigin, _side*_side, "正方形")

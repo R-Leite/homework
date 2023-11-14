@@ -10,9 +10,9 @@ namespace DrawFigure
     abstract class Figure
     {
         #region インスタンス変数
-        public double Area { get; }        
-        public Point DrawOrigin {get;}        
-        public string Text {get;}
+        public double Area { get; }
+        public Point DrawOrigin { get; }
+        public string Text { get; }
         #endregion
 
         public Figure(Point _drawOrigin, double _area, string _text)
